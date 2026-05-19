@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://lxmglpik8qha"]
 
-[ext_resource type="Shader" uid="uid://clyfx6jmgvwn1" path="res://Scenes/Pixelation.gdshader" id="1_hpc76"]
+[ext_resource type="Script" uid="uid://b6fjgbgcmxpxe" path="res://Scenes/MainScene.gd" id="1_7rqgy"]
+[ext_resource type="Shader" uid="uid://clyfx6jmgvwn1" path="res://Scenes/Player/Pixelation.gdshader" id="1_hpc76"]
+[ext_resource type="PackedScene" uid="uid://blmbtsjsavt1n" path="res://Scenes/HeadQuarters.tscn" id="2_tr2i4"]
+[ext_resource type="PackedScene" uid="uid://lqhssev6sgae" path="res://Scenes/Player/Player.tscn" id="3_nhkr4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
-shader_parameter/pixel_count = Vector2(256, 256)
+shader_parameter/pixel_count = Vector2(4096, 256)
 shader_parameter/use_posterization = true
 shader_parameter/use_l = true
 shader_parameter/use_c = true
@@ -15,7 +18,18 @@ shader_parameter/level_h = 0.05
 shader_parameter/use_palette = false
 shader_parameter/mix_amount = 1.0
 
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_nhkr4"]
+
+[sub_resource type="Sky" id="Sky_7rqgy"]
+sky_material = SubResource("PhysicalSkyMaterial_nhkr4")
+
+[sub_resource type="Environment" id="Environment_qxria"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_7rqgy")
+
 [node name="Main" type="Node" unique_id=309026592]
+script = ExtResource("1_7rqgy")
 
 [node name="CameraViewportContainer" type="SubViewportContainer" parent="." unique_id=1906970373]
 material = SubResource("ShaderMaterial_tr2i4")
@@ -27,6 +41,16 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CameraViewportContainer" unique_id=1435664049]
+handle_input_locally = false
 size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="CameraViewportContainer/SubViewport" unique_id=102887508]
+[node name="HeadQuarters" parent="CameraViewportContainer/SubViewport" unique_id=375498434 instance=ExtResource("2_tr2i4")]
+
+[node name="Player" parent="CameraViewportContainer/SubViewport" unique_id=1249187009 instance=ExtResource("3_nhkr4")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CameraViewportContainer/SubViewport" unique_id=2071620360]
+environment = SubResource("Environment_qxria")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CameraViewportContainer/SubViewport" unique_id=1822654420]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
