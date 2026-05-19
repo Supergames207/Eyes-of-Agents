@@ -1,6 +1,7 @@
 extends Camera3D
 
 @export_range(0, 180) var max_angle = 10.0
+@export var weight = .1
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -11,6 +12,5 @@ func _input(event: InputEvent) -> void:
 			(mouse_pos.y - screen_size.y / 2.0) / (screen_size.y / 2.0))
 		
 		var angle_to_apply: Vector2 = max_angle * dist_center
-		rotation_degrees.x = -angle_to_apply.y
-		rotation_degrees.y = -angle_to_apply.x
-		
+		rotation_degrees.x = lerp(rotation_degrees.x, -angle_to_apply.y, weight)
+		rotation_degrees.y = lerp(rotation_degrees.y, -angle_to_apply.x, weight)
