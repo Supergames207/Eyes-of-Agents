@@ -1,3 +1,32 @@
 [gd_scene format=3 uid="uid://lxmglpik8qha"]
 
+[ext_resource type="Shader" uid="uid://clyfx6jmgvwn1" path="res://Scenes/Pixelation.gdshader" id="1_hpc76"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
+shader = ExtResource("1_hpc76")
+shader_parameter/pixel_count = Vector2(256, 256)
+shader_parameter/use_posterization = true
+shader_parameter/use_l = true
+shader_parameter/use_c = true
+shader_parameter/use_h = true
+shader_parameter/steps_l = 24.0
+shader_parameter/level_c = 5.0
+shader_parameter/level_h = 0.05
+shader_parameter/use_palette = false
+shader_parameter/mix_amount = 1.0
+
 [node name="Main" type="Node" unique_id=309026592]
+
+[node name="CameraViewportContainer" type="SubViewportContainer" parent="." unique_id=1906970373]
+material = SubResource("ShaderMaterial_tr2i4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CameraViewportContainer" unique_id=1435664049]
+size = Vector2i(1152, 648)
+
+[node name="Camera3D" type="Camera3D" parent="CameraViewportContainer/SubViewport" unique_id=102887508]
