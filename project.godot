@@ -28,8 +28,8 @@ gdscript/warnings/missing_await=1
 [file_customization]
 
 folder_colors={
-"res://Scenes/": "orange",
-"res://UpgradeTree/": "green"
+"res://GUI/": "green",
+"res://Scenes/": "orange"
 }
 
 [input]

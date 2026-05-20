@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://b6fjgbgcmxpxe" path="res://Scenes/MainScene.gd" id="1_7rqgy"]
 [ext_resource type="Shader" uid="uid://clyfx6jmgvwn1" path="res://Scenes/Player/Pixelation.gdshader" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://blmbtsjsavt1n" path="res://Scenes/HQ/HeadQuarters.tscn" id="2_tr2i4"]
-[ext_resource type="PackedScene" uid="uid://lqhssev6sgae" path="res://Scenes/Player/Player.tscn" id="3_nhkr4"]
+[ext_resource type="PackedScene" uid="uid://bvqov3bm1nsbf" path="res://Scenes/Player/Player.tscn" id="3_nhkr4"]
+[ext_resource type="PackedScene" uid="uid://dvlglvr2q5ggd" path="res://GUI/CameraMovementUI/CameraControl.tscn" id="5_qxria"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
@@ -45,12 +46,14 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="HeadQuarters" parent="CameraViewportContainer/SubViewport" unique_id=375498434 instance=ExtResource("2_tr2i4")]
-
 [node name="Player" parent="CameraViewportContainer/SubViewport" unique_id=1249187009 instance=ExtResource("3_nhkr4")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="CameraViewportContainer/SubViewport" unique_id=2071620360]
+[node name="CameraControl" parent="." unique_id=554065994 instance=ExtResource("5_qxria")]
+
+[node name="HeadQuarters" parent="." unique_id=375498434 instance=ExtResource("2_tr2i4")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2071620360]
 environment = SubResource("Environment_qxria")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CameraViewportContainer/SubViewport" unique_id=1822654420]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1822654420]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)

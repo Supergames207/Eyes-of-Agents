@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dvlglvr2q5ggd"]
+
+[ext_resource type="Script" uid="uid://btsc34c1b8p8b" path="res://GUI/CameraMovementUI/camera_control_ui.gd" id="1_fqfwk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppbwj"]
+bg_color = Color(0, 0, 0, 0.26666668)
+
+[node name="CameraControl" type="Control" unique_id=554065994]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fqfwk")
+
+[node name="LeftButton" type="Button" parent="." unique_id=822435300]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -324.0
+offset_right = 31.0
+offset_bottom = 324.0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppbwj")
+text = "<"
+
+[node name="RightButton" type="Button" parent="." unique_id=345995612]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -324.0
+offset_bottom = 324.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppbwj")
+text = ">"
