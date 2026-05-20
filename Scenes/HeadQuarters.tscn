@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blmbtsjsavt1n"]
 
-[ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/UpgradeTree.gd" id="1_wf04p"]
+[ext_resource type="Script" uid="uid://bme68rmliah5l" path="res://Scenes/sprite_3d.gd" id="1_pgk06"]
 [ext_resource type="Script" uid="uid://bo108lec351or" path="res://Scenes/button.gd" id="2_pgk06"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cfjyu"]
@@ -25,17 +25,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 material_override = SubResource("StandardMaterial3D_wf04p")
 mesh = SubResource("BoxMesh_pgk06")
 
-[node name="Sprite3D" type="Sprite3D" parent="UpgradeTreeBoard" unique_id=1463676848 node_paths=PackedStringArray("target", "node_viewport", "node_quad")]
+[node name="SpriteGUI3D" type="Sprite3D" parent="UpgradeTreeBoard" unique_id=1463676848 node_paths=PackedStringArray("target", "node_viewport")]
 texture = SubResource("ViewportTexture_wf04p")
-script = ExtResource("1_wf04p")
+script = ExtResource("1_pgk06")
 target = NodePath("..")
 node_viewport = NodePath("SubViewport")
-node_quad = NodePath("..")
 
-[node name="SubViewport" type="SubViewport" parent="UpgradeTreeBoard/Sprite3D" unique_id=723114839]
+[node name="SubViewport" type="SubViewport" parent="UpgradeTreeBoard/SpriteGUI3D" unique_id=1592596604]
 handle_input_locally = false
 
-[node name="UpgradeTree" type="Control" parent="UpgradeTreeBoard/Sprite3D/SubViewport" unique_id=59331781]
+[node name="UpgradeTree" type="Control" parent="UpgradeTreeBoard/SpriteGUI3D/SubViewport" unique_id=59331781]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,13 +43,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="UpgradeTreeBoard/Sprite3D/SubViewport/UpgradeTree" unique_id=701807244]
+[node name="ColorRect" type="ColorRect" parent="UpgradeTreeBoard/SpriteGUI3D/SubViewport/UpgradeTree" unique_id=701807244]
 layout_mode = 0
 offset_right = 1150.0
 offset_bottom = 645.0
 mouse_filter = 1
 
-[node name="Button" type="Button" parent="UpgradeTreeBoard/Sprite3D/SubViewport/UpgradeTree" unique_id=575960669]
+[node name="Button" type="Button" parent="UpgradeTreeBoard/SpriteGUI3D/SubViewport/UpgradeTree" unique_id=575960669]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
