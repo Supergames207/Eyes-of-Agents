@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ix5h88s1c6gy"]
 
 [ext_resource type="Script" uid="uid://m34fjrfcvise" path="res://Agents/Recruiter/AgentRecruiter.gd" id="1_g2rud"]
+[ext_resource type="Script" uid="uid://bn0q23woxmdy7" path="res://Scenes/HQ/DebugButton.gd" id="2_wlnq1"]
 
 [node name="AgentRecruiter" type="Control" unique_id=1115288096]
 layout_mode = 3
@@ -23,3 +24,12 @@ layout_mode = 2
 [node name="AgentCardHolder" type="GridContainer" parent="PanelContainer/CenterContainer" unique_id=604406281]
 layout_mode = 2
 columns = 4
+
+[node name="Button" type="Button" parent="." unique_id=852502773]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 185.0
+offset_right = 245.0
+offset_bottom = 282.0
+text = "TEXTTT"
+script = ExtResource("2_wlnq1")

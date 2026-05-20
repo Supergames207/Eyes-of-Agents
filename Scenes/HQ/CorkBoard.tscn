@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/UpgradeTree.gd" id="1_661ih"]
 [ext_resource type="Texture2D" uid="uid://cc5w3llmvwkqn" path="res://Assets/Assets2D/Map.jpg" id="1_rr2o7"]
-[ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Scenes/HQ/CorkBoardMain.gd" id="2_17tlo"]
+[ext_resource type="Script" path="res://Scenes/HQ/CorkBoardMain.gd" id="2_17tlo"]
+[ext_resource type="Script" uid="uid://bn0q23woxmdy7" path="res://Scenes/HQ/DebugButton.gd" id="4_17tlo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_liovh"]
+size = Vector3(12.06, 10, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gaih3"]
 viewport_path = NodePath("MeshInstance3D/SpriteGUI3D/SubViewport")
@@ -15,11 +17,12 @@ viewport_path = NodePath("MeshInstance3D/SpriteGUI3D/SubViewport")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05334449)
 mesh = SubResource("BoxMesh_liovh")
 
-[node name="SpriteGUI3D" type="Sprite3D" parent="MeshInstance3D" unique_id=854940361 node_paths=PackedStringArray("target")]
+[node name="SpriteGUI3D" type="Sprite3D" parent="MeshInstance3D" unique_id=854940361 node_paths=PackedStringArray("target", "node_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.60037947)
 texture = SubResource("ViewportTexture_gaih3")
 script = ExtResource("1_661ih")
 target = NodePath("..")
+node_viewport = NodePath("SubViewport")
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="MeshInstance3D/SpriteGUI3D" unique_id=1202183078]
@@ -51,3 +54,5 @@ offset_left = 128.0
 offset_top = 185.0
 offset_right = 245.0
 offset_bottom = 282.0
+text = "TEXTTT"
+script = ExtResource("4_17tlo")

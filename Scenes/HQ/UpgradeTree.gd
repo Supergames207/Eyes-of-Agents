@@ -70,19 +70,22 @@ func _process(_delta : float) -> void:
 		is_mouse_inside = true
 		mouse_pos3D = quad_intersection
 		plane_mouse_pos = global_to_plane(quad_intersection)
+		prints(plane_mouse_pos, is_mouse_inside, get_parent().name)
 
 	
-
 func _input(event : InputEvent) -> void:
 	var is_mouse_event := event is InputEventMouseButton or event is InputEventMouseMotion
 
+	prints("EVENT AT", name, is_mouse_inside)
 	if is_mouse_event and (is_mouse_inside or is_mouse_held):
+		
 		handle_mouse(event)
 	elif not is_mouse_event:
 		node_viewport.push_input(event)
 
 
 func handle_mouse(event : InputEvent) -> void:
+	prints("EVENT AT", name)
 	if event is InputEventMouseButton or event is InputEventScreenTouch:
 		is_mouse_held = event.pressed
 	

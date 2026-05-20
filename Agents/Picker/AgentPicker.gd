@@ -8,6 +8,9 @@ var agents_array : AgentArray
 
 
 func _ready() -> void:
+	if not agents_array:
+		return
+
 	populate()
 	agents_array.changed.connect(update_agent_visualizer)
 
