@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://blmbtsjsavt1n" path="res://Scenes/HQ/HeadQuarters.tscn" id="2_tr2i4"]
 [ext_resource type="PackedScene" uid="uid://bvqov3bm1nsbf" path="res://Scenes/Player/Player.tscn" id="3_nhkr4"]
 [ext_resource type="PackedScene" uid="uid://dvlglvr2q5ggd" path="res://GUI/CameraMovementUI/CameraControl.tscn" id="5_qxria"]
+[ext_resource type="PackedScene" uid="uid://drablnydjvvpd" path="res://Scenes/HQ/CorkBoard.tscn" id="6_y4jh7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
@@ -57,3 +58,6 @@ environment = SubResource("Environment_qxria")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1822654420]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+
+[node name="CorkBoard" parent="." unique_id=1448994883 instance=ExtResource("6_y4jh7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.137081, 0, -0.5151341)

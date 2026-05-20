@@ -1,54 +1,42 @@
 [gd_scene format=3 uid="uid://drablnydjvvpd"]
 
+[ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/UpgradeTree.gd" id="1_661ih"]
 [ext_resource type="Texture2D" uid="uid://cc5w3llmvwkqn" path="res://Assets/Assets2D/Map.jpg" id="1_rr2o7"]
+[ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Scenes/HQ/CorkBoardMain.gd" id="2_17tlo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01br0"]
-albedo_color = Color(0.46049142, 0.4434509, 0.26685074, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_liovh"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_661ih"]
-viewport_path = NodePath("MeshInstance3D/SubViewportContainer/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17tlo"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_661ih")
-
-[sub_resource type="QuadMesh" id="QuadMesh_liovh"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_17tlo")
-size = Vector2(1.4, 0.95)
+[sub_resource type="ViewportTexture" id="ViewportTexture_gaih3"]
+viewport_path = NodePath("MeshInstance3D/SpriteGUI3D/SubViewport")
 
 [node name="CorkBoard" type="Node3D" unique_id=1448994883]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=240523478]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=510665501]
-size = Vector3(1.5, 1, 0.1)
-material = SubResource("StandardMaterial3D_01br0")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=557822811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05334449)
-mesh = SubResource("QuadMesh_liovh")
+mesh = SubResource("BoxMesh_liovh")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MeshInstance3D" unique_id=765701140]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
+[node name="SpriteGUI3D" type="Sprite3D" parent="MeshInstance3D" unique_id=854940361 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.60037947)
+texture = SubResource("ViewportTexture_gaih3")
+script = ExtResource("1_661ih")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
-[node name="SubViewport" type="SubViewport" parent="MeshInstance3D/SubViewportContainer" unique_id=1202183078]
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D/SpriteGUI3D" unique_id=1202183078]
+handle_input_locally = false
 size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
-[node name="Control" type="Control" parent="MeshInstance3D/SubViewportContainer/SubViewport" unique_id=1171700814]
+[node name="Control" type="Control" parent="MeshInstance3D/SpriteGUI3D/SubViewport" unique_id=1171700814]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_17tlo")
 
-[node name="TextureRect" type="TextureRect" parent="MeshInstance3D/SubViewportContainer/SubViewport/Control" unique_id=1438140502]
+[node name="TextureRect" type="TextureRect" parent="MeshInstance3D/SpriteGUI3D/SubViewport/Control" unique_id=1438140502]
 layout_mode = 0
 offset_left = 336.0
 offset_top = 200.0
@@ -56,3 +44,10 @@ offset_right = 1073.0
 offset_bottom = 637.0
 texture = ExtResource("1_rr2o7")
 expand_mode = 1
+
+[node name="Button" type="Button" parent="MeshInstance3D/SpriteGUI3D/SubViewport/Control" unique_id=2117748662]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 185.0
+offset_right = 245.0
+offset_bottom = 282.0
