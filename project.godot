@@ -25,6 +25,11 @@ RandomStrings="*uid://ly7ca6sfgu3v"
 gdscript/warnings/untyped_declaration=1
 gdscript/warnings/missing_await=1
 
+[editor]
+
+naming/scene_name_casing=1
+naming/script_name_casing=1
+
 [file_customization]
 
 folder_colors={

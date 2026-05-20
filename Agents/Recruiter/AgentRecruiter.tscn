@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ix5h88s1c6gy"]
 
-[ext_resource type="Script" uid="uid://m34fjrfcvise" path="res://Agents/AgentRecruiter.gd" id="1_c1ioi"]
+[ext_resource type="Script" uid="uid://m34fjrfcvise" path="res://Agents/Recruiter/AgentRecruiter.gd" id="1_g2rud"]
 
 [node name="AgentRecruiter" type="Control" unique_id=1115288096]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c1ioi")
+script = ExtResource("1_g2rud")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1887410709]
 custom_minimum_size = Vector2(172, 147)
