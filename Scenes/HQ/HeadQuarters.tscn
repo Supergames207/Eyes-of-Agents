@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://blmbtsjsavt1n"]
+
+[ext_resource type="PackedScene" uid="uid://ix5h88s1c6gy" path="res://Agents/AgentRecruiter.tscn" id="1_uj5h4"]
+[ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/UpgradeTree.gd" id="1_xn7ne"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cfjyu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf04p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pgk06"]
+material = SubResource("StandardMaterial3D_wf04p")
+size = Vector3(6, 6, -0.005)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xn7ne"]
+viewport_path = NodePath("UpgradeTreeBoard/SpriteGUI3D/SubViewport")
+
+[node name="HeadQuarters" type="Node3D" unique_id=375498434]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1634238982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1855202, 0, 0)
+mesh = SubResource("BoxMesh_cfjyu")
+
+[node name="UpgradeTreeBoard" type="MeshInstance3D" parent="." unique_id=107508078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+material_override = SubResource("StandardMaterial3D_wf04p")
+mesh = SubResource("BoxMesh_pgk06")
+
+[node name="SpriteGUI3D" type="Sprite3D" parent="UpgradeTreeBoard" unique_id=1330681839 node_paths=PackedStringArray("target", "node_viewport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.22)
+texture = SubResource("ViewportTexture_xn7ne")
+script = ExtResource("1_xn7ne")
+target = NodePath("..")
+node_viewport = NodePath("SubViewport")
+metadata/_custom_type_script = "uid://decu7ohx6w2dm"
+
+[node name="SubViewport" type="SubViewport" parent="UpgradeTreeBoard/SpriteGUI3D" unique_id=1592596604]
+handle_input_locally = false
+
+[node name="AgentRecruiter" parent="UpgradeTreeBoard/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("1_uj5h4")]

@@ -21,6 +21,10 @@ var plane_mouse_pos : Vector2
 func _ready() -> void:
 	quad_mesh_size = Vector3(target.mesh.size.x, target.mesh.size.y, 0)
 
+	# var new_viewport_tex := ViewportTexture.new()
+	# texture = new_viewport_tex
+	# texture.viewport_path = get_path_to(node_viewport)
+
 
 func ray_intersects_quad(origin : Vector3, normal : Vector3, a : Vector3, b : Vector3, c : Vector3, d : Vector3) -> Vector3:
 	var first_trig : Variant = Geometry3D.ray_intersects_triangle(origin, normal, a, b, c)
@@ -75,7 +79,7 @@ func _input(event : InputEvent) -> void:
 	if is_mouse_event and (is_mouse_inside or is_mouse_held):
 		handle_mouse(event)
 	elif not is_mouse_event:
-		node_viewport.input(event)
+		node_viewport.push_input(event)
 
 
 func handle_mouse(event : InputEvent) -> void:

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dqoay0d78tyoq"]
+
+[ext_resource type="Script" uid="uid://dxnl1afafa8gk" path="res://Agents/AgentCard.gd" id="1_bccjf"]
+[ext_resource type="Theme" uid="uid://cyqcaxjryym7v" path="res://Agents/AgentUITheme.tres" id="1_l81fp"]
+
+[node name="AgentCard" type="PanelContainer" unique_id=519339936]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bccjf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1699013224]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=1918436944]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="TextureRect" type="ColorRect" parent="VBoxContainer/CenterContainer" unique_id=1486901576]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer" unique_id=106191040]
+layout_mode = 2
+theme = ExtResource("1_l81fp")
+text = "Jeremy"
+horizontal_alignment = 1
+
+[node name="Data" type="Label" parent="VBoxContainer" unique_id=2126063399]
+layout_mode = 2
+theme = ExtResource("1_l81fp")
+text = "Cost : 9999$
+Stealth : 10
+Assault : 10"
+horizontal_alignment = 1

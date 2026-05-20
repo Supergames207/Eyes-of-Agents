@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ix5h88s1c6gy"]
+
+[ext_resource type="Script" uid="uid://m34fjrfcvise" path="res://Agents/AgentRecruiter.gd" id="1_c1ioi"]
+
+[node name="AgentRecruiter" type="Control" unique_id=1115288096]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c1ioi")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1887410709]
+custom_minimum_size = Vector2(172, 147)
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 147.0
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=968038021]
+layout_mode = 2
+
+[node name="AgentCardHolder" type="GridContainer" parent="PanelContainer/CenterContainer" unique_id=604406281]
+layout_mode = 2
+columns = 4
