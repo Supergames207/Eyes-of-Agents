@@ -60,4 +60,4 @@ environment = SubResource("Environment_qxria")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 
 [node name="CorkBoard" parent="." unique_id=1448994883 instance=ExtResource("6_y4jh7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.137081, 0, -0.5151341)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.1518269, 0, -1.3636999)
