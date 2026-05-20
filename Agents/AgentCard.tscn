@@ -5,7 +5,7 @@
 
 [node name="AgentCard" type="PanelContainer" unique_id=519339936]
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 69.0
 script = ExtResource("1_bccjf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1699013224]
@@ -13,11 +13,11 @@ layout_mode = 2
 theme_override_constants/separation = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=1918436944]
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 
 [node name="TextureRect" type="ColorRect" parent="VBoxContainer/CenterContainer" unique_id=1486901576]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=106191040]

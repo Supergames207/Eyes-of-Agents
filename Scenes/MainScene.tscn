@@ -9,7 +9,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
-shader_parameter/pixel_count = Vector2(4096, 256)
+shader_parameter/pixel_count = Vector2(4096, 2048)
 shader_parameter/use_posterization = true
 shader_parameter/use_l = true
 shader_parameter/use_c = true

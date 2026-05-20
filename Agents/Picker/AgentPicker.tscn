@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ih1yjlmnqvmi"]
+
+[ext_resource type="Script" uid="uid://drprqiymm8a6j" path="res://Agents/Picker/AgentPicker.gd" id="1_6qbwb"]
+
+[node name="AgentPicker" type="Control" unique_id=655678137]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6qbwb")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=691998296]
+custom_minimum_size = Vector2(172, 147)
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 147.0
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1574782854]
+layout_mode = 2
+
+[node name="AgentCardHolder" type="GridContainer" parent="PanelContainer/CenterContainer" unique_id=440852311]
+layout_mode = 2
+columns = 4

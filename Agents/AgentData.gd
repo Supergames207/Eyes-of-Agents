@@ -7,3 +7,4 @@ class_name Agent extends Resource
 @export var furtiveness_skill : float #For stealth missions
 @export var assault_skill : float #For assault missions
 
+var index : int
