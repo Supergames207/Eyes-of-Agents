@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalVariables="*uid://cw3gs0nmiuju4"
 RandomStrings="*uid://ly7ca6sfgu3v"
+NewMissions="*uid://875ogorwg2j"
 
 [debug]
 

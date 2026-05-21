@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dmbbn7npq5nox"]
+
+[ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Scenes/HQ/MissionMain.gd" id="1_f5kmt"]
+[ext_resource type="Texture2D" uid="uid://cc5w3llmvwkqn" path="res://Assets/Assets2D/Map.jpg" id="2_fo4ty"]
+[ext_resource type="Texture2D" uid="uid://d3fp7k5dcnuut" path="res://Assets/Assets2D/pin.png" id="3_igv4n"]
+[ext_resource type="Script" uid="uid://cxt0upniybldx" path="res://Missions/MissionsLocationsHandler.gd" id="4_fo4ty"]
+
+[node name="MissionsMain" type="Control" unique_id=1115288096]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5kmt")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1261546640]
+z_index = -1
+layout_mode = 0
+offset_left = 86.0
+offset_top = 214.0
+offset_right = 513.0
+offset_bottom = 489.0
+texture = ExtResource("2_fo4ty")
+expand_mode = 1
+
+[node name="RiskLabel" type="Label" parent="." unique_id=679036215]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 68.0
+offset_right = 515.0
+offset_bottom = 97.0
+text = "RISK:"
+
+[node name="LocationLabel" type="Label" parent="." unique_id=916304377]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 41.0
+offset_right = 515.0
+offset_bottom = 70.0
+text = "Location:"
+
+[node name="ObjectiveLabel" type="Label" parent="." unique_id=2102616692]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 94.0
+offset_right = 513.0
+offset_bottom = 212.0
+text = "Objective: "
+
+[node name="LocationsContainer" type="Control" parent="." unique_id=1625512776]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="LocationsContainer" unique_id=852502773]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 185.0
+offset_right = 205.0
+offset_bottom = 282.0
+icon = ExtResource("3_igv4n")
+expand_icon = true
+script = ExtResource("4_fo4ty")

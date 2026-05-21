@@ -1001,3 +1001,33 @@ const random_names := ["Virginia Walter",
 	"Maddison Newton",
 	"Santino Eaton"
 ]
+
+const random_objectives := [
+	"MIssion type 1",
+	"mIssion type 2",
+	"1v50, Good Luck"
+]
+
+# Não são locais reais*
+const random_locations := [
+	"Volkrad",
+	"Severnosk",
+	"Mirovetsk",
+	"Krasnburg",
+	"Zheltomir",
+	"Novygorsk",
+	"Stalburg",
+	"Ostrovensk",
+	"Chernovetsk",
+	"Dalniygrad",
+	"Uzhnomorsk",
+	"Belozarsk",
+	"Gromovka",
+	"Sibirnosk",
+	"Tzarkovsk",
+	"Polgrad",
+	"Vetroburg",
+	"Kamenovsk",
+	"Muravagrad",
+	"Zolotensk",
+]

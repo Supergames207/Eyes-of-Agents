@@ -1,35 +1,34 @@
 [gd_scene format=3 uid="uid://drablnydjvvpd"]
 
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/UpgradeTree.gd" id="1_661ih"]
-[ext_resource type="PackedScene" uid="uid://blsifi4u26yhm" path="res://Agents/Missions/MissionPicker.tscn" id="2_01br0"]
+[ext_resource type="PackedScene" uid="uid://dmbbn7npq5nox" path="res://Missions/MissionBoard.tscn" id="2_01br0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17tlo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_661ih"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf04p"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_liovh"]
+[sub_resource type="BoxMesh" id="BoxMesh_17tlo"]
 material = SubResource("StandardMaterial3D_wf04p")
 size = Vector3(6, 6, -0.005)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gaih3"]
-viewport_path = NodePath("AgentRecruiterBoard/SpriteGUI3D/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_01br0"]
+viewport_path = NodePath("MissionBoard/SpriteGUI3D/SubViewport")
 
 [node name="CorkBoard" type="Node3D" unique_id=1448994883]
 
-[node name="AgentRecruiterBoard" type="MeshInstance3D" parent="." unique_id=1963831325]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0829859, -7)
-material_override = SubResource("StandardMaterial3D_17tlo")
-mesh = SubResource("BoxMesh_liovh")
+[node name="MissionBoard" type="MeshInstance3D" parent="." unique_id=1249777637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.574374, -7)
+material_override = SubResource("StandardMaterial3D_661ih")
+mesh = SubResource("BoxMesh_17tlo")
 
-[node name="SpriteGUI3D" type="Sprite3D" parent="AgentRecruiterBoard" unique_id=1531961799 node_paths=PackedStringArray("target", "node_viewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.22)
-texture = SubResource("ViewportTexture_gaih3")
+[node name="SpriteGUI3D" type="Sprite3D" parent="MissionBoard" unique_id=1185955116 node_paths=PackedStringArray("target", "node_viewport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45019293, 0.21999979)
+texture = SubResource("ViewportTexture_01br0")
 script = ExtResource("1_661ih")
 target = NodePath("..")
 node_viewport = NodePath("SubViewport")
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
-[node name="SubViewport" type="SubViewport" parent="AgentRecruiterBoard/SpriteGUI3D" unique_id=195010843]
-handle_input_locally = false
+[node name="SubViewport" type="SubViewport" parent="MissionBoard/SpriteGUI3D" unique_id=787063307]
 
-[node name="MissionPicker" parent="AgentRecruiterBoard/SpriteGUI3D/SubViewport" unique_id=957990858 instance=ExtResource("2_01br0")]
+[node name="AgentRecruiter" parent="MissionBoard/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("2_01br0")]
