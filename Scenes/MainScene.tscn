@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvqov3bm1nsbf" path="res://Scenes/Player/Player.tscn" id="3_nhkr4"]
 [ext_resource type="PackedScene" uid="uid://dvlglvr2q5ggd" path="res://GUI/CameraMovementUI/CameraControl.tscn" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://drablnydjvvpd" path="res://Scenes/HQ/CorkBoard.tscn" id="6_y4jh7"]
+[ext_resource type="PackedScene" uid="uid://jr5oqu5i72me" path="res://Scenes/CameraTest2.tscn" id="7_q68mp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
@@ -54,8 +55,6 @@ render_target_update_mode = 4
 
 [node name="Player" parent="CameraViewportContainer/SubViewport" unique_id=1249187009 instance=ExtResource("3_nhkr4")]
 
-[node name="CameraControl" parent="." unique_id=554065994 instance=ExtResource("5_qxria")]
-
 [node name="HeadQuarters" parent="." unique_id=375498434 instance=ExtResource("2_tr2i4")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2071620360]
@@ -71,3 +70,21 @@ transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -1.1
 transform = Transform3D(1.6624196, 0, 0, 0, 0.09979504, 0, 0, 0, 3.9037538, 2.6321378, -0.80047023, 0)
 mesh = SubResource("BoxMesh_y4jh7")
 surface_material_override/0 = SubResource("StandardMaterial3D_q68mp")
+
+[node name="CameraTest2" parent="." unique_id=1088883933 instance=ExtResource("7_q68mp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3742352, 0, 1.2037035)
+
+[node name="CameraPoints" type="Node3D" parent="." unique_id=638401856]
+
+[node name="Marker3D" type="Marker3D" parent="CameraPoints" unique_id=2085709891]
+
+[node name="Marker3D2" type="Marker3D" parent="CameraPoints" unique_id=284783146]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="CameraPoints" unique_id=1287651419]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="CameraPoints" unique_id=1435303829]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+
+[node name="CameraControl" parent="CameraPoints" unique_id=554065994 instance=ExtResource("5_qxria")]

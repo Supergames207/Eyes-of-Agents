@@ -3,12 +3,16 @@ extends Control
 @onready var player: Node3D = GlobalVariables.player
 var left_button: Button
 var right_button: Button
+var camera_points: Node3D
 
 func _ready() -> void:
 	left_button = $LeftButton
 	right_button = $RightButton
 	left_button.pressed.connect(_on_button_press.bind(0))
 	right_button.pressed.connect(_on_button_press.bind(1))
+	camera_points = self.get_parent()
+	if not camera_points:
+		print("No Parent No Script :(")
 
 func _process(_delta: float) -> void:
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()

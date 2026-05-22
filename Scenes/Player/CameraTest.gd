@@ -1,20 +1,19 @@
 class_name CameraTarget extends Marker3D
 
-@onready var main_mother := self.get_parent()
+@onready var main_child := $MainMesh #Must be MeshInstance3D
 @onready var player: Node3D = GlobalVariables.player
 
 var mouse_over_mother := false
 
 func _ready() -> void:
-	print(main_mother.name)
+	print(main_child.name)
 
 func _physics_process(_delta: float) -> void:
 	_check_mouse_over_parent()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Click") and mouse_over_mother == true:
-		player.position = lerp(player.position, main_mother.position, 0.1)
-		player.rotation = lerp(player.rotation, main_mother.rotation, 0.1)
+		CameraNewPos._new_pos(self, player)
 
 func _check_mouse_over_parent() -> void:
 	var camera: Camera3D = player.get_node("Camera3D")
@@ -31,14 +30,14 @@ func _check_mouse_over_parent() -> void:
 	
 	var result := space_state.intersect_ray(query)
 	
-	if result.collider.get_parent() == main_mother:
+	if not result.is_empty() and result.collider.get_parent() == main_child:
 		if not mouse_over_mother:
 			mouse_over_mother = true
-			_add_outline(main_mother, true)
+			_add_outline(main_child, true)
 	else:
 		if mouse_over_mother:
 			mouse_over_mother = false
-			_add_outline(main_mother, false)
+			_add_outline(main_child, false)
 
 func _add_outline(target: MeshInstance3D, enabled: bool) -> void:
 	var existence := target.get_node_or_null("Outline")
