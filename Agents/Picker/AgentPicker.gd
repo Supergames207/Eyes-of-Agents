@@ -8,12 +8,15 @@ var agents_array : AgentArray
 
 
 func _ready() -> void:
+	await GlobalVariables.wait_till_game_loaded()
+
 	agents_array = GlobalVariables.player.agents
+
 	if not agents_array:
 		return
 
 	populate()
-	agents_array.changed.connect(update_agent_visualizer)
+	agents_array.array_changed.connect(update_agent_visualizer)
 
 
 func populate() -> void:
@@ -32,3 +35,4 @@ func update_agent_visualizer(added : bool, index : int) -> void:
 	else:
 		get_node("PanelContainer/CenterContainer/AgentCardHolder").get_child(index).queue_free()
 	
+	prints("UPDATED?!?!")

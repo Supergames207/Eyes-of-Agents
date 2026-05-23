@@ -17,6 +17,9 @@ func _ready() -> void:
 	if not agents:
 		agents = AgentArray.new()
 
+	prints("AGENT 1", agents)
+	GlobalVariables.game_loaded.emit()
+
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("UnlockMouse"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

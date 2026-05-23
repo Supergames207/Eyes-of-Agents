@@ -7,7 +7,7 @@ signal array_changed
 func add_agent(agent : Agent) -> void:
 	agents.push_back(agent)
 	agent.index = agents.size() - 1
-
+	
 	array_changed.emit(true, agent.index)
 
 func remove_agent(agent : Agent) -> void:

@@ -70,7 +70,7 @@ func _process(_delta : float) -> void:
 		mouse_pos3D = quad_intersection
 		plane_mouse_pos = global_to_plane(quad_intersection)
 		
-		prints(plane_mouse_pos, is_mouse_inside, get_parent().name)
+		# prints(plane_mouse_pos, is_mouse_inside, get_parent().name)
 
 	
 func _input(event : InputEvent) -> void:

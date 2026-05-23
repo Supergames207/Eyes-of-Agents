@@ -6,6 +6,8 @@ var agent_card : PackedScene = preload(agent_card_path)
 
 @export var agent_slots := 4
 
+@export var assault_skill_gaussian := GaussianData.new()
+@export var furtive_skill_guassian := GaussianData.new()
 
 func _ready() -> void:
 	populate()
@@ -25,7 +27,7 @@ func populate() -> void:
 		new.agent = random_agent
 
 		grid.add_child(new)
-
+		
 		new.pressed.connect(attempt_agent_recruitment.bind(new))
 
 		if k == 0 and get_parent() is SubViewport:
@@ -33,12 +35,16 @@ func populate() -> void:
 
 			var max_cols := floori(parent.size.x / new.get_combined_minimum_size().x)
 			grid.columns = max_cols
-			
+
+
 func generate_random_agent() -> Agent:
 	var new_agent := Agent.new()
 
 	new_agent.name = RandomStrings.random_names.pick_random()
-
+	
+	new_agent.assault_skill = new_agent.assault_skill_range.make_within_range(assault_skill_gaussian.get_random())
+	new_agent.furtiveness_skill = new_agent.furtiveness_skill_range.make_within_range(furtive_skill_guassian.get_random())
+	
 	return new_agent
 
 func attempt_agent_recruitment(pressed_card : AgentCardUI) -> void:
