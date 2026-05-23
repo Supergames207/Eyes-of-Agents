@@ -72,19 +72,19 @@ mesh = SubResource("BoxMesh_y4jh7")
 surface_material_override/0 = SubResource("StandardMaterial3D_q68mp")
 
 [node name="CameraTest2" parent="." unique_id=1088883933 instance=ExtResource("7_q68mp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3742352, 0, 1.2037035)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6187371, -0.21509409, 1.2037035)
 
 [node name="CameraPoints" type="Node3D" parent="." unique_id=638401856]
 
-[node name="Marker3D" type="Marker3D" parent="CameraPoints" unique_id=2085709891]
+[node name="Marker0" type="Marker3D" parent="CameraPoints" unique_id=2085709891]
 
-[node name="Marker3D2" type="Marker3D" parent="CameraPoints" unique_id=284783146]
+[node name="Marker1" type="Marker3D" parent="CameraPoints" unique_id=284783146]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="Marker3D3" type="Marker3D" parent="CameraPoints" unique_id=1287651419]
+[node name="Marker2" type="Marker3D" parent="CameraPoints" unique_id=1287651419]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Marker3D4" type="Marker3D" parent="CameraPoints" unique_id=1435303829]
+[node name="Marker3" type="Marker3D" parent="CameraPoints" unique_id=1435303829]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
 
 [node name="CameraControl" parent="CameraPoints" unique_id=554065994 instance=ExtResource("5_qxria")]
