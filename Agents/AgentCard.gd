@@ -1,5 +1,7 @@
 class_name AgentCardUI extends PanelContainer
 
+signal pressed
+
 var agent : Agent
 
 
@@ -13,3 +15,11 @@ func fill_data() -> void:
 										+ "Stealth" + str(agent.furtiveness_skill) + "\n" \
 										+ "Assault" + str(agent.assault_skill)
 	
+func _gui_input(e : InputEvent) -> void:
+	if e is InputEventMouseButton:
+		var event : InputEventMouseButton = e
+		
+		if not event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+			pressed.emit()
+			accept_event()
+		

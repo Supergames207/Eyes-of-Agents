@@ -22,7 +22,7 @@ func _new_pos(marker: Variant, camera: Node3D) -> void:
 	if marker is Marker3D:
 		target_pos = marker.global_position
 		target_rot = marker.global_rotation
-	else: if marker is Vector3:
+	elif marker is Vector3:
 		target_pos = marker
 		target_rot = marker.global_rotation
 	moving = true

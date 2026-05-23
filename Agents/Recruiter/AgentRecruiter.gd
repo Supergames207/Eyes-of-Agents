@@ -26,6 +26,8 @@ func populate() -> void:
 
 		grid.add_child(new)
 
+		new.pressed.connect(attempt_agent_recruitment.bind(new))
+
 		if k == 0 and get_parent() is SubViewport:
 			var parent : SubViewport = get_parent()
 
@@ -38,3 +40,10 @@ func generate_random_agent() -> Agent:
 	new_agent.name = RandomStrings.random_names.pick_random()
 
 	return new_agent
+
+func attempt_agent_recruitment(pressed_card : AgentCardUI) -> void:
+	var agent_array := GlobalVariables.player.agents
+	
+	agent_array.add_agent(pressed_card.agent)
+	pressed_card.queue_free()
+	

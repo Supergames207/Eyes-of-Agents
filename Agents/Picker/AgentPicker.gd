@@ -8,6 +8,7 @@ var agents_array : AgentArray
 
 
 func _ready() -> void:
+	agents_array = GlobalVariables.player.agents
 	if not agents_array:
 		return
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blmbtsjsavt1n"]
 
 [ext_resource type="PackedScene" uid="uid://ix5h88s1c6gy" path="res://Agents/Recruiter/AgentRecruiter.tscn" id="1_uj5h4"]
-[ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/UpgradeTree.gd" id="1_xn7ne"]
+[ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/SpriteGUI3D.gd" id="1_xn7ne"]
 [ext_resource type="PackedScene" uid="uid://ih1yjlmnqvmi" path="res://Agents/Picker/AgentPicker.tscn" id="3_v6lxg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cfjyu"]
@@ -14,6 +14,9 @@ size = Vector3(6, 6, -0.005)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xn7ne"]
 viewport_path = NodePath("AgentRecruiterBoard/SpriteGUI3D/SubViewport")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v6lxg"]
+size = Vector2(16, 16)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c2bgw"]
 
@@ -29,7 +32,7 @@ material_override = SubResource("StandardMaterial3D_wf04p")
 mesh = SubResource("BoxMesh_pgk06")
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="AgentRecruiterBoard" unique_id=1330681839 node_paths=PackedStringArray("target", "node_viewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.22)
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 texture = SubResource("ViewportTexture_xn7ne")
 script = ExtResource("1_xn7ne")
 target = NodePath("..")
@@ -38,6 +41,7 @@ metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="AgentRecruiterBoard/SpriteGUI3D" unique_id=1592596604]
 handle_input_locally = false
+size = Vector2i(500, 512)
 
 [node name="AgentRecruiter" parent="AgentRecruiterBoard/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("1_uj5h4")]
 anchors_preset = 0
@@ -45,6 +49,9 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="PlaceHolder" type="Sprite2D" parent="AgentRecruiterBoard/SpriteGUI3D/SubViewport" unique_id=1846104700]
+texture = SubResource("PlaceholderTexture2D_v6lxg")
 
 [node name="AgentPickerBoard" type="MeshInstance3D" parent="." unique_id=1592906521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.783022)

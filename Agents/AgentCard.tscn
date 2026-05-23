@@ -19,6 +19,7 @@ layout_mode = 2
 [node name="TextureRect" type="ColorRect" parent="VBoxContainer/CenterContainer" unique_id=1486901576]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=106191040]
 layout_mode = 2
