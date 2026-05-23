@@ -2,7 +2,7 @@ class_name Agent extends Resource
 
 
 @export var name : StringName
-@export var cost : float
+@export var cost : int
 @export var reputation : float
 
 static var furtiveness_skill_range := NumberRange.new(1, 20, 1)

@@ -5,6 +5,9 @@ const agents_file_path = "user://Player/Agents"
 var camera : CameraHandler
 var agents : AgentArray
 
+var money : int
+var waiting_money : int #TO be awarded when the day ends
+
 func _ready() -> void:
 	camera = get_node("Camera3D")
 	GlobalVariables.player = self
@@ -17,8 +20,8 @@ func _ready() -> void:
 	if not agents:
 		agents = AgentArray.new()
 
-	prints("AGENT 1", agents)
 	GlobalVariables.game_loaded.emit()
+	GlobalVariables.day_ended.connect(day_ended)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("UnlockMouse"):
@@ -27,6 +30,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func day_ended() -> void:
+	money += waiting_money - agents.overall_cost
+	waiting_money = 0
+
+	if money < 0:
+		push_error("Player is just too bad!")
+		get_tree().quit()
 
 func _exit_tree() -> void:
 	ResourceSaver.save(agents, agents_file_path)
