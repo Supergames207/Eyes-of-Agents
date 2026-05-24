@@ -39,5 +39,3 @@ func _process(_delta: float) -> void:
 
 		day_ended.emit()
 		prints("NEXT DAY", current_day)
-
-

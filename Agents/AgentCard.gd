@@ -7,13 +7,13 @@ var agent : Agent
 
 func _ready() -> void:
 	if agent:
-		fill_data()
+		fill_data(agent)
 
-func fill_data() -> void:
-	get_node("VBoxContainer/Name").text = agent.name
-	get_node("VBoxContainer/Data").text = "Cost :" + str(agent.cost) + " $ \n" \
-										+ "Stealth" + str(agent.furtiveness_skill) + "\n" \
-										+ "Assault" + str(agent.assault_skill)
+func fill_data(_agent: Agent) -> void:
+	get_node("VBoxContainer/Name").text = _agent.name
+	get_node("VBoxContainer/Data").text = "Cost :" + str(_agent.cost) + " $ \n" \
+										+ "Stealth" + str(_agent.furtiveness_skill) + "\n" \
+										+ "Assault" + str(_agent.assault_skill)
 	
 func _gui_input(e : InputEvent) -> void:
 	if e is InputEventMouseButton:
