@@ -42,10 +42,25 @@ func _on_next_agent() -> void:
 	agent_card.fill_data(next_agent)
 
 func _on_acceptance() -> void:
+	if agent_array.agents.is_empty():
+		print("Player doesn't have any agents")
+		return
 	var agent: Agent = agent_array.agents[current_agent]
+
 	if agent.mission_status["State"]:
 		print("Agent " + agent.name + " already has an active mission")
 		return
+	
+	if not current_loc:
+		print("No mission/pin selected")
+		return
+	
+	if not current_loc.objective or not current_loc.location:
+		print("No objective or location selected")
+		return
+	
+	var objective: int = RandomStrings.random_objectives.find(current_loc.objective)
+	var location: int = RandomStrings.random_locations.find(current_loc.location)
 	
 	agent.mission_status["State"] = true
 	agent.mission_status["Objective"] = RandomStrings.random_objectives.find(current_loc.objective)
