@@ -2,10 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://ix5h88s1c6gy" path="res://Agents/Recruiter/AgentRecruiter.tscn" id="1_uj5h4"]
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/SpriteGUI3D.gd" id="1_xn7ne"]
+[ext_resource type="PackedScene" uid="uid://dg8xhj5mcc34j" path="res://UpgradeTree/UpgradeTree.tscn" id="2_smswu"]
 [ext_resource type="Script" uid="uid://bmrdax0g0rrjy" path="res://Agents/Recruiter/Guassian.gd" id="3_c2bgw"]
 [ext_resource type="PackedScene" uid="uid://ih1yjlmnqvmi" path="res://Agents/Picker/AgentPicker.tscn" id="3_v6lxg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cfjyu"]
+size = Vector3(0, 10, 10)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_smswu"]
+viewport_path = NodePath("UpgradeTree/SpriteGUI3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf04p"]
 
@@ -32,9 +37,21 @@ size = Vector2(255, 255)
 
 [node name="HeadQuarters" type="Node3D" unique_id=375498434]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1634238982]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1855202, 0, 0)
+[node name="UpgradeTree" type="MeshInstance3D" parent="." unique_id=1634238982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.226742, 0, 0)
 mesh = SubResource("BoxMesh_cfjyu")
+
+[node name="SpriteGUI3D" type="Sprite3D" parent="UpgradeTree" unique_id=1253218691 node_paths=PackedStringArray("target", "node_viewport")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.46616554, 0, 0)
+texture = SubResource("ViewportTexture_smswu")
+script = ExtResource("1_xn7ne")
+target = NodePath("..")
+node_viewport = NodePath("SubViewport")
+metadata/_custom_type_script = "uid://decu7ohx6w2dm"
+
+[node name="SubViewport" type="SubViewport" parent="UpgradeTree/SpriteGUI3D" unique_id=9434727]
+
+[node name="UpgradeTree" parent="UpgradeTree/SpriteGUI3D/SubViewport" unique_id=1661596182 instance=ExtResource("2_smswu")]
 
 [node name="AgentRecruiterBoard" type="MeshInstance3D" parent="." unique_id=107508078]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0829859, -7)
