@@ -1,6 +1,6 @@
 extends Node
 
-const random_names := ["Virginia Walter",
+const random_names := ["Bob Hunter",
 	"Lochlan Christensen",
 	"Carmen Schneider",
 	"Raymond Baxter",
@@ -494,7 +494,7 @@ const random_names := ["Virginia Walter",
 	"Pedro Callahan",
 	"Kimber Lyons",
 	"Cyrus Phan",
-	"Elsa Benson",
+	"Joe Doe",
 	"Desmond Rivera",
 	"Lillian Arellano",
 	"Kellan Dominguez",
@@ -679,7 +679,7 @@ const random_names := ["Virginia Walter",
 	"Lydia Decker",
 	"Taylor Walters",
 	"Samara Robbins",
-	"Finnegan Villanueva",
+	"D.Afonso I",
 	"Monroe Stafford",
 	"Alfredo Meadows",
 	"Pearl Barrera",
@@ -747,7 +747,7 @@ const random_names := ["Virginia Walter",
 	"Wren Small",
 	"Rudy Roberts",
 	"Paisley Bauer",
-	"Kieran James",
+	"D.Carlos II",
 	"Quinn Rivera",
 	"Charles Curry",
 	"Alison Bradford",
@@ -780,7 +780,7 @@ const random_names := ["Virginia Walter",
 	"Jakobe Farrell",
 	"Kassidy Meyers",
 	"Julien Cervantes",
-	"Aylin Clements",
+	"D.Dinis I",
 	"Fisher McBride",
 	"Kelsey Norman",
 	"Aziel Reid",
@@ -843,7 +843,7 @@ const random_names := ["Virginia Walter",
 	"Jacqueline Everett",
 	"Camilo Lam",
 	"Karina Miller",
-	"Benjamin Banks",
+	"I'm John",
 	"Cali Knight",
 	"Beckett Garner",
 	"Jacqueline Hale",
@@ -920,7 +920,7 @@ const random_names := ["Virginia Walter",
 	"Jeremy Ayala",
 	"Blair Doyle",
 	"Kashton Diaz",
-	"Elena Ayala",
+	"Bobby Fisher",
 	"Tanner Barrett",
 	"Kendall Marin",
 	"Aldo Roberts",
@@ -999,7 +999,7 @@ const random_names := ["Virginia Walter",
 	"Yara Cummings",
 	"Raiden Valencia",
 	"Maddison Newton",
-	"Santino Eaton"
+	"João Pedro"
 ]
 
 const random_objectives := [
@@ -1030,4 +1030,19 @@ const random_locations := [
 	"Kamenovsk",
 	"Muravagrad",
 	"Zolotensk",
+]
+
+const random_rng_event := [
+	{
+		"text": "Should I kill him?",
+		"Chance": 1,
+		"Y_Survivability": 10,
+		"N_Survivability": -10
+	},
+	{
+		"text": "Should I steal a kid?",
+		"Chance": 1,
+		"Y_Survivability": 5,
+		"N_Survivability": -5
+	}
 ]

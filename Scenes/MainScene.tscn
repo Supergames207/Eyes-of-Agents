@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dvlglvr2q5ggd" path="res://GUI/CameraMovementUI/CameraControl.tscn" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://drablnydjvvpd" path="res://Scenes/HQ/CorkBoard.tscn" id="6_y4jh7"]
 [ext_resource type="PackedScene" uid="uid://jr5oqu5i72me" path="res://Scenes/CameraTest2.tscn" id="7_q68mp"]
+[ext_resource type="PackedScene" uid="uid://dif0wvxjctgck" path="res://Missions/MissionRngUi.tscn" id="8_f140w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
@@ -87,4 +88,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 [node name="Marker3" type="Marker3D" parent="CameraPoints" unique_id=1435303829]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
 
-[node name="CameraControl" parent="CameraPoints" unique_id=554065994 instance=ExtResource("5_qxria")]
+[node name="MissionRngUi" parent="." unique_id=901271156 instance=ExtResource("8_f140w")]
+mouse_filter = 1
+
+[node name="CameraControl" parent="MissionRngUi" unique_id=554065994 instance=ExtResource("5_qxria")]
+z_index = 2
+layout_mode = 1
+mouse_filter = 2

@@ -16,7 +16,7 @@ func _ready() -> void:
 	left_button.pressed.connect(_on_button_press.bind(0))
 	right_button.pressed.connect(_on_button_press.bind(1))
 	
-	camera_points = self.get_parent()
+	camera_points = $"../../CameraPoints"
 	if not camera_points:
 		print("No Parent No Script :(")
 		return
