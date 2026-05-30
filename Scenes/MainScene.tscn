@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://drablnydjvvpd" path="res://Scenes/HQ/CorkBoard.tscn" id="6_y4jh7"]
 [ext_resource type="PackedScene" uid="uid://jr5oqu5i72me" path="res://Scenes/CameraTest2.tscn" id="7_q68mp"]
 [ext_resource type="PackedScene" uid="uid://dif0wvxjctgck" path="res://Missions/MissionRngUi.tscn" id="8_f140w"]
+[ext_resource type="PackedScene" uid="uid://drvg5dtdo1h6g" path="res://GUI/PopupUI/Popup.tscn" id="9_0iob3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
@@ -95,3 +96,5 @@ mouse_filter = 1
 z_index = 2
 layout_mode = 1
 mouse_filter = 2
+
+[node name="Popup" parent="." unique_id=1858111684 instance=ExtResource("9_0iob3")]

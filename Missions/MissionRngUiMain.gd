@@ -11,6 +11,7 @@ var original_x := 0.0
 @onready var no_button: Button = $VBoxContainer/Option/NoContainer/Button
 @onready var no_stakes: Label = $VBoxContainer/Option/NoContainer/Stakes
 @onready var dice := $Dice
+@onready var popup_ui: Control = $"../Popup"
 
 var agent_array: AgentArray
 
@@ -41,7 +42,7 @@ func _do_rng(agent: Agent) -> void:
 	agent_card.fill_data(agent)
 	agent_card_control.position.x = -150.0
 	agent_card_control.visible = true
-	add_child(agent_card_control)  # make sure it's in the tree before tweening
+	add_child(agent_card_control)
 	
 	var tween: Tween = create_tween()
 	tween.tween_property(agent_card_control, "position:x", original_x, 0.5)\
@@ -65,10 +66,9 @@ func _do_rng(agent: Agent) -> void:
 			agent.mission_status["Risk"] *= 1 + 1/float(chance) 
 		else:
 			agent.mission_status["Risk"] *= 1 - 1/float(chance)
-		
-		# notification system
-		
 		agent_card_control.queue_free()
 		rolling = false
 		main_container.visible = false
+		
+		popup_ui._new_notification(agent.name + " survivability: " + str(chance) + "%", Color(randf(), randf(), randf()))
 	)

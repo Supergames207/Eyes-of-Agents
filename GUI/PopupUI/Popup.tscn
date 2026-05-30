@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://drvg5dtdo1h6g"]
+
+[ext_resource type="Script" uid="uid://c1iv7bvlyjps3" path="res://GUI/PopupUI/PopupMain.gd" id="1_b3cdx"]
+[ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_x7a8l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7a8l"]
+font = ExtResource("2_x7a8l")
+font_size = 24
+
+[node name="Popup" type="Control" unique_id=1858111684]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_b3cdx")
+
+[node name="TemplateLabel" type="Label" parent="." unique_id=1642702069]
+visible = false
+layout_mode = 0
+offset_left = 721.0
+offset_top = 240.0
+offset_right = 1124.0
+offset_bottom = 258.0
+text = "+1000"
+label_settings = SubResource("LabelSettings_x7a8l")
