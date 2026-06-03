@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dg8xhj5mcc34j"]
 
 [ext_resource type="Script" uid="uid://xermciwasd25" path="res://UpgradeTree/UpgradeTree.gd" id="1_ydur8"]
-[ext_resource type="PackedScene" uid="uid://bk73dku7c84fl" path="res://UpgradeTree/TreeNode.tscn" id="2_7uquy"]
 
 [node name="UpgradeTree" type="Control" unique_id=1661596182]
 layout_mode = 3
@@ -12,28 +11,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ydur8")
 
-[node name="TreeNode" parent="." unique_id=471634567 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
-custom_minimum_size = Vector2(64, 64)
+[node name="Panel" type="Panel" parent="." unique_id=1967289646]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1088.0
-offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
-links = [NodePath("../TreeNode2"), NodePath("../TreeNode3")]
-
-[node name="TreeNode2" parent="." unique_id=893888064 instance=ExtResource("2_7uquy")]
-layout_mode = 0
-offset_left = 74.0
-offset_top = -37.0
-offset_right = 74.0
-offset_bottom = -37.0
-
-[node name="TreeNode3" parent="." unique_id=942374375 instance=ExtResource("2_7uquy")]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 37.0
-offset_right = 74.0
-offset_bottom = 37.0
+mouse_filter = 2

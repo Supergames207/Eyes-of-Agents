@@ -1,7 +1,7 @@
+@tool
 class_name SpriteGUI3D extends Sprite3D
 
 
-@export var target : MeshInstance3D
 @export var node_viewport : SubViewport
 @export var quad_mesh_size : Vector3
 
@@ -15,6 +15,7 @@ var last_mouse_pos2D : Vector2
 var plane_mouse_pos : Vector2
 
 func _ready() -> void:
+	set_process(not Engine.is_editor_hint())
 	quad_mesh_size = Vector3(node_viewport.size.x, node_viewport.size.y, 0) / 100.0# * Vector3(scale.x, scale.y, 0)
 	
 	texture = node_viewport.get_texture()
@@ -35,7 +36,7 @@ func ray_intersects_quad(origin : Vector3, normal : Vector3, a : Vector3, b : Ve
 
 
 func global_to_plane(pos : Vector3) -> Vector2:
-	pos -= (global_position + (global_basis * quad_mesh_size / 2.0 * Vector3(-1, -1, 0)))
+	pos -= (global_position + (global_basis * (quad_mesh_size / 2.0 * Vector3(-1, -1, 0))))
 
 	var result := Vector2.ZERO
 	result.x = pos.dot(global_basis.x.normalized())
@@ -58,24 +59,25 @@ func _process(_delta : float) -> void:
 	var normal := cam.project_ray_normal(GlobalVariables.main_viewport.get_mouse_position())
 	
 	var size_3d := Vector3(quad_mesh_size.x, quad_mesh_size.y, 0) / 2.0
-	var a := global_position + (global_basis * size_3d * Vector3(-1, -1, 0))
-	var b := global_position + global_basis * size_3d * Vector3(-1, 1, 0)
-	var c := global_position + global_basis * size_3d * Vector3(1, -1, 0)
-	var d := global_position + global_basis * size_3d * Vector3(1, 1, 0)
+	var a := global_position + (global_basis * (size_3d * Vector3(-1, -1, 0)))
+	var b := global_position + global_basis * (size_3d * Vector3(-1, 1, 0))
+	var c := global_position + global_basis * (size_3d * Vector3(1, -1, 0))
+	var d := global_position + global_basis * (size_3d * Vector3(1, 1, 0))
  
 	var quad_intersection := ray_intersects_quad(origin, normal, a, b, c, d)
-
+	
 	if quad_intersection.is_finite():
 		is_mouse_inside = true
 		mouse_pos3D = quad_intersection
 		plane_mouse_pos = global_to_plane(quad_intersection)
 		
-		# prints(plane_mouse_pos, is_mouse_inside, get_parent().name)
 
 	
 func _input(event : InputEvent) -> void:
-	var is_mouse_event := event is InputEventMouseButton or event is InputEventMouseMotion
-
+	var is_mouse_event := event is InputEventMouse
+	# if not (is_mouse_inside or is_mouse_held):
+	# 	return
+	
 	if is_mouse_event and (is_mouse_inside or is_mouse_held):
 		
 		handle_mouse(event)

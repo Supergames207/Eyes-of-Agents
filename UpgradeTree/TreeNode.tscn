@@ -24,6 +24,7 @@ offset_left = 64.125
 offset_top = 12.655
 offset_right = 233.125
 offset_bottom = 61.655006
+mouse_filter = 2
 
 [node name="Information" type="Label" parent="InformationHolder" unique_id=1443778065]
 layout_mode = 2

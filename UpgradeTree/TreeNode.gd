@@ -22,6 +22,10 @@ var ID : int #TODO ADD IDs. With an ID I'll be able to store and load from disk 
 
 
 func _ready() -> void:
+	for k in get_children():
+		if k is Line2D:
+			k.queue_free()
+	
 	create_connection_lines()
 	update_visuals()
 
@@ -48,11 +52,14 @@ func create_connection_lines() -> void:	#TODO Draw some lines
 	
 	for tree_node in links:
 		var new := Line2D.new()
-		new.position = Vector2.ZERO
+		new.position = Vector2(size.x, size.y / 2.0)
 		add_child(new)
+		new.owner = owner
 
+		var target_position := (tree_node.global_position + Vector2(0, size.y / 2.0))
+		
 		new.add_point(Vector2.ZERO)
-		new.add_point(tree_node.global_position - global_position)
+		new.add_point(target_position - new.global_position)
 	
 
 func _gui_input(e : InputEvent) -> void:

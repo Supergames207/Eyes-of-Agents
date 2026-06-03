@@ -4,10 +4,8 @@
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/SpriteGUI3D.gd" id="1_xn7ne"]
 [ext_resource type="PackedScene" uid="uid://dg8xhj5mcc34j" path="res://UpgradeTree/UpgradeTree.tscn" id="2_smswu"]
 [ext_resource type="Script" uid="uid://bmrdax0g0rrjy" path="res://Agents/Recruiter/Guassian.gd" id="3_c2bgw"]
+[ext_resource type="Script" uid="uid://bn0q23woxmdy7" path="res://Scenes/HQ/DebugButton.gd" id="3_li1b0"]
 [ext_resource type="PackedScene" uid="uid://ih1yjlmnqvmi" path="res://Agents/Picker/AgentPicker.tscn" id="3_v6lxg"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_cfjyu"]
-size = Vector3(0, 10, 10)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_smswu"]
 viewport_path = NodePath("UpgradeTree/SpriteGUI3D/SubViewport")
@@ -18,7 +16,7 @@ viewport_path = NodePath("UpgradeTree/SpriteGUI3D/SubViewport")
 material = SubResource("StandardMaterial3D_wf04p")
 size = Vector3(6, 6, -0.005)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xn7ne"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_li1b0"]
 viewport_path = NodePath("AgentRecruiterBoard/SpriteGUI3D/SubViewport")
 
 [sub_resource type="Resource" id="Resource_smswu"]
@@ -32,43 +30,56 @@ metadata/_custom_type_script = "uid://bmrdax0g0rrjy"
 [sub_resource type="PlaneMesh" id="PlaneMesh_c2bgw"]
 orientation = 2
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v6lxg"]
-size = Vector2(255, 255)
+[sub_resource type="ViewportTexture" id="ViewportTexture_k3uva"]
+viewport_path = NodePath("AgentPickerBoard/SpriteGUI3D/SubViewport")
 
 [node name="HeadQuarters" type="Node3D" unique_id=375498434]
 
 [node name="UpgradeTree" type="MeshInstance3D" parent="." unique_id=1634238982]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.226742, 0, 0)
-mesh = SubResource("BoxMesh_cfjyu")
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 0)
 
-[node name="SpriteGUI3D" type="Sprite3D" parent="UpgradeTree" unique_id=1253218691 node_paths=PackedStringArray("target", "node_viewport")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.46616554, 0, 0)
+[node name="SpriteGUI3D" type="Sprite3D" parent="UpgradeTree" unique_id=1253218691 node_paths=PackedStringArray("node_viewport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 texture = SubResource("ViewportTexture_smswu")
 script = ExtResource("1_xn7ne")
-target = NodePath("..")
 node_viewport = NodePath("SubViewport")
+quad_mesh_size = Vector3(5.12, 5.12, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="UpgradeTree/SpriteGUI3D" unique_id=9434727]
+handle_input_locally = false
+
+[node name="Button" type="Button" parent="UpgradeTree/SpriteGUI3D/SubViewport" unique_id=694893161]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "TEST"
+script = ExtResource("3_li1b0")
 
 [node name="UpgradeTree" parent="UpgradeTree/SpriteGUI3D/SubViewport" unique_id=1661596182 instance=ExtResource("2_smswu")]
+offset_bottom = -0.00018310547
 
 [node name="AgentRecruiterBoard" type="MeshInstance3D" parent="." unique_id=107508078]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0829859, -7)
 material_override = SubResource("StandardMaterial3D_wf04p")
 mesh = SubResource("BoxMesh_pgk06")
 
-[node name="SpriteGUI3D" type="Sprite3D" parent="AgentRecruiterBoard" unique_id=1330681839 node_paths=PackedStringArray("target", "node_viewport")]
+[node name="SpriteGUI3D" type="Sprite3D" parent="AgentRecruiterBoard" unique_id=1330681839 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
-texture = SubResource("ViewportTexture_xn7ne")
+texture = SubResource("ViewportTexture_li1b0")
 script = ExtResource("1_xn7ne")
-target = NodePath("..")
 node_viewport = NodePath("SubViewport")
+quad_mesh_size = Vector3(5, 5.12, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="AgentRecruiterBoard/SpriteGUI3D" unique_id=1592596604]
 handle_input_locally = false
 size = Vector2i(500, 512)
+
+[node name="Button" type="Button" parent="AgentRecruiterBoard/SpriteGUI3D/SubViewport" unique_id=374575514]
+offset_right = 44.0
+offset_bottom = 31.0
+text = "TEST"
+script = ExtResource("3_li1b0")
 
 [node name="AgentRecruiter" parent="AgentRecruiterBoard/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("1_uj5h4")]
 anchors_preset = 0
@@ -83,15 +94,21 @@ furtive_skill_guassian = SubResource("Resource_li1b0")
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, -2.5, -4)
 mesh = SubResource("PlaneMesh_c2bgw")
 
-[node name="SpriteGUI3D" type="Sprite3D" parent="AgentPickerBoard" unique_id=245946221 node_paths=PackedStringArray("target", "node_viewport")]
+[node name="SpriteGUI3D" type="Sprite3D" parent="AgentPickerBoard" unique_id=245946221 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
-texture = SubResource("PlaceholderTexture2D_v6lxg")
+texture = SubResource("ViewportTexture_k3uva")
 script = ExtResource("1_xn7ne")
-target = NodePath("..")
 node_viewport = NodePath("SubViewport")
+quad_mesh_size = Vector3(5.12, 5.12, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="AgentPickerBoard/SpriteGUI3D" unique_id=51775185]
+
+[node name="Button" type="Button" parent="AgentPickerBoard/SpriteGUI3D/SubViewport" unique_id=1105250717]
+offset_right = 44.0
+offset_bottom = 31.0
+text = "TEST"
+script = ExtResource("3_li1b0")
 
 [node name="AgentPicker" parent="AgentPickerBoard/SpriteGUI3D/SubViewport" unique_id=655678137 instance=ExtResource("3_v6lxg")]
 
