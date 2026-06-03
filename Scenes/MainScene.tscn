@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvqov3bm1nsbf" path="res://Scenes/Player/Player.tscn" id="3_nhkr4"]
 [ext_resource type="PackedScene" uid="uid://dvlglvr2q5ggd" path="res://GUI/CameraMovementUI/CameraControl.tscn" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://drablnydjvvpd" path="res://Scenes/HQ/CorkBoard.tscn" id="6_y4jh7"]
-[ext_resource type="PackedScene" uid="uid://jr5oqu5i72me" path="res://Scenes/CameraTest2.tscn" id="7_q68mp"]
-[ext_resource type="PackedScene" uid="uid://dif0wvxjctgck" path="res://Missions/MissionRngUi.tscn" id="8_f140w"]
+[ext_resource type="PackedScene" uid="uid://dif0wvxjctgck" path="res://Missions/RngQuest/MissionRngUi.tscn" id="8_f140w"]
 [ext_resource type="PackedScene" uid="uid://drvg5dtdo1h6g" path="res://GUI/PopupUI/Popup.tscn" id="9_0iob3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
@@ -72,9 +71,6 @@ transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -1.1
 transform = Transform3D(1.6624196, 0, 0, 0, 0.09979504, 0, 0, 0, 3.9037538, 2.6321378, -0.80047023, 0)
 mesh = SubResource("BoxMesh_y4jh7")
 surface_material_override/0 = SubResource("StandardMaterial3D_q68mp")
-
-[node name="CameraTest2" parent="." unique_id=1088883933 instance=ExtResource("7_q68mp")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6187371, -0.21509409, 1.2037035)
 
 [node name="CameraPoints" type="Node3D" parent="." unique_id=638401856]
 

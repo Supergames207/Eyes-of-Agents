@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://dmbbn7npq5nox"]
 
 [ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Scenes/HQ/MissionMain.gd" id="1_f5kmt"]
-[ext_resource type="Texture2D" uid="uid://cc5w3llmvwkqn" path="res://Assets/Assets2D/Map.jpg" id="2_fo4ty"]
-[ext_resource type="Texture2D" uid="uid://d3fp7k5dcnuut" path="res://Assets/Assets2D/pin.png" id="3_igv4n"]
-[ext_resource type="Script" uid="uid://cxt0upniybldx" path="res://Missions/MissionsLocationsHandler.gd" id="4_fo4ty"]
+[ext_resource type="Script" uid="uid://cxt0upniybldx" path="res://Missions/Picker/MissionsLocationsHandler.gd" id="4_fo4ty"]
 [ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="5_igv4n"]
 
 [node name="MissionsMain" type="Control" unique_id=1115288096]
@@ -14,16 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f5kmt")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1261546640]
-z_index = -1
-layout_mode = 0
-offset_left = 91.0
-offset_top = 272.0
-offset_right = 518.0
-offset_bottom = 547.0
-texture = ExtResource("2_fo4ty")
-expand_mode = 1
 
 [node name="DangerLabel" type="Label" parent="." unique_id=679036215]
 layout_mode = 0
@@ -49,21 +37,6 @@ offset_right = 513.0
 offset_bottom = 150.0
 text = "Objective: "
 
-[node name="LocationsContainer" type="Control" parent="." unique_id=1625512776]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="LocationsContainer" unique_id=852502773]
-layout_mode = 0
-offset_left = 181.0
-offset_top = 318.0
-offset_right = 258.0
-offset_bottom = 415.0
-icon = ExtResource("3_igv4n")
-expand_icon = true
-script = ExtResource("4_fo4ty")
-
 [node name="AgentCard" parent="." unique_id=519339936 instance=ExtResource("5_igv4n")]
 layout_mode = 0
 offset_left = 5.0
@@ -87,3 +60,18 @@ offset_top = 222.0
 offset_right = 382.0
 offset_bottom = 253.0
 text = "Accept!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=12481955]
+z_index = -1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 265.0
+offset_right = 509.0
+offset_bottom = 575.0
+
+[node name="ButtonTemplate" type="Button" parent="VBoxContainer" unique_id=1587810107]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "LOCATION | RISK: 4 "
+alignment = 0
+script = ExtResource("4_fo4ty")

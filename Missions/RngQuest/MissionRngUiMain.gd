@@ -79,7 +79,9 @@ func _do_rng(agent: Agent) -> void:
 
 func on_yes_button(agent: Agent, agent_card_control: Control, chance: int, scenario_container: VBoxContainer) -> void:
 	print(agent.name)
-	if rolling: return
+	if rolling:
+		popup_ui._new_notification("The dice Is already rolling!", Color(randf(), randf(), randf()))
+		return
 	
 	rolling = true
 	var dice_int: int = await dice._roll_dice() + 1
@@ -92,4 +94,4 @@ func on_yes_button(agent: Agent, agent_card_control: Control, chance: int, scena
 	agent_card_control.queue_free()
 	rolling = false
 	scenario_container.visible = false
-	popup_ui._new_notification(agent.name + " survivability: " + str(chance) + "%", Color(randf(), randf(), randf()))
+	popup_ui._new_notification(agent.name + " survivability: " + str(agent.mission_status["Risk"] * 100) + "%", Color(randf(), randf(), randf()))

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://drablnydjvvpd"]
 
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/SpriteGUI3D.gd" id="1_661ih"]
-[ext_resource type="PackedScene" uid="uid://dmbbn7npq5nox" path="res://Missions/MissionBoard.tscn" id="2_01br0"]
+[ext_resource type="PackedScene" uid="uid://dmbbn7npq5nox" path="res://Missions/Picker/MissionBoard.tscn" id="2_01br0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_661ih"]
 

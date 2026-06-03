@@ -1,6 +1,7 @@
 extends Control
 
-@onready var loc_container := $LocationsContainer
+@onready var loc_container := $VBoxContainer
+@onready var button_template := $VBoxContainer/ButtonTemplate
 @onready var danger_label := $DangerLabel
 @onready var loc_label := $LocationLabel
 @onready var obj_label := $ObjectiveLabel
@@ -10,11 +11,17 @@ extends Control
 
 var current_agent: int = 0
 var agent_array: AgentArray
+var player: Player
 
 var current_loc: Button
 
 func _ready() -> void:
 	await GlobalVariables.wait_till_game_loaded()
+	player = GlobalVariables.player
+	
+	for n in player.missions_amount:
+		var new_button: LocationButton = button_template.duplicate()
+		loc_container.add_child(new_button)
 	
 	NewMissions._new_missions(loc_container)
 	
@@ -66,5 +73,6 @@ func _on_acceptance() -> void:
 	agent.mission_status["Objective"] = RandomStrings.random_objectives.find(current_loc.objective)
 	agent.mission_status["Duration"] = 1
 	agent.mission_status["Location"] = RandomStrings.random_locations.find(current_loc.location)
+	agent.mission_status["Risk"] = current_loc.danger / 100
 	
 	print(agent.mission_status)
