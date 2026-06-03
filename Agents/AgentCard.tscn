@@ -24,13 +24,13 @@ mouse_filter = 1
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=106191040]
 layout_mode = 2
 theme = ExtResource("1_l81fp")
-text = "Jeremy"
+text = "Gabado"
 horizontal_alignment = 1
 
 [node name="Data" type="Label" parent="VBoxContainer" unique_id=2126063399]
 layout_mode = 2
 theme = ExtResource("1_l81fp")
 text = "Cost : 9999$
-Stealth : 10
-Assault : 10"
+Stealth : INF
+Assault : INF"
 horizontal_alignment = 1

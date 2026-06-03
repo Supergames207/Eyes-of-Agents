@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bk73dku7c84fl"]
 
 [ext_resource type="Script" uid="uid://bew1t8r2oe4ow" path="res://UpgradeTree/TreeNode.gd" id="1_ex610"]
+[ext_resource type="Texture2D" uid="uid://0o2duwj7ys71" path="res://UpgradeTree/LockedTexture.tres" id="2_2df0v"]
 
 [node name="TreeNode" type="Control" unique_id=471634567]
 layout_mode = 3
@@ -11,6 +12,7 @@ script = ExtResource("1_ex610")
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
+texture = ExtResource("2_2df0v")
 
 [node name="InformationHolder" type="PanelContainer" parent="." unique_id=1982459223]
 visible = false

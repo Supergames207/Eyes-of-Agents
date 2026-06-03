@@ -44,6 +44,9 @@ func _on_pin_press(_danger: float, _loc: String, _obj: String, pin: Button) -> v
 	danger_label.text = "Danger: " + str(_danger)
 
 func _on_next_agent() -> void:
+	if agent_array.agents.size() == 0:
+		return
+	
 	current_agent = (current_agent + 1) % agent_array.agents.size()
 	var next_agent: Agent = agent_array.agents[current_agent]
 	agent_card.fill_data(next_agent)

@@ -13,7 +13,13 @@ const padding := Vector2(10,10)
 
 var locked := true:
 	set(value):
+		if locked == value:
+			return
 		locked = value
+
+		if not locked:
+			for tree_node in links:
+				tree_node.parents_unlocked += 1
 		update_visuals()
 
 var parents_unlocked := 0:
@@ -22,7 +28,7 @@ var parents_unlocked := 0:
 		update_visuals()
 var parents_count := 0
 
-var ID : int #TODO ADD IDs. With an ID I'll be able to store and load from disk if this node has already been unlocked.
+var ID : int
 
 
 func _ready() -> void:
@@ -46,7 +52,7 @@ func can_unlock() -> bool:
 	return parents_unlocked == parents_count
 
 func update_visuals() -> void: 
-	if not is_node_ready():
+	if not is_node_ready() or Engine.is_editor_hint():
 		return
 	
 	if locked == false:
@@ -55,6 +61,7 @@ func update_visuals() -> void:
 		get_node("Background").texture = may_unlock_texture
 	else:
 		get_node("Background").texture = locked_texture
+
 
 func create_connection_lines() -> void:	#TODO Draw some lines 
 	if not is_node_ready():
@@ -80,14 +87,12 @@ func _gui_input(e : InputEvent) -> void:
 			unlock() #TODO Some logic to define if I can unlock this thingy
 
 func unlock() -> void:
-	prints("TRYING TO UNLOCK")
 	if not can_unlock() or not locked:
 		return
-	prints("UNLOCKED")
+	
 	locked = false
 
-	for tree_node in links:
-		tree_node.parents_unlocked += 1
+	
 
 func organize_links() -> void:
 	for k in range(links.size()):

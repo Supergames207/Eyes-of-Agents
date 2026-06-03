@@ -12,36 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ydur8")
 
-[node name="TreeNode" parent="." unique_id=471634567 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 0
-offset_top = 64.0
-offset_right = 64.0
-offset_bottom = 128.0
-links = [NodePath("../TreeNode2"), NodePath("../TreeNode3")]
-
-[node name="@Line2D@96074" type="Line2D" parent="TreeNode" unique_id=253705518]
-position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 10, -37)
-
-[node name="@Line2D@96075" type="Line2D" parent="TreeNode" unique_id=999086716]
-position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 10, 37)
-
-[node name="TreeNode2" parent="." unique_id=893888064 instance=ExtResource("2_7uquy")]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 23.224998
-offset_right = 74.0
-offset_bottom = 23.224998
-
-[node name="TreeNode3" parent="." unique_id=942374375 instance=ExtResource("2_7uquy")]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 97.225
-offset_right = 74.0
-offset_bottom = 97.225
-
 [node name="Panel" type="Panel" parent="." unique_id=1967289646]
 layout_mode = 1
 anchors_preset = 15
@@ -51,4 +21,39 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[editable path="TreeNode"]
+[node name="TreeNodes" type="Control" parent="." unique_id=444691971]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TreeNode" parent="TreeNodes" unique_id=471634567 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 128.0
+links = [NodePath("../TreeNode2"), NodePath("../TreeNode3")]
+
+[node name="@Line2D@25164" type="Line2D" parent="TreeNodes/TreeNode" unique_id=1869689641]
+position = Vector2(64, 32)
+points = PackedVector2Array(0, 0, 10, -40.775)
+
+[node name="@Line2D@25165" type="Line2D" parent="TreeNodes/TreeNode" unique_id=891067466]
+position = Vector2(64, 32)
+points = PackedVector2Array(0, 0, 10, 33.225006)
+
+[node name="TreeNode2" parent="TreeNodes" unique_id=893888064 instance=ExtResource("2_7uquy")]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 23.224998
+offset_right = 74.0
+offset_bottom = 23.224998
+
+[node name="TreeNode3" parent="TreeNodes" unique_id=942374375 instance=ExtResource("2_7uquy")]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 97.225
+offset_right = 74.0
+offset_bottom = 97.225
+
+[editable path="TreeNodes/TreeNode"]

@@ -1,4 +1,4 @@
-extends Node
+class_name RandomStrings extends Node
 
 const random_names := ["Bob Hunter",
 	"Lochlan Christensen",
@@ -1040,7 +1040,7 @@ const random_rng_event := [
 		"N_Survivability": -10
 	},
 	{
-		"text": "Should I steal a kid?",
+		"text": "Should I steal a kid?", #Wth
 		"Chance": 1,
 		"Y_Survivability": 5,
 		"N_Survivability": -5

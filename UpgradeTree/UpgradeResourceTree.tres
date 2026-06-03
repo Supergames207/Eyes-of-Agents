@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ResourceTree" format=3 uid="uid://dbvla1mhmminl"]
+
+[ext_resource type="Script" uid="uid://dhxluhfnyj01" path="res://UpgradeTree/ResourceTree.gd" id="1_b076a"]
+
+[resource]
+script = ExtResource("1_b076a")
+data = PackedInt32Array(6, 0, 0, 64, 1, 2, 4, 1, 74, 23, 4, 2, 74, 97)
