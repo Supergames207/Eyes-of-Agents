@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/SpriteGUI3D.gd" id="1_xn7ne"]
 [ext_resource type="PackedScene" uid="uid://dg8xhj5mcc34j" path="res://UpgradeTree/UpgradeTree.tscn" id="2_smswu"]
 [ext_resource type="Script" uid="uid://bmrdax0g0rrjy" path="res://Agents/Recruiter/Guassian.gd" id="3_c2bgw"]
-[ext_resource type="Script" uid="uid://bn0q23woxmdy7" path="res://Scenes/HQ/DebugButton.gd" id="3_li1b0"]
 [ext_resource type="PackedScene" uid="uid://ih1yjlmnqvmi" path="res://Agents/Picker/AgentPicker.tscn" id="3_v6lxg"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_smswu"]
@@ -49,12 +48,6 @@ metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 [node name="SubViewport" type="SubViewport" parent="UpgradeTree/SpriteGUI3D" unique_id=9434727]
 handle_input_locally = false
 
-[node name="Button" type="Button" parent="UpgradeTree/SpriteGUI3D/SubViewport" unique_id=694893161]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "TEST"
-script = ExtResource("3_li1b0")
-
 [node name="UpgradeTree" parent="UpgradeTree/SpriteGUI3D/SubViewport" unique_id=1661596182 instance=ExtResource("2_smswu")]
 offset_bottom = -0.00018310547
 
@@ -74,12 +67,6 @@ metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 [node name="SubViewport" type="SubViewport" parent="AgentRecruiterBoard/SpriteGUI3D" unique_id=1592596604]
 handle_input_locally = false
 size = Vector2i(500, 512)
-
-[node name="Button" type="Button" parent="AgentRecruiterBoard/SpriteGUI3D/SubViewport" unique_id=374575514]
-offset_right = 44.0
-offset_bottom = 31.0
-text = "TEST"
-script = ExtResource("3_li1b0")
 
 [node name="AgentRecruiter" parent="AgentRecruiterBoard/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("1_uj5h4")]
 anchors_preset = 0
@@ -103,12 +90,6 @@ quad_mesh_size = Vector3(5.12, 5.12, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="AgentPickerBoard/SpriteGUI3D" unique_id=51775185]
-
-[node name="Button" type="Button" parent="AgentPickerBoard/SpriteGUI3D/SubViewport" unique_id=1105250717]
-offset_right = 44.0
-offset_bottom = 31.0
-text = "TEST"
-script = ExtResource("3_li1b0")
 
 [node name="AgentPicker" parent="AgentPickerBoard/SpriteGUI3D/SubViewport" unique_id=655678137 instance=ExtResource("3_v6lxg")]
 

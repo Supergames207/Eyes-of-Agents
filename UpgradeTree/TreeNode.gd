@@ -5,8 +5,9 @@ class_name TreeNode extends Control
 @export_tool_button("Organize Links") var organizor := organize_links
 @export var links : Array[TreeNode]
 
-@export var locked_texture : Texture2D
-@export var unlocked_texture : Texture2D
+static var locked_texture : Texture2D = load("res://UpgradeTree/LockedTexture.tres")
+static var may_unlock_texture : Texture2D = load("res://UpgradeTree/MayUnlockTexture.tres")
+static var unlocked_texture : Texture2D = load("res://UpgradeTree/UnlockedTexture.tres")
 
 const padding := Vector2(10,10)
 
@@ -15,7 +16,10 @@ var locked := true:
 		locked = value
 		update_visuals()
 
-var parents_unlocked := 0
+var parents_unlocked := 0:
+	set(value):
+		parents_unlocked = value
+		update_visuals()
 var parents_count := 0
 
 var ID : int #TODO ADD IDs. With an ID I'll be able to store and load from disk if this node has already been unlocked.
@@ -36,15 +40,21 @@ func _ready() -> void:
 	mouse_exited.connect(mouse_state_changed.bind(false))
 
 
-func update_visuals() -> void: #TODO maybe like a grayer node when it can't be unlocked yet??!?
+func can_unlock() -> bool:
+	assert(parents_unlocked >= 0 and parents_unlocked <= parents_count, "parents_unlocked OUT OF BOUND. ABORTING")
+
+	return parents_unlocked == parents_count
+
+func update_visuals() -> void: 
 	if not is_node_ready():
 		return
 	
-	if parents_unlocked < parents_count:
-		get_node("Background").texture = locked_texture
-	else:
+	if locked == false:
 		get_node("Background").texture = unlocked_texture
-
+	elif can_unlock():
+		get_node("Background").texture = may_unlock_texture
+	else:
+		get_node("Background").texture = locked_texture
 
 func create_connection_lines() -> void:	#TODO Draw some lines 
 	if not is_node_ready():
@@ -66,10 +76,14 @@ func _gui_input(e : InputEvent) -> void:
 	if e is InputEventMouseButton:
 		var event : InputEventMouseButton = e
 
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.is_pressed():
 			unlock() #TODO Some logic to define if I can unlock this thingy
 
 func unlock() -> void:
+	prints("TRYING TO UNLOCK")
+	if not can_unlock() or not locked:
+		return
+	prints("UNLOCKED")
 	locked = false
 
 	for tree_node in links:
