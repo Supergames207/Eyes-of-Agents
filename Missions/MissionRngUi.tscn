@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://b1d5ij5a0dv5r" path="res://Missions/MissionRngUiMain.gd" id="1_sxhhj"]
 [ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="2_gn4rt"]
 [ext_resource type="Texture2D" uid="uid://dlw1ooyxfdha5" path="res://Assets/Assets2D/BAR.png" id="3_u8tjb"]
-[ext_resource type="Texture2D" uid="uid://j061opyamla7" path="res://icon.svg" id="4_hto8s"]
+[ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="4_gn4rt"]
 [ext_resource type="PackedScene" uid="uid://chplluommbrf6" path="res://GUI/DiceUI/Dice.tscn" id="5_gn4rt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u8tjb"]
+font = ExtResource("4_gn4rt")
 
 [node name="MissionRngUi" type="Control" unique_id=901271156]
 layout_mode = 3
@@ -16,88 +19,127 @@ grow_vertical = 2
 script = ExtResource("1_sxhhj")
 
 [node name="CardTemplate" type="Control" parent="." unique_id=2013028843]
-visible = false
 anchors_preset = 0
 offset_top = 50.0
 offset_right = 40.0
 offset_bottom = 90.0
 
 [node name="AgentCard" parent="CardTemplate" unique_id=519339936 instance=ExtResource("2_gn4rt")]
+visible = false
+z_index = 1
 layout_mode = 0
 offset_right = 140.0
 offset_bottom = 246.0
+scale = Vector2(0.8, 0.8)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=314831169]
+[node name="ScenarioMission" type="VBoxContainer" parent="CardTemplate" unique_id=314831169]
 visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -312.5
-offset_right = 312.5
-offset_bottom = 530.0
-grow_horizontal = 2
+layout_mode = 0
+offset_left = 112.0
+offset_top = 1.0
+offset_right = 362.0
+offset_bottom = 201.0
 
-[node name="Divisor" type="TextureRect" parent="VBoxContainer" unique_id=254321296]
+[node name="Divisor" type="TextureRect" parent="CardTemplate/ScenarioMission" unique_id=254321296]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("3_u8tjb")
 
-[node name="PrompContainer" type="BoxContainer" parent="VBoxContainer" unique_id=1898292060]
+[node name="PrompContainer" type="BoxContainer" parent="CardTemplate/ScenarioMission" unique_id=1898292060]
 layout_mode = 2
 
-[node name="AgentFace" type="TextureRect" parent="VBoxContainer/PrompContainer" unique_id=1559194116]
-custom_minimum_size = Vector2(75, 75)
+[node name="PromptLabel" type="Label" parent="CardTemplate/ScenarioMission/PrompContainer" unique_id=1699401288]
+custom_minimum_size = Vector2(250, 1)
 layout_mode = 2
-texture = ExtResource("4_hto8s")
-expand_mode = 1
+text = "Prompt"
+horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="PromptLabel" type="Label" parent="VBoxContainer/PrompContainer" unique_id=1699401288]
-custom_minimum_size = Vector2(625, 1)
-layout_mode = 2
-text = "Prompt Go HERE"
-autowrap_mode = 1
-
-[node name="Diviser" type="TextureRect" parent="VBoxContainer" unique_id=632340097]
+[node name="Diviser" type="TextureRect" parent="CardTemplate/ScenarioMission" unique_id=632340097]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 size_flags_vertical = 0
 texture = ExtResource("3_u8tjb")
 
-[node name="Option" type="BoxContainer" parent="VBoxContainer" unique_id=542935470]
+[node name="Option" type="BoxContainer" parent="CardTemplate/ScenarioMission" unique_id=542935470]
 layout_mode = 2
 alignment = 1
 
-[node name="YesContainer" type="VBoxContainer" parent="VBoxContainer/Option" unique_id=1019796182]
+[node name="YesContainer" type="VBoxContainer" parent="CardTemplate/ScenarioMission/Option" unique_id=1019796182]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/Option/YesContainer" unique_id=805550559]
-custom_minimum_size = Vector2(150, 50)
+[node name="Button" type="Button" parent="CardTemplate/ScenarioMission/Option/YesContainer" unique_id=805550559]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "ROLL"
 
-[node name="Stakes" type="Label" parent="VBoxContainer/Option/YesContainer" unique_id=159292117]
+[node name="Stakes" type="Label" parent="CardTemplate/ScenarioMission/Option/YesContainer" unique_id=159292117]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 text = "Chance: >1
--10% Survavibility
++N/A% Survavibility
 100$"
 autowrap_mode = 2
 
-[node name="NoContainer" type="VBoxContainer" parent="VBoxContainer/Option" unique_id=181324919]
+[node name="NoContainer" type="VBoxContainer" parent="CardTemplate/ScenarioMission/Option" unique_id=181324919]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/Option/NoContainer" unique_id=615781697]
-custom_minimum_size = Vector2(150, 50)
+[node name="Button" type="Button" parent="CardTemplate/ScenarioMission/Option/NoContainer" unique_id=615781697]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "NO!"
 
-[node name="Stakes" type="Label" parent="VBoxContainer/Option/NoContainer" unique_id=1290673733]
+[node name="Stakes" type="Label" parent="CardTemplate/ScenarioMission/Option/NoContainer" unique_id=1290673733]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-text = "-10% Survavibility"
+text = "-N/A% Survavibility"
 autowrap_mode = 2
+
+[node name="PuzzleMission" type="VBoxContainer" parent="CardTemplate" unique_id=1425498146]
+visible = false
+layout_mode = 0
+offset_left = 114.0
+offset_top = 1.0
+offset_right = 364.0
+offset_bottom = 112.0
+
+[node name="Divisor" type="TextureRect" parent="CardTemplate/PuzzleMission" unique_id=1039212234]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("3_u8tjb")
+
+[node name="PrompContainer" type="BoxContainer" parent="CardTemplate/PuzzleMission" unique_id=252459193]
+layout_mode = 2
+
+[node name="PromptLabel" type="Label" parent="CardTemplate/PuzzleMission/PrompContainer" unique_id=205373596]
+custom_minimum_size = Vector2(250, 1)
+layout_mode = 2
+text = "name has asked you to solve a encrypted phrase"
+label_settings = SubResource("LabelSettings_u8tjb")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Diviser" type="TextureRect" parent="CardTemplate/PuzzleMission" unique_id=646675590]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("3_u8tjb")
+
+[node name="Option" type="BoxContainer" parent="CardTemplate/PuzzleMission" unique_id=1281711751]
+layout_mode = 2
+alignment = 1
+
+[node name="GoTo" type="Button" parent="CardTemplate/PuzzleMission/Option" unique_id=457918929]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Go to"
+
+[node name="Dismiss" type="Button" parent="CardTemplate/PuzzleMission/Option" unique_id=796581995]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Dismiss"
 
 [node name="Dice" parent="." unique_id=358721238 instance=ExtResource("5_gn4rt")]
 position = Vector2(573, 352)

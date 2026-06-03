@@ -3,13 +3,6 @@ extends Control
 @onready var agent_card_control_template: Control = $CardTemplate
 var original_x := 0.0
 
-@onready var main_container: VBoxContainer = $VBoxContainer
-@onready var prompt_label: Label = $VBoxContainer/PrompContainer/PromptLabel
-@onready var prompt_face: TextureRect = $VBoxContainer/PrompContainer/AgentFace
-@onready var yes_button: Button = $VBoxContainer/Option/YesContainer/Button
-@onready var yes_stakes: Label = $VBoxContainer/Option/YesContainer/Stakes
-@onready var no_button: Button = $VBoxContainer/Option/NoContainer/Button
-@onready var no_stakes: Label = $VBoxContainer/Option/NoContainer/Stakes
 @onready var dice := $Dice
 @onready var popup_ui: Control = $"../Popup"
 
@@ -19,6 +12,7 @@ var rng_event_timer: float = 0.0
 var rng_event_interval: float = 10.0
 
 var current_missions: int
+var active_cards: Array = []
 
 var rolling: bool = false
 
@@ -32,17 +26,28 @@ func _process(delta: float) -> void:
 			if rng_event_timer >= rng_event_interval:
 				rng_event_timer = 0.0
 				_do_rng(a)
-		else: return
 
 func _do_rng(agent: Agent) -> void:
+	#Set up agent card
 	agent.mission_status["RngEvent"] = true
 	
 	var agent_card_control := agent_card_control_template.duplicate()
 	var agent_card: AgentCardUI = agent_card_control.get_node("AgentCard")
 	agent_card.fill_data(agent)
+	agent_card.visible = true
 	agent_card_control.position.x = -150.0
+	agent_card_control.position.y = active_cards.size() * 100.0 + agent_card_control.position.y
 	agent_card_control.visible = true
 	add_child(agent_card_control)
+	active_cards.append(agent_card_control)
+	
+	# Get Ui variables
+	var scenario_container: VBoxContainer = agent_card_control.get_node("ScenarioMission")
+	var prompt_label: Label = agent_card_control.get_node("ScenarioMission/PrompContainer/PromptLabel")
+	var yes_button: Button = agent_card_control.get_node("ScenarioMission/Option/YesContainer/Button")
+	var yes_stakes: Label = agent_card_control.get_node("ScenarioMission/Option/YesContainer/Stakes")
+	var no_button: Button = agent_card_control.get_node("ScenarioMission/Option/NoContainer/Button")
+	var no_stakes: Label = agent_card_control.get_node("ScenarioMission/Option/NoContainer/Stakes")
 	
 	var tween: Tween = create_tween()
 	tween.tween_property(agent_card_control, "position:x", original_x, 0.5)\
@@ -50,25 +55,41 @@ func _do_rng(agent: Agent) -> void:
 		.set_trans(Tween.TRANS_BACK)
 	tween.play()
 	
+	#Choose mission
 	var random_mission: Dictionary = RandomStrings.random_rng_event.pick_random()
 	var chance: int = random_mission["Chance"]
-	main_container.visible = true
-	prompt_label.text = random_mission["text"]
-	yes_stakes.text = "Chance: >" + str(chance) + "\nSurvivability: " + str(random_mission["Y_Survivability"]) + "%"
-	no_stakes.text = "Survivability: " + str(random_mission["N_Survivability"]) + "%"
 	
-	yes_button.pressed.connect(func() -> void:
-		if rolling: return
+	#Show mission
+	agent_card.pressed.connect(func() -> void:
+		if scenario_container.visible:
+			scenario_container.visible = false
+			return
 		
-		rolling = true
-		var dice_int: int = await dice._roll_dice() + 1
-		if dice_int >= chance:
-			agent.mission_status["Risk"] *= 1 + 1/float(chance) 
-		else:
-			agent.mission_status["Risk"] *= 1 - 1/float(chance)
-		agent_card_control.queue_free()
-		rolling = false
-		main_container.visible = false
+		for m: Control in active_cards:
+			m.get_node("ScenarioMission").visible = false
+			m.get_node("PuzzleMission").visible = false
 		
-		popup_ui._new_notification(agent.name + " survivability: " + str(chance) + "%", Color(randf(), randf(), randf()))
+		scenario_container.visible = true
+		prompt_label.text = random_mission["text"]
+		yes_stakes.text = "Chance: >" + str(chance) + "\nSurvivability: " + str(random_mission["Y_Survivability"]) + "%"
+		no_stakes.text = "Survivability: " + str(random_mission["N_Survivability"]) + "%"
+		
+		yes_button.pressed.connect(on_yes_button.bind(agent, agent_card_control, chance, scenario_container))
 	)
+
+func on_yes_button(agent: Agent, agent_card_control: Control, chance: int, scenario_container: VBoxContainer) -> void:
+	print(agent.name)
+	if rolling: return
+	
+	rolling = true
+	var dice_int: int = await dice._roll_dice() + 1
+	if dice_int >= chance:
+		agent.mission_status["Risk"] *= 1 + 1/float(chance) 
+	else:
+		agent.mission_status["Risk"] *= 1 - 1/float(chance)
+	
+	active_cards.erase(agent_card_control)
+	agent_card_control.queue_free()
+	rolling = false
+	scenario_container.visible = false
+	popup_ui._new_notification(agent.name + " survivability: " + str(chance) + "%", Color(randf(), randf(), randf()))

@@ -13,7 +13,6 @@ func _ready() -> void:
 	self.new_label_added.connect(_on_new_label)
 
 func _new_notification(text: String, color: Color) -> void:
-	print("here")
 	var label: Label = label_template.duplicate()
 	add_child(label)
 	
@@ -23,7 +22,6 @@ func _new_notification(text: String, color: Color) -> void:
 	label.add_theme_color_override("font_color", color)
 	label.modulate.a = 0.0
 	label.visible = true
-	print("idk")
 	emit_signal("new_label_added", label)
 	
 	var tween_in: Tween = create_tween()
@@ -31,7 +29,6 @@ func _new_notification(text: String, color: Color) -> void:
 		.set_ease(Tween.EASE_IN)\
 		.set_trans(Tween.TRANS_BACK)
 	tween_in.play()
-	print("tween1")
 	await get_tree().create_timer(2.5).timeout
 	
 	var tween_out: Tween = create_tween()
@@ -40,9 +37,7 @@ func _new_notification(text: String, color: Color) -> void:
 		.set_trans(Tween.TRANS_BACK)
 	tween_out.play()
 	await tween_out.finished
-	print("finishde")
 	label.queue_free()
-	print("delete")
 
 func _on_new_label(label: Label) -> void:
 	for l in self.get_children():
