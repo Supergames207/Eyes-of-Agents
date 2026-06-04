@@ -12,6 +12,8 @@ var is_game_loaded := false
 var player : Player
 var main_viewport : SubViewport
 
+var global_perk_holder : PerkHolder
+
 var current_day : int = 0
 var day_time_ms : int = 0
 var day_time : float = 0.0

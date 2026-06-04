@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cgl0u2iexp0sk"]
+
+[ext_resource type="Script" uid="uid://cxt0upniybldx" path="res://Missions/Picker/MissionsLocationsHandler.gd" id="1_flt48"]
+
+[node name="ButtonTemplate" type="Button" unique_id=1408520572]
+custom_minimum_size = Vector2(0, 30)
+text = "LOCATION | RISK: 4 "
+alignment = 0
+script = ExtResource("1_flt48")

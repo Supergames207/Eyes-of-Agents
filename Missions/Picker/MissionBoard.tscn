@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dmbbn7npq5nox"]
 
 [ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Scenes/HQ/MissionMain.gd" id="1_f5kmt"]
-[ext_resource type="Script" uid="uid://cxt0upniybldx" path="res://Missions/Picker/MissionsLocationsHandler.gd" id="4_fo4ty"]
 [ext_resource type="Texture2D" uid="uid://dnvn3hqwf5wji" path="res://Assets/Assets2D/alreasssing.png" id="4_mgdcg"]
 [ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="5_igv4n"]
 
@@ -53,13 +52,6 @@ offset_left = 3.0
 offset_top = 265.0
 offset_right = 509.0
 offset_bottom = 575.0
-
-[node name="ButtonTemplate" type="Button" parent="VBoxContainer" unique_id=1587810107]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-text = "LOCATION | RISK: 4 "
-alignment = 0
-script = ExtResource("4_fo4ty")
 
 [node name="AlreadyAssign" type="Button" parent="." unique_id=1237141122]
 visible = false

@@ -20,10 +20,14 @@ viewport_path = NodePath("AgentRecruiterBoard/SpriteGUI3D/SubViewport")
 
 [sub_resource type="Resource" id="Resource_smswu"]
 script = ExtResource("3_c2bgw")
+mean = 7.5
+deviation = 0.75
 metadata/_custom_type_script = "uid://bmrdax0g0rrjy"
 
 [sub_resource type="Resource" id="Resource_li1b0"]
 script = ExtResource("3_c2bgw")
+mean = 7.5
+deviation = 0.75
 metadata/_custom_type_script = "uid://bmrdax0g0rrjy"
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c2bgw"]

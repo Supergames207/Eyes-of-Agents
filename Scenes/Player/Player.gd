@@ -8,8 +8,6 @@ var agents : AgentArray
 var money : int
 var waiting_money : int #TO be awarded when the day ends
 
-# Updtables
-var missions_amount: int = 5
 
 func _ready() -> void:
 	camera = get_node("Camera3D")

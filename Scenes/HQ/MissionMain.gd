@@ -1,7 +1,7 @@
 extends Control
 
 @onready var loc_container := $VBoxContainer
-@onready var button_template := $VBoxContainer/ButtonTemplate
+# @onready var button_template := $VBoxContainer/ButtonTemplate
 @onready var danger_label := $DangerLabel
 @onready var loc_label := $LocationLabel
 @onready var obj_label := $ObjectiveLabel
@@ -9,6 +9,8 @@ extends Control
 @onready var next_agent_button := $NextAgent
 @onready var accept_button := $Accept
 @onready var alr_assign := $AlreadyAssign
+
+var button_template := preload("res://Missions/Picker/ButtonTemplate.tscn")
 
 var current_agent: int = 0
 var agent_array: AgentArray
@@ -20,8 +22,8 @@ func _ready() -> void:
 	await GlobalVariables.wait_till_game_loaded()
 	player = GlobalVariables.player
 	
-	for n in player.missions_amount:
-		var new_button: LocationButton = button_template.duplicate()
+	for n in range(0, GlobalPerkHolder.get_perk_value(&"MissionSlots")):
+		var new_button: LocationButton = button_template.instantiate()
 		loc_container.add_child(new_button)
 	
 	NewMissions._new_missions(loc_container)
@@ -29,14 +31,11 @@ func _ready() -> void:
 	agent_array = GlobalVariables.player.agents
 	
 	for l in loc_container.get_children():
-		@warning_ignore("untyped_declaration")
-		l.pressed.connect(func(): _on_pin_press(l.danger, l.location, l.objective, l))
+		l.pressed.connect(func() -> void: _on_pin_press(l.danger, l.location, l.objective, l))
 	
-	@warning_ignore("untyped_declaration")
-	next_agent_button.pressed.connect(func(): _on_next_agent())
+	next_agent_button.pressed.connect(func() -> void: _on_next_agent())
 	
-	@warning_ignore("untyped_declaration")
-	accept_button.pressed.connect(func(): _on_acceptance())
+	accept_button.pressed.connect(func() -> void: _on_acceptance())
 
 func _on_pin_press(_danger: float, _loc: String, _obj: String, pin: Button) -> void:
 	current_loc = pin
