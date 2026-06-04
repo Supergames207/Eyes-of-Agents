@@ -4,8 +4,8 @@ func _new_missions(loc_container: VBoxContainer) -> void:
 	for l in loc_container.get_children():
 		var rng := RandomNumberGenerator.new()
 		rng.randomize()
-		var val := rng.randfn(40, 60)
-		var result := int(clamp(val, 0, 100))
+		var val := rng.randfn(40, 50)
+		var result := int(clamp(val, 3, 90))
 		
 		var random_loc: String = RandomStrings.random_locations.pick_random()
 		

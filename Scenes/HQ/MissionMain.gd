@@ -8,6 +8,7 @@ extends Control
 @onready var agent_card := $AgentCard
 @onready var next_agent_button := $NextAgent
 @onready var accept_button := $Accept
+@onready var alr_assign := $AlreadyAssign
 
 var current_agent: int = 0
 var agent_array: AgentArray
@@ -50,6 +51,10 @@ func _on_next_agent() -> void:
 	current_agent = (current_agent + 1) % agent_array.agents.size()
 	var next_agent: Agent = agent_array.agents[current_agent]
 	agent_card.fill_data(next_agent)
+	if next_agent.mission_status["State"]:
+		alr_assign.visible = true
+	else:
+		alr_assign.visible = false
 
 func _on_acceptance() -> void:
 	if agent_array.agents.is_empty():

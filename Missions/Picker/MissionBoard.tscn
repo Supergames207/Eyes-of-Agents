@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Scenes/HQ/MissionMain.gd" id="1_f5kmt"]
 [ext_resource type="Script" uid="uid://cxt0upniybldx" path="res://Missions/Picker/MissionsLocationsHandler.gd" id="4_fo4ty"]
+[ext_resource type="Texture2D" uid="uid://dnvn3hqwf5wji" path="res://Assets/Assets2D/alreasssing.png" id="4_mgdcg"]
 [ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="5_igv4n"]
 
 [node name="MissionsMain" type="Control" unique_id=1115288096]
@@ -37,22 +38,6 @@ offset_right = 513.0
 offset_bottom = 150.0
 text = "Objective: "
 
-[node name="AgentCard" parent="." unique_id=519339936 instance=ExtResource("5_igv4n")]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 13.0
-offset_right = 145.0
-offset_bottom = 259.0
-
-[node name="NextAgent" type="Button" parent="." unique_id=2045887554]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 158.0
-offset_right = 179.0
-offset_bottom = 223.0
-text = ">
-"
-
 [node name="Accept" type="Button" parent="." unique_id=88528352]
 layout_mode = 0
 offset_left = 317.0
@@ -75,3 +60,33 @@ layout_mode = 2
 text = "LOCATION | RISK: 4 "
 alignment = 0
 script = ExtResource("4_fo4ty")
+
+[node name="AlreadyAssign" type="Button" parent="." unique_id=1237141122]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = -96.0
+offset_top = -28.0
+offset_right = 576.0
+offset_bottom = 620.0
+icon = ExtResource("4_mgdcg")
+flat = true
+expand_icon = true
+
+[node name="AgentCard" parent="." unique_id=519339936 instance=ExtResource("5_igv4n")]
+z_index = 2
+layout_mode = 0
+offset_left = 5.0
+offset_top = 13.0
+offset_right = 145.0
+offset_bottom = 259.0
+
+[node name="NextAgent" type="Button" parent="." unique_id=2045887554]
+z_index = 2
+layout_mode = 0
+offset_left = 150.0
+offset_top = 158.0
+offset_right = 179.0
+offset_bottom = 223.0
+text = ">
+"
