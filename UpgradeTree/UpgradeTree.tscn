@@ -34,6 +34,18 @@ perk_name = &"MissionSlots"
 change = 1.0
 metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
 
+[sub_resource type="Resource" id="Resource_1p08f"]
+script = ExtResource("3_ddxtx")
+perk_name = &"DaySalary"
+change = 100.0
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
+[sub_resource type="Resource" id="Resource_tqh6d"]
+script = ExtResource("3_ddxtx")
+perk_name = &"MoneyMultiplier"
+change = 0.1
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
 [node name="UpgradeTree" type="Control" unique_id=1661596182]
 layout_mode = 3
 anchors_preset = 15
@@ -65,7 +77,7 @@ offset_right = 40.0
 offset_bottom = 20.0
 grow_vertical = 2
 
-[node name="TreeNode" parent="TreeNodes" unique_id=471634567 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
+[node name="RankUpI" parent="TreeNodes" unique_id=471634567 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -74,54 +86,85 @@ offset_top = -32.0
 offset_right = 64.0
 offset_bottom = 32.0
 grow_vertical = 2
-links = [NodePath("../TreeNode2"), NodePath("../TreeNode3")]
+links = [NodePath("../PaycheckI"), NodePath("../PickyFingerI")]
 upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_ddxtx")])
 cost = 100
 node_name = "RankUp I"
 ID = 0
 
-[node name="@Line2D@165389" type="Line2D" parent="TreeNodes/TreeNode" unique_id=862891203]
+[node name="@Line2D@67619" type="Line2D" parent="TreeNodes/RankUpI" unique_id=434104127]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, -39.5)
 
-[node name="@Line2D@165390" type="Line2D" parent="TreeNodes/TreeNode" unique_id=965799051]
+[node name="@Line2D@67620" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1599331130]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 39.5)
 
-[node name="TreeNode2" parent="TreeNodes" unique_id=893888064 instance=ExtResource("2_7uquy")]
+[node name="RankUpII" parent="TreeNodes" unique_id=893888064 instance=ExtResource("2_7uquy")]
 layout_mode = 0
-offset_left = 79.0
-offset_top = -51.5
-offset_right = 79.0
-offset_bottom = -51.5
+offset_left = 237.0
+offset_top = -12.0
+offset_right = 301.0
+offset_bottom = 52.0
 upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_0j0bc")])
 cost = 200
 node_name = "RankUp II"
 ID = 1
 
-[node name="TreeNode3" parent="TreeNodes" unique_id=942374375 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
+[node name="PickyFingerI" parent="TreeNodes" unique_id=942374375 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
 layout_mode = 0
 offset_left = 79.0
 offset_top = 27.5
-offset_right = 79.0
-offset_bottom = 27.5
-links = [NodePath("../TreeNode4")]
+offset_right = 143.0
+offset_bottom = 91.5
+links = [NodePath("../NewGenSattelitesI")]
 upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_ms67t"), SubResource("Resource_2oppt")])
 cost = 100
 node_name = "Picky Finger I"
 ID = 2
 
-[node name="@Line2D@165391" type="Line2D" parent="TreeNodes/TreeNode3" unique_id=886510790]
+[node name="@Line2D@67621" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=364668072]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 0)
 
-[node name="TreeNode4" parent="TreeNodes" unique_id=1101492309 instance=ExtResource("2_7uquy")]
+[node name="NewGenSattelitesI" parent="TreeNodes" unique_id=1101492309 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
 layout_mode = 0
 offset_left = 158.0
 offset_top = 27.5
 offset_right = 222.0
 offset_bottom = 91.5
+links = [NodePath("../RankUpII"), NodePath("../PromotionI")]
 upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_a8u87")])
 cost = 100
 node_name = "NewGen Sattelites I"
 ID = 3
+
+[node name="@Line2D@67622" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=909642510]
+position = Vector2(64, 32)
+points = PackedVector2Array(0, 0, 15, -39.5)
+
+[node name="@Line2D@67623" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=1698797583]
+position = Vector2(64, 32)
+points = PackedVector2Array(0, 0, 15, 39.5)
+
+[node name="PaycheckI" parent="TreeNodes" unique_id=929052065 instance=ExtResource("2_7uquy")]
+layout_mode = 0
+offset_left = 79.0
+offset_top = -51.5
+offset_right = 143.0
+offset_bottom = 12.5
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_1p08f")])
+cost = 100
+node_name = "Paycheck I"
+ID = 4
+
+[node name="PromotionI" parent="TreeNodes" unique_id=231226547 instance=ExtResource("2_7uquy")]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 67.0
+offset_right = 301.0
+offset_bottom = 131.0
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_tqh6d")])
+cost = 100
+node_name = "Promotion I"
+ID = 5

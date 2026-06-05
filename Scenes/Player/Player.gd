@@ -32,7 +32,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func day_ended() -> void:
-	money += waiting_money - agents.overall_cost
+	waiting_money = roundi(waiting_money * GlobalPerkHolder.get_perk_value("MoneyMultiplier"))
+	
+	var paycheck := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
+
+	money += waiting_money - agents.overall_cost + paycheck
 	waiting_money = 0
 
 	if money < 0:
