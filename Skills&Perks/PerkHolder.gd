@@ -6,6 +6,7 @@ const save_path := "user://Perks.tres"
 
 @export_tool_button("Save Perks Lookup") var saver := save_lookup
 @export_tool_button("Load Last Perks Lookup") var loader := load_lookup
+@export_tool_button("Reset Perks to Default") var defaulter := reset_perks
 @export var perks_lookup : PerksLookup
 
 
@@ -73,6 +74,9 @@ func load_lookup() -> void:
 		return
 	
 	perks_lookup = ResourceLoader.load(save_path)
+
+func reset_perks() -> void:
+	DirAccess.remove_absolute(save_path)
 
 func _exit_tree() -> void:
 	save_lookup()
