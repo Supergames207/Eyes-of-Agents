@@ -9,12 +9,24 @@ class_name TreeNode extends Control
 
 @export var cost : int
 @export var node_name : String
+@export var icon : Texture2D:
+	set(value):
+		icon = value
+
+		if is_node_ready():
+			get_node("Icon").texture = icon
+
+@export var max_unlocked_links := -1
+@export var min_parents_unlocked := -1
+
+const padding := Vector2(15, 15)
 
 static var locked_texture : Texture2D = load("res://UpgradeTree/LockedTexture.tres")
 static var may_unlock_texture : Texture2D = load("res://UpgradeTree/MayUnlockTexture.tres")
 static var unlocked_texture : Texture2D = load("res://UpgradeTree/UnlockedTexture.tres")
 
-const padding := Vector2(15, 15)
+signal unlocked
+
 
 var locked := true:
 	set(value):
@@ -25,13 +37,22 @@ var locked := true:
 		if not locked:
 			for tree_node in links:
 				tree_node.parents_unlocked += 1
+
+			unlocked.emit()
 		update_visuals()
 
 var parents_unlocked := 0:
 	set(value):
 		parents_unlocked = value
 		update_visuals()
-var parents_count := 0
+var parents_count := 0:
+	set(value):
+		parents_count = value
+		update_visuals()
+
+var unlocked_links := 0
+
+var can_unlock_enforcer := true
 
 @export var ID : int = -1:
 	set(value):
@@ -58,11 +79,18 @@ func _ready() -> void:
 		if k is Line2D:
 			k.queue_free()
 	
+	get_node("Icon").texture = icon
+	
 	create_connection_lines()
 	update_visuals()
 
 	for k in links:
 		k.parents_count += 1
+
+		if k.locked == false:
+			link_unlocked()
+		else:
+			k.unlocked.connect(link_unlocked, CONNECT_ONE_SHOT)
 
 	mouse_entered.connect(mouse_state_changed.bind(true))
 	mouse_exited.connect(mouse_state_changed.bind(false))
@@ -78,7 +106,8 @@ func create_ID() -> void:
 func can_unlock() -> bool:
 	assert(parents_unlocked >= 0 and parents_unlocked <= parents_count, "parents_unlocked OUT OF BOUND. ABORTING")
 
-	return parents_unlocked == parents_count
+	return (parents_unlocked == parents_count or (min_parents_unlocked != -1 and min_parents_unlocked <= parents_unlocked)) \
+			and can_unlock_enforcer
 
 func update_visuals() -> void: 
 	if not is_node_ready() or Engine.is_editor_hint():
@@ -119,12 +148,29 @@ func unlock() -> void:
 	if not can_unlock() or not locked:
 		return
 	
+	# if GlobalVariables.player.money < cost:
+	# 	return
+	
 	locked = false
+
+	GlobalVariables.player.money -= cost
 
 	for info in upgrades:
 		GlobalPerkHolder.update_perk(info.perk_name, info.change, info.type)
 
 	
+func link_unlocked() -> void:
+	unlocked_links += 1
+
+	assert(unlocked_links <= max_unlocked_links or max_unlocked_links == -1)
+
+	if unlocked_links == max_unlocked_links:
+		for link in links:
+			if not link.locked:
+				continue
+			
+			link.can_unlock_enforcer = false
+
 
 func organize_links() -> void:
 	for k in range(links.size()):
@@ -135,8 +181,8 @@ func mouse_state_changed(entered : bool) -> void:
 
 	if entered:
 		create_information_text()
-	else:
-		get_node("InformationHolder/Information").text = ""
+	# else: #This was making the text look weird after the mouse enters the UI a second time
+		# get_node("InformationHolder/Information").text = ""
 
 
 func generate_upgrade_text(upgrade : UpgradeInfo) -> String:

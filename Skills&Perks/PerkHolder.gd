@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func update_perk(perk_name : StringName, change : float, type : UpdateType) -> Error:
 	if not perk_name in perks_lookup.perks:
-		push_error("Couldn't find string", perk_name, " in perks lookup dictionary")
+		push_error("Couldn't find string : ", perk_name, " in perks lookup dictionary")
 		return ERR_DOES_NOT_EXIST
 	
 	var perk := perks_lookup.perks[perk_name]
