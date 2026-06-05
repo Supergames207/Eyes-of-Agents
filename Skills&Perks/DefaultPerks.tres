@@ -1,25 +1,127 @@
 [gd_resource type="Resource" script_class="PerksLookup" format=3 uid="uid://cvkd4j8e5mnyl"]
 
 [ext_resource type="Script" uid="uid://dx1fsl888f1sa" path="res://Skills&Perks/Perk.gd" id="1_1xeoh"]
-[ext_resource type="Script" uid="uid://b0h6emee6va5u" path="res://Agents/Recruiter/NumberRange.gd" id="2_1xeoh"]
+[ext_resource type="Script" uid="uid://b0h6emee6va5u" path="res://Agents/Recruiter/NumberRange.gd" id="2_8xkuc"]
 [ext_resource type="Script" uid="uid://cfbox6gktpjrl" path="res://Skills&Perks/PerksLookup.gd" id="3_pfs7t"]
 
-[sub_resource type="Resource" id="Resource_8xkuc"]
-script = ExtResource("2_1xeoh")
-start = 5.0
-end = 6.0
+[sub_resource type="Resource" id="Resource_2t2ei"]
+script = ExtResource("2_8xkuc")
+start = 1.0
+end = 10.0
 step = 1.0
 metadata/_custom_type_script = "uid://b0h6emee6va5u"
 
-[sub_resource type="Resource" id="Resource_yjtwl"]
+[sub_resource type="Resource" id="Resource_tdbu3"]
+script = ExtResource("1_1xeoh")
+base_value = 4.0
+value_range = SubResource("Resource_2t2ei")
+apparent_value = 4.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
+[sub_resource type="Resource" id="Resource_57d8t"]
+script = ExtResource("2_8xkuc")
+start = 0.1
+end = 1.5
+step = 0.1
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_fy60b"]
+script = ExtResource("1_1xeoh")
+base_value = 1.0
+value_range = SubResource("Resource_57d8t")
+apparent_value = 1.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
+[sub_resource type="Resource" id="Resource_i8vmo"]
+script = ExtResource("2_8xkuc")
+start = 1.0
+end = 20.0
+step = 1.0
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_wek8u"]
 script = ExtResource("1_1xeoh")
 base_value = 5.0
-value_range = SubResource("Resource_8xkuc")
+value_range = SubResource("Resource_i8vmo")
 apparent_value = 5.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
+[sub_resource type="Resource" id="Resource_pfs7t"]
+script = ExtResource("2_8xkuc")
+end = 1000.0
+step = 1.0
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_612d4"]
+script = ExtResource("1_1xeoh")
+value_range = SubResource("Resource_pfs7t")
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
+[sub_resource type="Resource" id="Resource_dw0ry"]
+script = ExtResource("2_8xkuc")
+start = 0.5
+end = 1.5
+step = 0.1
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_sec5x"]
+script = ExtResource("1_1xeoh")
+base_value = 1.0
+value_range = SubResource("Resource_dw0ry")
+apparent_value = 1.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
+[sub_resource type="Resource" id="Resource_l7647"]
+script = ExtResource("2_8xkuc")
+start = 1.0
+end = 20.0
+step = 1.0
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_6w2sc"]
+script = ExtResource("1_1xeoh")
+base_value = 5.0
+value_range = SubResource("Resource_l7647")
+apparent_value = 5.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
+[sub_resource type="Resource" id="Resource_5qxwa"]
+script = ExtResource("2_8xkuc")
+start = 1.0
+end = 10.0
+step = 1.0
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_xc4hf"]
+script = ExtResource("1_1xeoh")
+base_value = 5.0
+value_range = SubResource("Resource_5qxwa")
+apparent_value = 5.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
+[sub_resource type="Resource" id="Resource_1xeoh"]
+script = ExtResource("2_8xkuc")
+start = 0.1
+end = 5.0
+step = 0.1
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_8xkuc"]
+script = ExtResource("1_1xeoh")
+base_value = 1.0
+value_range = SubResource("Resource_1xeoh")
+apparent_value = 1.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 
 [resource]
 script = ExtResource("3_pfs7t")
 perks = Dictionary[StringName, ExtResource("1_1xeoh")]({
-&"MissionSlots": SubResource("Resource_yjtwl")
+&"AgentRecruiterSlots": SubResource("Resource_tdbu3"),
+&"AssaultSkillDeviation": SubResource("Resource_fy60b"),
+&"AssaultSkillMean": SubResource("Resource_wek8u"),
+&"DaySalary": SubResource("Resource_612d4"),
+&"FurtiveSkillDeviation": SubResource("Resource_sec5x"),
+&"FurtiveSkillMean": SubResource("Resource_6w2sc"),
+&"MissionSlots": SubResource("Resource_xc4hf"),
+&"MoneyMultiplier": SubResource("Resource_8xkuc")
 })
