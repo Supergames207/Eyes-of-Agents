@@ -37,11 +37,11 @@ links = [NodePath("../TreeNode2"), NodePath("../TreeNode3")]
 upgrades = Array[ExtResource("3_ddxtx")]([])
 ID = 5
 
-[node name="@Line2D@71137" type="Line2D" parent="TreeNodes/TreeNode" unique_id=880470637]
+[node name="@Line2D@18523" type="Line2D" parent="TreeNodes/TreeNode" unique_id=1430296625]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 10, -40.775)
 
-[node name="@Line2D@71138" type="Line2D" parent="TreeNodes/TreeNode" unique_id=1424194914]
+[node name="@Line2D@18524" type="Line2D" parent="TreeNodes/TreeNode" unique_id=354406289]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 10, 33.225006)
 

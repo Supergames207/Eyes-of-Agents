@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dif0wvxjctgck" path="res://Missions/RngQuest/MissionRngUi.tscn" id="8_f140w"]
 [ext_resource type="PackedScene" uid="uid://drvg5dtdo1h6g" path="res://GUI/PopupUI/Popup.tscn" id="9_0iob3"]
 [ext_resource type="Script" uid="uid://isg2k0cqvjm7" path="res://Skills&Perks/PerkHolder.gd" id="9_4b75m"]
-[ext_resource type="Resource" path="user://Perks.tres" id="10_4b75m"]
+[ext_resource type="Resource" uid="uid://cvkd4j8e5mnyl" path="res://Skills&Perks/DefaultPerks.tres" id="10_4b75m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")

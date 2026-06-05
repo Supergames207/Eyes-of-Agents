@@ -7,6 +7,8 @@ class_name TreeNode extends Control
 
 @export var upgrades : Array[UpgradeInfo]
 
+@export var cost : int
+
 static var locked_texture : Texture2D = load("res://UpgradeTree/LockedTexture.tres")
 static var may_unlock_texture : Texture2D = load("res://UpgradeTree/MayUnlockTexture.tres")
 static var unlocked_texture : Texture2D = load("res://UpgradeTree/UnlockedTexture.tres")
@@ -120,3 +122,22 @@ func organize_links() -> void:
 
 func mouse_state_changed(entered : bool) -> void:
 	get_node("InformationHolder").visible = entered
+
+
+func generate_upgrade_text(upgrade : UpgradeInfo) -> String:
+	var result := name + " : "
+
+	match upgrade.type:
+		PerkHolder.UpdateType.Add:
+			result += "Increases " + str(upgrade.change) 
+	# str(upgrade.type)
+
+	return result
+
+func create_information_text() -> void:
+	var text : String = "Cost :" + str(cost) + "$"
+
+	for up in upgrades:
+		text += generate_upgrade_text(up) + "\n"
+
+	get_node("InformationHolder/Information").text = text

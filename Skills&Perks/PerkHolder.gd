@@ -1,6 +1,7 @@
 @tool
 class_name PerkHolder extends Node
 
+const editor_save_path := "res://Skills&Perks/DefaultPerks.tres"
 const save_path := "user://Perks.tres"
 
 @export_tool_button("Save Perks Lookup") var saver := save_lookup
@@ -61,9 +62,16 @@ func get_perk_value(perk_name : StringName) -> float:
 
 
 func save_lookup() -> void:
-	ResourceSaver.save(perks_lookup, save_path)
+	if Engine.is_editor_hint():
+		ResourceSaver.save(perks_lookup, editor_save_path)
+	else:
+		ResourceSaver.save(perks_lookup, save_path)
 
 func load_lookup() -> void:
+	if Engine.is_editor_hint():
+		perks_lookup = ResourceLoader.load(editor_save_path)
+		return
+	
 	if ResourceLoader.exists(save_path):
 		perks_lookup = ResourceLoader.load(save_path)
 	else:
