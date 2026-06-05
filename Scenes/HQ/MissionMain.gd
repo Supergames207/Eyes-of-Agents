@@ -1,11 +1,12 @@
 extends Control
 
-@onready var loc_container := $VBoxContainer
+@onready var loc_container := $VHS/VBoxContainer
 # @onready var button_template := $VBoxContainer/ButtonTemplate
-@onready var danger_label := $DangerLabel
-@onready var loc_label := $LocationLabel
-@onready var obj_label := $ObjectiveLabel
-@onready var agent_card := $AgentCard
+@onready var danger_label := $PaperInfo/VBoxContainer/DangerLabel
+@onready var loc_label := $PaperInfo/VBoxContainer/LocationLabel
+@onready var obj_label := $PaperInfo/VBoxContainer/ObjectiveLabel
+@onready var agent_card := $CardContainer/AgentCard
+@onready var assign_card := $CardContainer/TextureRect
 @onready var next_agent_button := $NextAgent
 @onready var accept_button := $Accept
 @onready var alr_assign := $AlreadyAssign
@@ -36,6 +37,8 @@ func _ready() -> void:
 	next_agent_button.pressed.connect(func() -> void: _on_next_agent())
 	
 	accept_button.pressed.connect(func() -> void: _on_acceptance())
+	
+	_on_next_agent()
 
 func _on_pin_press(_danger: float, _loc: String, _obj: String, pin: Button) -> void:
 	current_loc = pin
@@ -45,8 +48,12 @@ func _on_pin_press(_danger: float, _loc: String, _obj: String, pin: Button) -> v
 
 func _on_next_agent() -> void:
 	if agent_array.agents.size() == 0:
+		agent_card.visible = false
+		assign_card.visible = true
 		return
 	
+	agent_card.visible = true
+	assign_card.visible = false
 	current_agent = (current_agent + 1) % agent_array.agents.size()
 	var next_agent: Agent = agent_array.agents[current_agent]
 	agent_card.fill_data(next_agent)

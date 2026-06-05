@@ -7,11 +7,11 @@ class_name Perk extends Resource
 
 
 func _init() -> void:
-    prints("LOADING??!?")
-    
+	prints("LOADING??!?")
+	
 func get_value() -> float:
-    return value_range.make_within_range(apparent_value * multiplier)
+	return value_range.make_within_range(apparent_value * multiplier)
 
 func change_apparent_value(new : float) -> void:
-    apparent_value = value_range.make_within_range(new)
-     
+	apparent_value = value_range.make_within_range(new)
+	 

@@ -57,8 +57,11 @@ func get_perk(perk_name : StringName) -> Perk:
 
 func get_perk_value(perk_name : StringName) -> float:
 	if not perk_name in perks_lookup.perks:
+		print(perk_name)
+		for p in perks_lookup.perks:
+			print(p)
 		return 0
-	
+	print("no val")
 	return perks_lookup.perks[perk_name].get_value()
 
 
