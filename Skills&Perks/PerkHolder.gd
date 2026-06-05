@@ -68,14 +68,11 @@ func save_lookup() -> void:
 		ResourceSaver.save(perks_lookup, save_path)
 
 func load_lookup() -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() or not ResourceLoader.exists(save_path):
 		perks_lookup = ResourceLoader.load(editor_save_path)
 		return
 	
-	if ResourceLoader.exists(save_path):
-		perks_lookup = ResourceLoader.load(save_path)
-	else:
-		perks_lookup = PerksLookup.new()
+	perks_lookup = ResourceLoader.load(save_path)
 
 func _exit_tree() -> void:
 	save_lookup()

@@ -129,7 +129,11 @@ func generate_upgrade_text(upgrade : UpgradeInfo) -> String:
 
 	match upgrade.type:
 		PerkHolder.UpdateType.Add:
-			result += "Increases " + str(upgrade.change) 
+			result += "Increases " + str(upgrade.perk_name) + " by " + str(upgrade.change) 
+		PerkHolder.UpdateType.BaseMultiply:
+			result += "Increments " + str(upgrade.perk_name) + " by " + str(upgrade.change * 100) + "%" 
+		PerkHolder.UpdateType.Add:
+			result += "Multiplies " + str(upgrade.perk_name) + " by " + str(upgrade.change) 
 	# str(upgrade.type)
 
 	return result
