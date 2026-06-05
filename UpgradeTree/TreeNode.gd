@@ -5,6 +5,8 @@ class_name TreeNode extends Control
 @export_tool_button("Organize Links") var organizor := organize_links
 @export var links : Array[TreeNode]
 
+@export var upgrades : Array[UpgradeInfo]
+
 static var locked_texture : Texture2D = load("res://UpgradeTree/LockedTexture.tres")
 static var may_unlock_texture : Texture2D = load("res://UpgradeTree/MayUnlockTexture.tres")
 static var unlocked_texture : Texture2D = load("res://UpgradeTree/UnlockedTexture.tres")
@@ -28,10 +30,18 @@ var parents_unlocked := 0:
 		update_visuals()
 var parents_count := 0
 
-var ID : int
+@export var ID : int = -1
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint() and ID == -1:
+		var parent : UpgradeTree = get_parent().get_parent()
+		
+		if parent.is_node_ready():
+			create_ID()
+		else:
+			parent.ready.connect(create_ID, CONNECT_ONE_SHOT)
+
 	for k in get_children():
 		if k is Line2D:
 			k.queue_free()
@@ -44,6 +54,13 @@ func _ready() -> void:
 
 	mouse_entered.connect(mouse_state_changed.bind(true))
 	mouse_exited.connect(mouse_state_changed.bind(false))
+
+
+func create_ID() -> void:
+	var parent : UpgradeTree = get_parent().get_parent()
+
+	ID = parent.current_ID
+	parent.current_ID += 1
 
 
 func can_unlock() -> bool:
@@ -91,6 +108,9 @@ func unlock() -> void:
 		return
 	
 	locked = false
+
+	for info in upgrades:
+		GlobalPerkHolder.update_perk(info.perk_name, info.change, info.type)
 
 	
 

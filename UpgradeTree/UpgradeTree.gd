@@ -1,5 +1,5 @@
 @tool
-extends Control
+class_name UpgradeTree extends Control
 
 const panning_sensivity := Vector2(1, 1)
 const zoom_senvivity := 1
@@ -7,16 +7,26 @@ const zoom_senvivity := 1
 const zoom_bound := Vector2(-1, 1)
 const scale_bound := Vector2(1, 10)
 
-const upgrade_resource_tree_path := "res://UpgradeTree/UpgradeResourceTree.tres"
-const tree_state_path := "user:\\UpgradeTreeState"
+# const upgrade_resource_tree_path := "res://UpgradeTree/UpgradeResourceTree.tres"
+const tree_state_path := "user://UpgradeTreeState"
 
-@export_tool_button("Convert Editor Mess To Resource Tree") var convertor := convert_nodes_to_resource_tree
-@export_tool_button("Test Resource Tree Loading") var debug_loader := convert_resource_tree_to_nodes
+
+var current_ID := 0
+var ID_map : Dictionary[int, TreeNode] = {}
+# @export_tool_button("Convert Editor Mess To Resource Tree") var convertor := convert_nodes_to_resource_tree
+# @export_tool_button("Test Resource Tree Loading") var debug_loader := convert_resource_tree_to_nodes
 
 
 func _ready() -> void:
 	set_process(not Engine.is_editor_hint())
 
+	for k in get_node("TreeNodes").get_children():
+		ID_map[k.ID] = k
+	
+	load_current_tree_state()
+	prints("CURRENT ID", current_ID)
+
+	GlobalVariables.closing_game.connect(save_current_tree_state)
 
 func _gui_input(e : InputEvent) -> void:
 	prints("GINPUT", Input.get_axis("Zoom Out", "Zoom In"))
@@ -35,87 +45,87 @@ func _gui_input(e : InputEvent) -> void:
 		
 		global_position = -old_pos * scale + get_global_mouse_position()
 
-
+#TODO MAYBE THIS IS A BAD IDEA. JUST MAYBE
 ##ONLY TO BE USED WHILE ON THE EDITOR.
-func convert_nodes_to_resource_tree() -> void:
-	var current_ID := 0
+# func convert_nodes_to_resource_tree() -> void:
+# 	var current_ID := 0
 
-	var holder := get_node("TreeNodes")
+# 	var holder := get_node("TreeNodes")
 
-	for k in holder.get_children():
-		if not k is TreeNode:
-			continue
+# 	for k in holder.get_children():
+# 		if not k is TreeNode:
+# 			continue
 		
-		k.ID = current_ID
-		current_ID += 1
+# 		k.ID = current_ID
+# 		current_ID += 1
 	
-	var resource_tree := ResourceTree.new()
+# 	var resource_tree := ResourceTree.new()
 
-	resource_tree.data = PackedInt32Array()
+# 	resource_tree.data = PackedInt32Array()
 	
 	
-	for tree_node : TreeNode in holder.get_children():
-		resource_tree.data.push_back(1 + 3 + tree_node.links.size()) #Size
-		resource_tree.data.push_back(tree_node.ID)
-		resource_tree.data.push_back(int(tree_node.position.x))
-		resource_tree.data.push_back(int(tree_node.position.y))
+# 	for tree_node : TreeNode in holder.get_children():
+# 		resource_tree.data.push_back(1 + 3 + tree_node.links.size()) #Size
+# 		resource_tree.data.push_back(tree_node.ID)
+# 		resource_tree.data.push_back(int(tree_node.position.x))
+# 		resource_tree.data.push_back(int(tree_node.position.y))
 		
-		for link in tree_node.links:
-			resource_tree.data.push_back(link.ID)
+# 		for link in tree_node.links:
+# 			resource_tree.data.push_back(link.ID)
 	
-	var result := ResourceSaver.save(resource_tree, upgrade_resource_tree_path)
-
-	prints("RESULT",error_string(result))
+# 	ResourceSaver.save(resource_tree, upgrade_resource_tree_path)
 
 
-var ID_map : Dictionary[int, TreeNode] = {}
+# func convert_resource_tree_to_nodes() -> void:
+# 	var resource_tree : ResourceTree = ResourceLoader.load(upgrade_resource_tree_path,  "", ResourceLoader.CACHE_MODE_IGNORE)
+# 	var data := resource_tree.data
 
-func convert_resource_tree_to_nodes() -> void:
-	var resource_tree : ResourceTree = ResourceLoader.load(upgrade_resource_tree_path,  "", ResourceLoader.CACHE_MODE_IGNORE)
-	var data := resource_tree.data
+# 	var holder := get_node("TreeNodes")
 
-	var holder := get_node("TreeNodes")
+# 	var index := 0
 
-	var index := 0
+# 	ID_map = {}
 
-	ID_map = {}
+# 	while index < data.size():
+# 		var mem_size := data[index]
 
-	while index < data.size():
-		var mem_size := data[index]
+# 		var new_tree_node := TreeNode.new()
 
-		var new_tree_node := TreeNode.new()
+# 		new_tree_node.ID = data[index + 1]
+# 		new_tree_node.position = Vector2(data[index + 2], data[index + 3])
 
-		new_tree_node.ID = data[index + 1]
-		new_tree_node.position = Vector2(data[index + 2], data[index + 3])
+# 		ID_map[new_tree_node.ID] = new_tree_node
 
-		ID_map[new_tree_node.ID] = new_tree_node
+# 		holder.add_child(new_tree_node)
+# 		new_tree_node.owner = self
 
-		holder.add_child(new_tree_node)
-		new_tree_node.owner = self
-
-		index += mem_size
+# 		index += mem_size
 	
-	index = 0
+# 	index = 0
 
-	while index < data.size():
-		var mem_size := data[index]
+# 	while index < data.size():
+# 		var mem_size := data[index]
 
-		var tree_node := ID_map[data[index + 1]]
+# 		var tree_node := ID_map[data[index + 1]]
 
-		for k in range(4, mem_size):
-			tree_node.links.push_back(ID_map[data[index + k]])
+# 		for k in range(4, mem_size):
+# 			tree_node.links.push_back(ID_map[data[index + k]])
 
-		index += mem_size
+# 		index += mem_size
 	
-
-
 func save_current_tree_state() -> void:
 	var file := FileAccess.open(tree_state_path, FileAccess.WRITE)
 	
-	for tree_node : TreeNode in get_node("TreeNodes").get_children():
-		var packed := tree_node.ID + int(tree_node.locked) << 31
+	if not file:
+		push_error("Couldn't open Tree State File", error_string(FileAccess.get_open_error()))
+		return
+	
+	file.store_32(current_ID)
 
-		prints("IS PACKED WORKING?", "ID", packed << 1 >> 1, tree_node.ID, "LOCKED", packed >> 31 & 1, tree_node.locked)
+	for tree_node : TreeNode in get_node("TreeNodes").get_children():
+		var packed := tree_node.ID | int(tree_node.locked) << 31
+		
+		prints("IS PACKED WORKING?", "ID", packed & 0x7FFFFFFF == tree_node.ID, "LOCKED", packed >> 31 & 1 == int(tree_node.locked))
 		file.store_32(packed)
 
 	file.close()
@@ -127,14 +137,14 @@ func load_current_tree_state() -> void:
 	
 	var file := FileAccess.open(tree_state_path, FileAccess.READ)
 
-	var index := 0
-	
-	while index < file.get_length():
+	current_ID = file.get_32()
+
+	while file.get_position() < file.get_length():
 		var packed := file.get_32()
 
-		var ID := packed << 1 >> 1
+		var ID := packed & 0x7FFFFFFF
 		var locked := packed >> 31 & 1
-
+		
 		ID_map[ID].locked = locked
 
 	file.close()

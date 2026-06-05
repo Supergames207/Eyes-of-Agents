@@ -4,6 +4,8 @@ extends Node
 signal game_loaded
 signal day_ended
 
+signal closing_game
+
 
 const day_duration := 1 * 60 * 1000
 
@@ -41,3 +43,8 @@ func _process(_delta: float) -> void:
 
 		day_ended.emit()
 		prints("NEXT DAY", current_day)
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		closing_game.emit()
