@@ -18,23 +18,29 @@ var ID_map : Dictionary[int, TreeNode] = {}
 
 
 func _ready() -> void:
+	
 	set_process(not Engine.is_editor_hint())
 
+	var old_ID := 0
+
 	for k in get_node("TreeNodes").get_children():
+		if Engine.is_editor_hint():
+			old_ID = max(old_ID, k.ID + 1)
+
 		ID_map[k.ID] = k
 	
 	load_current_tree_state()
-	prints("CURRENT ID", current_ID)
+
+	if Engine.is_editor_hint():
+		current_ID = old_ID
 
 	GlobalVariables.closing_game.connect(save_current_tree_state)
 
 func _gui_input(e : InputEvent) -> void:
-	prints("GINPUT", Input.get_axis("Zoom Out", "Zoom In"))
 	if e is InputEventMouseMotion:
 		var event : InputEventMouseMotion = e
 
 		if Input.is_action_pressed("Click"):
-			prints("PANNING?")
 			global_position += event.screen_relative * panning_sensivity
 			accept_event()
 

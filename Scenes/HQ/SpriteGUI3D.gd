@@ -73,7 +73,7 @@ func _process(_delta : float) -> void:
 		
 
 	
-func _input(event : InputEvent) -> void:
+func _unhandled_input(event : InputEvent) -> void:
 	var is_mouse_event := event is InputEventMouse
 	# if not (is_mouse_inside or is_mouse_held):
 	# 	return

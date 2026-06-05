@@ -4,11 +4,44 @@
 [ext_resource type="PackedScene" uid="uid://bk73dku7c84fl" path="res://UpgradeTree/TreeNode.tscn" id="2_7uquy"]
 [ext_resource type="Script" uid="uid://c4n7neb5bu0xi" path="res://Skills&Perks/UpgradeInfo.gd" id="3_ddxtx"]
 
+[sub_resource type="Resource" id="Resource_ddxtx"]
+script = ExtResource("3_ddxtx")
+perk_name = &"MissionSlots"
+change = 1.0
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
+[sub_resource type="Resource" id="Resource_0j0bc"]
+script = ExtResource("3_ddxtx")
+perk_name = &"MissionSlots"
+change = 1.0
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
+[sub_resource type="Resource" id="Resource_ms67t"]
+script = ExtResource("3_ddxtx")
+perk_name = &"AssaultSkillMean"
+change = 1.0
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
+[sub_resource type="Resource" id="Resource_2oppt"]
+script = ExtResource("3_ddxtx")
+perk_name = &"FurtiveSkillMean"
+change = 1.0
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
+[sub_resource type="Resource" id="Resource_a8u87"]
+script = ExtResource("3_ddxtx")
+perk_name = &"MissionSlots"
+change = 1.0
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
 [node name="UpgradeTree" type="Control" unique_id=1661596182]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -972.0
+offset_right = 3456.0
+offset_bottom = 972.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ydur8")
@@ -23,44 +56,72 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TreeNodes" type="Control" parent="." unique_id=444691971]
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
 
 [node name="TreeNode" parent="TreeNodes" unique_id=471634567 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 0
-offset_top = 64.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
 offset_right = 64.0
-offset_bottom = 128.0
+offset_bottom = 32.0
+grow_vertical = 2
 links = [NodePath("../TreeNode2"), NodePath("../TreeNode3")]
-upgrades = Array[ExtResource("3_ddxtx")]([])
-ID = 5
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_ddxtx")])
+cost = 100
+node_name = "RankUp I"
+ID = 0
 
-[node name="@Line2D@18523" type="Line2D" parent="TreeNodes/TreeNode" unique_id=1430296625]
+[node name="@Line2D@165389" type="Line2D" parent="TreeNodes/TreeNode" unique_id=862891203]
 position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 10, -40.775)
+points = PackedVector2Array(0, 0, 15, -39.5)
 
-[node name="@Line2D@18524" type="Line2D" parent="TreeNodes/TreeNode" unique_id=354406289]
+[node name="@Line2D@165390" type="Line2D" parent="TreeNodes/TreeNode" unique_id=965799051]
 position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 10, 33.225006)
+points = PackedVector2Array(0, 0, 15, 39.5)
 
 [node name="TreeNode2" parent="TreeNodes" unique_id=893888064 instance=ExtResource("2_7uquy")]
 layout_mode = 0
-offset_left = 74.0
-offset_top = 23.224998
-offset_right = 74.0
-offset_bottom = 23.224998
-upgrades = Array[ExtResource("3_ddxtx")]([])
-ID = 6
+offset_left = 79.0
+offset_top = -51.5
+offset_right = 79.0
+offset_bottom = -51.5
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_0j0bc")])
+cost = 200
+node_name = "RankUp II"
+ID = 1
 
-[node name="TreeNode3" parent="TreeNodes" unique_id=942374375 instance=ExtResource("2_7uquy")]
+[node name="TreeNode3" parent="TreeNodes" unique_id=942374375 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
 layout_mode = 0
-offset_left = 74.0
-offset_top = 97.225
-offset_right = 74.0
-offset_bottom = 97.225
-upgrades = Array[ExtResource("3_ddxtx")]([])
-ID = 7
+offset_left = 79.0
+offset_top = 27.5
+offset_right = 79.0
+offset_bottom = 27.5
+links = [NodePath("../TreeNode4")]
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_ms67t"), SubResource("Resource_2oppt")])
+cost = 100
+node_name = "Picky Finger I"
+ID = 2
 
-[editable path="TreeNodes/TreeNode"]
+[node name="@Line2D@165391" type="Line2D" parent="TreeNodes/TreeNode3" unique_id=886510790]
+position = Vector2(64, 32)
+points = PackedVector2Array(0, 0, 15, 0)
+
+[node name="TreeNode4" parent="TreeNodes" unique_id=1101492309 instance=ExtResource("2_7uquy")]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 27.5
+offset_right = 222.0
+offset_bottom = 91.5
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_a8u87")])
+cost = 100
+node_name = "NewGen Sattelites I"
+ID = 3

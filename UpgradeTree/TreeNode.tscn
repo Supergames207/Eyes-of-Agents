@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://0o2duwj7ys71" path="res://UpgradeTree/LockedTexture.tres" id="2_2df0v"]
 
 [node name="TreeNode" type="Control" unique_id=471634567]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ex610")
-upgrades = null
 
 [node name="Background" type="TextureRect" parent="." unique_id=1353082432]
 layout_mode = 0

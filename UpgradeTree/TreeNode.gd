@@ -8,12 +8,13 @@ class_name TreeNode extends Control
 @export var upgrades : Array[UpgradeInfo]
 
 @export var cost : int
+@export var node_name : String
 
 static var locked_texture : Texture2D = load("res://UpgradeTree/LockedTexture.tres")
 static var may_unlock_texture : Texture2D = load("res://UpgradeTree/MayUnlockTexture.tres")
 static var unlocked_texture : Texture2D = load("res://UpgradeTree/UnlockedTexture.tres")
 
-const padding := Vector2(10,10)
+const padding := Vector2(15, 15)
 
 var locked := true:
 	set(value):
@@ -32,7 +33,16 @@ var parents_unlocked := 0:
 		update_visuals()
 var parents_count := 0
 
-@export var ID : int = -1
+@export var ID : int = -1:
+	set(value):
+		ID = value
+		if Engine.is_editor_hint() and ID == -1:
+			var parent : UpgradeTree = get_parent().get_parent()
+			
+			if parent.is_node_ready():
+				create_ID()
+			else:
+				parent.ready.connect(create_ID, CONNECT_ONE_SHOT)
 
 
 func _ready() -> void:
@@ -123,23 +133,29 @@ func organize_links() -> void:
 func mouse_state_changed(entered : bool) -> void:
 	get_node("InformationHolder").visible = entered
 
+	if entered:
+		create_information_text()
+	else:
+		get_node("InformationHolder/Information").text = ""
+
 
 func generate_upgrade_text(upgrade : UpgradeInfo) -> String:
-	var result := name + " : "
-
 	match upgrade.type:
 		PerkHolder.UpdateType.Add:
-			result += "Increases " + str(upgrade.perk_name) + " by " + str(upgrade.change) 
+			var change_sign := "Increases " if signf(upgrade.change) else "Decreases "
+			return change_sign + str(upgrade.perk_name) + " by " + str(abs(upgrade.change))
+		
 		PerkHolder.UpdateType.BaseMultiply:
-			result += "Increments " + str(upgrade.perk_name) + " by " + str(upgrade.change * 100) + "%" 
+			return "Increments " + str(upgrade.perk_name) + " by " + str(abs(upgrade.change) * 100) + "%" 
+		
 		PerkHolder.UpdateType.Add:
-			result += "Multiplies " + str(upgrade.perk_name) + " by " + str(upgrade.change) 
-	# str(upgrade.type)
+			return "Multiplies " + str(upgrade.perk_name) + " by " + str(upgrade.change) 
 
-	return result
+		_:
+			return ""
 
 func create_information_text() -> void:
-	var text : String = "Cost :" + str(cost) + "$"
+	var text : String = node_name + "\nCost :" + str(cost) + "$ \n"
 
 	for up in upgrades:
 		text += generate_upgrade_text(up) + "\n"
