@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://drvg5dtdo1h6g" path="res://GUI/PopupUI/Popup.tscn" id="9_0iob3"]
 [ext_resource type="Script" uid="uid://isg2k0cqvjm7" path="res://Skills&Perks/PerkHolder.gd" id="9_4b75m"]
 [ext_resource type="Resource" uid="uid://cvkd4j8e5mnyl" path="res://Skills&Perks/DefaultPerks.tres" id="10_4b75m"]
+[ext_resource type="PackedScene" uid="uid://uystgdnn16hb" path="res://GUI/PlayerStats/Stats.tscn" id="11_8ju71"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
@@ -43,6 +44,7 @@ albedo_color = Color(0.38039216, 0.21176471, 0, 1)
 script = ExtResource("1_7rqgy")
 
 [node name="CameraViewportContainer" type="SubViewportContainer" parent="." unique_id=1906970373]
+z_index = -5
 material = SubResource("ShaderMaterial_tr2i4")
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,3 +103,7 @@ mouse_filter = 2
 script = ExtResource("9_4b75m")
 perks_lookup = ExtResource("10_4b75m")
 metadata/_custom_type_script = "uid://isg2k0cqvjm7"
+
+[node name="Stats" parent="." unique_id=1871767876 instance=ExtResource("11_8ju71")]
+anchors_preset = 5
+grow_vertical = 1

@@ -32,6 +32,8 @@ func _ready() -> void:
 	agent_array = GlobalVariables.player.agents
 	
 	for l in loc_container.get_children():
+		if not l is LocationButton:
+			continue
 		l.pressed.connect(func() -> void: _on_pin_press(l.danger, l.location, l.objective, l))
 	
 	next_agent_button.pressed.connect(func() -> void: _on_next_agent())
@@ -89,4 +91,5 @@ func _on_acceptance() -> void:
 	agent.mission_status["Location"] = RandomStrings.random_locations.find(current_loc.location)
 	agent.mission_status["Risk"] = current_loc.danger / 100
 	
+	current_loc.queue_free()
 	print(agent.mission_status)

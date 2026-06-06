@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://uystgdnn16hb"]
+
+[ext_resource type="Script" uid="uid://b55icjk4r4ujt" path="res://GUI/PlayerStats/StatsMain.gd" id="1_2gksl"]
+[ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_ylhng"]
+[ext_resource type="Texture2D" uid="uid://cfsursmmfn32e" path="res://Assets/Assets2D/StatsBoard.jpg" id="2_mc7ah"]
+[ext_resource type="Texture2D" uid="uid://4kyu1ynnvs8o" path="res://Assets/Assets2D/SUN2.png" id="3_mc7ah"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2gksl"]
+texture = ExtResource("2_mc7ah")
+
+[sub_resource type="LabelSettings" id="LabelSettings_77hv4"]
+font_size = 51
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gksl"]
+font_size = 51
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Stats" type="Control" unique_id=1871767876]
+layout_mode = 3
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.5
+offset_right = 250.5
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2gksl")
+
+[node name="Cash" type="Label" parent="." unique_id=1805091811]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -218.0
+offset_bottom = 66.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_ylhng")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_2gksl")
+text = "99999 $"
+label_settings = SubResource("LabelSettings_77hv4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="." unique_id=6312708]
+layout_mode = 1
+offset_right = 218.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("1_ylhng")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2gksl")
+text = "Day: 10000"
+label_settings = SubResource("LabelSettings_2gksl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sun" type="TextureRect" parent="Time" unique_id=1818081423]
+z_index = -1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 7.0
+offset_right = 20.0
+offset_bottom = 46.99997
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_mc7ah")
+expand_mode = 1
+stretch_mode = 4

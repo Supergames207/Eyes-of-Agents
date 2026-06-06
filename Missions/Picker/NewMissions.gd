@@ -2,6 +2,8 @@ extends Node
 
 func _new_missions(loc_container: VBoxContainer) -> void:
 	for l in loc_container.get_children():
+		if not l is LocationButton: 
+			continue
 		var rng := RandomNumberGenerator.new()
 		rng.randomize()
 		var val := rng.randfn(40, 50)

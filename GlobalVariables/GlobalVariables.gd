@@ -6,8 +6,8 @@ signal day_ended
 
 signal closing_game
 
-
-const day_duration := 1 * 60 * 1000
+const day_duration_sec :=  1 * 60
+const day_duration := day_duration_sec * 1000
 
 var is_game_loaded := false
 

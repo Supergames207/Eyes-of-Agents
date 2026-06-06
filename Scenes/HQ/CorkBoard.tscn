@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://drablnydjvvpd"]
+[gd_scene format=4 uid="uid://drablnydjvvpd"]
 
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/SpriteGUI3D.gd" id="1_661ih"]
 [ext_resource type="PackedScene" uid="uid://dmbbn7npq5nox" path="res://Missions/Picker/MissionBoard.tscn" id="2_01br0"]
@@ -11,8 +11,51 @@
 material = SubResource("StandardMaterial3D_wf04p")
 size = Vector3(6, 6, -0.005)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_01br0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_17tlo"]
 viewport_path = NodePath("MissionBoard/SpriteGUI3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qy08"]
+resource_name = "Material"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pydtw"]
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.020384245, 0.02, 0.02, 0.030384244),
+"format": 34359742465,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAgAEAAAABAAFAAMABAACAAYABgAFAAQABwADAAUABQAGAAcAAwAHAAEACAAGAAIACQAHAAYABgAIAAkACgABAAcABwAJAAoACwACAAEAAgALAAgAAQAKAAsACQAIAAwACgAJAA0ADAANAAkACwAKAA4ADQAOAAoACAALAA8ADgAPAAsADwAMAAgAEAAOAA0AEQAPAA4ADgAQABEADwARABIAEgAMAA8AEwARABAAFAANAAwADAASABQADQAUABAAFQAUABIAFgASABEAEgAWABUAEQATABYAFAAVABcAFwAQABQAFwAVABYAEAAXABMAFgATABcA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("1KoZPNSqGbykdMm51KoZPNSqGbwK1yM81KoZvNSqGbwK1yM81KoZPNSqGTykdMm51KoZvNSqGbykdMm51KoZvNSqGTykdMm51KoZvNSqGTwK1yM81KoZPNSqGTwK1yM8CtcjvArXIzwK1yM8CtcjPArXIzwK1yM8CtcjPArXI7wK1yM8CtcjvArXI7wK1yM8CtcjvArXIzwK1yO8CtcjPArXIzwK1yO8CtcjPArXI7wK1yO8CtcjvArXI7wK1yO81KoZPNSqGbwK1yO81KoZvNSqGbwK1yO81KoZvNSqGTwK1yO81KoZvNSqGbzc/Ka81KoZPNSqGTwK1yO81KoZPNSqGTzc/Ka81KoZvNSqGTzc/Ka81KoZPNSqGbzc/Ka8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_01br0"]
+resource_name = "Cube"
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.020384245, 0.02, 0.02, 0.030384244),
+"attribute_data": PackedByteArray("ovwhP0b5gz6i/CE/RvmDPl4DXj9E+YM+XgNeP0T5gz4AACA/AAAAAAAAID8AAIA+AADAPgAAgD4AAMA+AAAAAAAAID8AAEA/AAAgPwAAgD8AAMA+AACAPwAAwD4AAEA/ivIHPkb5gz6K8gc+RvmDPrwGvD5E+YM+vAa8PkT5gz4AACA/AACAPgAAID8AAAA/AADAPgAAAD8AAMA+AACAPgAAID8AAAA/AAAgPwAAQD8AAMA+AABAPwAAwD4AAAA/AAAAPgAAgD6K8gc+RvmDPoryBz68Bvw+AADAPgAAgD4AAAA+AAAAP7wGvD5E+YM+vAa8ProG/D4AAMA+AAAAPwAAYD8AAIA+XgNeP0T5gz6i/CE/RvmDPgAAYD8AAAA/AAAgPwAAgD5dA14/ugb8PqH8IT+8Bvw+AAAgPwAAAD9eA14/RPmDPl0DXj+6Bvw+ofwhP7wG/D6i/CE/RvmDPrwGvD5E+YM+vAa8ProG/D6K8gc+vAb8PoryBz5G+YM+ivIHPrwG/D6K8gc+vAb8PoryBz5G+YM+ivIHPkb5gz68Brw+RPmDPrwGvD5E+YM+vAa8ProG/D68Brw+ugb8Pl4DXj9E+YM+XgNeP0T5gz5dA14/ugb8Pl0DXj+6Bvw+ofwhP7wG/D6h/CE/vAb8PqL8IT9G+YM+ovwhP0b5gz68Brw+ugb8PrwGvD66Bvw+ivIHPrwG/D6K8gc+vAb8Pl0DXj+6Bvw+XQNeP7oG/D6h/CE/vAb8PqH8IT+8Bvw+"),
+"format": 34359742487,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGQAYABsAGgAcABgAGwAdABkAHAAaAB4AHQAbAB8AHgAfABwAHwAeAB0AIAAhACIAIQAgACMAIgAkACAAIwAlACEAJAAiACYAJQAjACcAJgAnACQAJwAmACUAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANgA3ADQAOAA5ADoAOgA7ADgAPAA9AD4APgA/ADwAQABBAEIAQgBDAEAARABFAEYARgBHAEQA"),
+"material": SubResource("StandardMaterial3D_4qy08"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("1KoZPNSqGbykdMm51KoZPNSqGbwK1yM81KoZvNSqGbwK1yM81KoZvNSqGbykdMm5CtcjvArXI7wK1yM8CtcjPArXI7wK1yM8CtcjPArXI7wK1yO8CtcjvArXI7wK1yO8CtcjvArXIzwK1yM8CtcjvArXI7wK1yM8CtcjvArXI7wK1yO8CtcjvArXIzwK1yO81KoZvNSqGbzc/Ka81KoZvNSqGbwK1yO81KoZPNSqGbwK1yO81KoZPNSqGbzc/Ka8CtcjPArXI7wK1yM8CtcjPArXIzwK1yM8CtcjPArXIzwK1yO8CtcjPArXI7wK1yO8CtcjPArXIzwK1yM8CtcjvArXIzwK1yM8CtcjvArXIzwK1yO8CtcjPArXIzwK1yO8CtcjvArXI7wK1yO81KoZvNSqGbwK1yO81KoZvNSqGTwK1yO8CtcjPArXI7wK1yO8CtcjvArXIzwK1yO81KoZPNSqGbwK1yO81KoZPNSqGTwK1yO8CtcjPArXIzwK1yO8CtcjvArXI7wK1yM81KoZvNSqGbwK1yM81KoZPNSqGbwK1yM8CtcjvArXIzwK1yM8CtcjPArXI7wK1yM81KoZvNSqGTwK1yM81KoZPNSqGTwK1yM8CtcjPArXIzwK1yM81KoZvNSqGbykdMm51KoZvNSqGTykdMm51KoZPNSqGTykdMm51KoZPNSqGbykdMm51KoZPNSqGbzc/Ka81KoZPNSqGTzc/Ka81KoZvNSqGTzc/Ka81KoZvNSqGbzc/Ka81KoZvNSqGTzc/Ka81KoZvNSqGTwK1yO81KoZvNSqGbwK1yO81KoZvNSqGbzc/Ka81KoZPNSqGbzc/Ka81KoZPNSqGbwK1yO81KoZPNSqGTwK1yO81KoZPNSqGTzc/Ka81KoZvNSqGbykdMm51KoZvNSqGbwK1yM81KoZvNSqGTwK1yM81KoZvNSqGTykdMm51KoZPNSqGTykdMm51KoZPNSqGTwK1yM81KoZPNSqGbwK1yM81KoZPNSqGbykdMm51KoZPNSqGTzc/Ka81KoZPNSqGTwK1yO81KoZvNSqGTwK1yO81KoZvNSqGTzc/Ka81KoZvNSqGTykdMm51KoZvNSqGTwK1yM81KoZPNSqGTwK1yM81KoZPNSqGTykdMm5/3///////7//f///////v/9///////+//3///////7//fwAA/3//v/9/AAD/f/+//38AAP9//7//fwAA/3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7////9//3//v////3//f/+/////f/9//7////9//3//v/9/////f/+//3////9//7//f////3//v/9/////f/+///////7//7///////v//v//////+//+///////7//7///////v//v//////+//+///////7//7///////v//v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v//////+//+///////7//7///////v//v//////+//+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f///////v/9///////+//3///////7//f///////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pydtw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17tlo"]
+albedo_color = Color(0.9191142, 0.6442089, 0.39606786, 1)
 
 [node name="CorkBoard" type="Node3D" unique_id=1448994883]
 
@@ -21,14 +64,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.574374, -7)
 material_override = SubResource("StandardMaterial3D_661ih")
 mesh = SubResource("BoxMesh_17tlo")
 
-[node name="SpriteGUI3D" type="Sprite3D" parent="MissionBoard" unique_id=1185955116 node_paths=PackedStringArray("target", "node_viewport")]
+[node name="SpriteGUI3D" type="Sprite3D" parent="MissionBoard" unique_id=1185955116 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45019293, 0.21999979)
-texture = SubResource("ViewportTexture_01br0")
+texture = SubResource("ViewportTexture_17tlo")
 script = ExtResource("1_661ih")
-target = NodePath("..")
 node_viewport = NodePath("SubViewport")
+quad_mesh_size = Vector3(5.12, 5.12, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="MissionBoard/SpriteGUI3D" unique_id=787063307]
 
 [node name="AgentRecruiter" parent="MissionBoard/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("2_01br0")]
+
+[node name="Cube2" type="MeshInstance3D" parent="." unique_id=46796940]
+transform = Transform3D(265, 0, 0, 0, 152.885, 0, 0, 0, 8.154, -0.019433767, 2.231183, -6.8497906)
+mesh = SubResource("ArrayMesh_01br0")
+surface_material_override/0 = SubResource("StandardMaterial3D_17tlo")
