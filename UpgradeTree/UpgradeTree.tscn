@@ -12,13 +12,13 @@
 
 [sub_resource type="Resource" id="Resource_ddxtx"]
 script = ExtResource("3_ddxtx")
-perk_name = &"MissionSlots"
+perk_name = &"AgentRecruiterSlots"
 change = 1.0
 metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
 
 [sub_resource type="Resource" id="Resource_0j0bc"]
 script = ExtResource("3_ddxtx")
-perk_name = &"MissionSlots"
+perk_name = &"AgentRecruiterSlots"
 change = 1.0
 metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
 
@@ -78,8 +78,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 250.0
 offset_top = -20.0
-offset_right = 40.0
+offset_right = 290.0
 offset_bottom = 20.0
 grow_vertical = 2
 
@@ -99,11 +100,11 @@ node_name = "RankUp I"
 icon = ExtResource("4_0j0bc")
 ID = 0
 
-[node name="@Line2D@64797" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1857257768]
+[node name="@Line2D@95332" type="Line2D" parent="TreeNodes/RankUpI" unique_id=380505610]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, -39.5)
 
-[node name="@Line2D@64798" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1304953538]
+[node name="@Line2D@95333" type="Line2D" parent="TreeNodes/RankUpI" unique_id=691431474]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 39.5)
 
@@ -132,7 +133,7 @@ node_name = "Picky Finger I"
 icon = ExtResource("5_ms67t")
 ID = 2
 
-[node name="@Line2D@64799" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=1499575457]
+[node name="@Line2D@95334" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=150507261]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 0)
 
@@ -150,11 +151,11 @@ icon = ExtResource("6_tqh6d")
 max_unlocked_links = 1
 ID = 3
 
-[node name="@Line2D@64800" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=373008363]
+[node name="@Line2D@95335" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=1410993387]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, -39.5)
 
-[node name="@Line2D@64801" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=651990157]
+[node name="@Line2D@95336" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=791516501]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 39.5)
 
@@ -183,7 +184,7 @@ node_name = "Promotion I"
 icon = ExtResource("7_a8u87")
 ID = 5
 
-[node name="@Line2D@64802" type="Line2D" parent="TreeNodes/PromotionI" unique_id=1664528423]
+[node name="@Line2D@95337" type="Line2D" parent="TreeNodes/PromotionI" unique_id=1698494790]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 0)
 

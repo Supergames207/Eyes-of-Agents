@@ -15,5 +15,5 @@ class_name LocationButton extends Button
 		objective = value
 		_on_property_changed("objective", value)
 
-func _on_property_changed(property: String, value: Variant) -> void:
+func _on_property_changed(_property: String, _value: Variant) -> void:
 	text = str(location) + " | RISK: " + str(danger)

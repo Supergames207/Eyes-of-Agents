@@ -5,13 +5,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_661ih"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf04p"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_17tlo"]
-material = SubResource("StandardMaterial3D_wf04p")
-size = Vector3(6, 6, -0.005)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_17tlo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_01br0"]
 viewport_path = NodePath("MissionBoard/SpriteGUI3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qy08"]
@@ -60,13 +54,12 @@ albedo_color = Color(0.9191142, 0.6442089, 0.39606786, 1)
 [node name="CorkBoard" type="Node3D" unique_id=1448994883]
 
 [node name="MissionBoard" type="MeshInstance3D" parent="." unique_id=1249777637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.574374, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
 material_override = SubResource("StandardMaterial3D_661ih")
-mesh = SubResource("BoxMesh_17tlo")
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="MissionBoard" unique_id=1185955116 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45019293, 0.21999979)
-texture = SubResource("ViewportTexture_17tlo")
+texture = SubResource("ViewportTexture_01br0")
 script = ExtResource("1_661ih")
 node_viewport = NodePath("SubViewport")
 quad_mesh_size = Vector3(5.12, 5.12, 0)
@@ -76,7 +69,7 @@ metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="AgentRecruiter" parent="MissionBoard/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("2_01br0")]
 
-[node name="Cube2" type="MeshInstance3D" parent="." unique_id=46796940]
-transform = Transform3D(265, 0, 0, 0, 152.885, 0, 0, 0, 8.154, -0.019433767, 2.231183, -6.8497906)
+[node name="Cube2" type="MeshInstance3D" parent="MissionBoard" unique_id=46796940]
+transform = Transform3D(265, 0, 0, 0, 152.885, 0, 0, 0, 8.154, -0.019433767, 0.6568091, 0.15020943)
 mesh = SubResource("ArrayMesh_01br0")
 surface_material_override/0 = SubResource("StandardMaterial3D_17tlo")

@@ -28,8 +28,6 @@ offset_bottom = 90.0
 visible = false
 z_index = 1
 layout_mode = 0
-offset_right = 140.0
-offset_bottom = 246.0
 scale = Vector2(0.8, 0.8)
 
 [node name="ScenarioMission" type="VBoxContainer" parent="CardTemplate" unique_id=314831169]

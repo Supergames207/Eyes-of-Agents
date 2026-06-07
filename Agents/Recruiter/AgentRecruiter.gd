@@ -19,7 +19,7 @@ func populate() -> void:
 	furtive_skill_guassian = GaussianData.new(GlobalPerkHolder.get_perk_value("FurtiveSkillMean"), 
 											GlobalPerkHolder.get_perk_value("FurtiveSkillDeviation"))
 
-	var grid : GridContainer = get_node("PanelContainer/CenterContainer/AgentCardHolder")
+	var grid : GridContainer = get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder")
 	
 	for k in grid.get_children():
 		k.queue_free()

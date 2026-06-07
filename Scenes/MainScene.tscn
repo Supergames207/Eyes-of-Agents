@@ -69,10 +69,10 @@ environment = SubResource("Environment_qxria")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 
 [node name="CorkBoard" parent="." unique_id=1448994883 instance=ExtResource("6_y4jh7")]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.6933968, -0.8999896, -3.401196)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, -0.9, -3.4)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1645939086]
-transform = Transform3D(1.6624196, 0, 0, 0, 0.09979504, 0, 0, 0, 3.9037538, 2.6321378, -0.80047023, 0)
+transform = Transform3D(1.6624196, 0, 0, 0, 0.09979504, 0, 0, 0, 3.9037538, 4.392346, -0.80047023, 0)
 mesh = SubResource("BoxMesh_y4jh7")
 surface_material_override/0 = SubResource("StandardMaterial3D_q68mp")
 
@@ -105,5 +105,4 @@ perks_lookup = ExtResource("10_4b75m")
 metadata/_custom_type_script = "uid://isg2k0cqvjm7"
 
 [node name="Stats" parent="." unique_id=1871767876 instance=ExtResource("11_8ju71")]
-anchors_preset = 5
 grow_vertical = 1

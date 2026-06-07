@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ix5h88s1c6gy"]
 
 [ext_resource type="Script" uid="uid://m34fjrfcvise" path="res://Agents/Recruiter/AgentRecruiter.gd" id="1_g2rud"]
+[ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="2_wlnq1"]
 
 [node name="AgentRecruiter" type="Control" unique_id=1115288096]
 layout_mode = 3
@@ -20,6 +21,26 @@ offset_bottom = 147.0
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=968038021]
 layout_mode = 2
 
-[node name="AgentCardHolder" type="GridContainer" parent="PanelContainer/CenterContainer" unique_id=604406281]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/CenterContainer" unique_id=1422238782]
+custom_minimum_size = Vector2(436, 468)
 layout_mode = 2
-columns = 4
+
+[node name="AgentCardHolder" type="GridContainer" parent="PanelContainer/CenterContainer/ScrollContainer" unique_id=604406281]
+custom_minimum_size = Vector2(284, 936)
+layout_mode = 2
+columns = 3
+
+[node name="AgentCard" parent="PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder" unique_id=519339936 instance=ExtResource("2_wlnq1")]
+layout_mode = 2
+
+[node name="AgentCard2" parent="PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder" unique_id=626392086 instance=ExtResource("2_wlnq1")]
+layout_mode = 2
+
+[node name="AgentCard3" parent="PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder" unique_id=1906751847 instance=ExtResource("2_wlnq1")]
+layout_mode = 2
+
+[node name="AgentCard4" parent="PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder" unique_id=752316638 instance=ExtResource("2_wlnq1")]
+layout_mode = 2
+
+[node name="AgentCard5" parent="PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder" unique_id=875550926 instance=ExtResource("2_wlnq1")]
+layout_mode = 2

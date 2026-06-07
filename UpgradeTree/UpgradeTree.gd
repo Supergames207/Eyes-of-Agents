@@ -10,6 +10,7 @@ const scale_bound := Vector2(1, 10)
 # const upgrade_resource_tree_path := "res://UpgradeTree/UpgradeResourceTree.tres"
 const tree_state_path := "user://UpgradeTreeState"
 
+@export_tool_button("Reset Tree State") var reset := reset_current_tree_state
 
 var current_ID := 0
 var ID_map : Dictionary[int, TreeNode] = {}
@@ -154,6 +155,9 @@ func load_current_tree_state() -> void:
 		ID_map[ID].locked = locked
 
 	file.close()
+
+func reset_current_tree_state() -> void:
+	DirAccess.remove_absolute(tree_state_path)
 
 func _exit_tree() -> void:
 	save_current_tree_state()

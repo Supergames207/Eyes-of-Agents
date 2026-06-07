@@ -1,8 +1,9 @@
 extends Control
 
-@onready var money_label: Label = $Cash
-@onready var time_label: Label = $Time
-@onready var sun: TextureRect = $Time/Sun
+@onready var money_label: Label = $HBoxContainer/Cash
+@onready var payments_label: Label = $HBoxContainer/Payments
+@onready var time_label: Label = $HBoxContainer/Time
+@onready var sun: TextureRect = $HBoxContainer/Time/Sun
 
 var player: Player
 var money: int
@@ -27,9 +28,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	#Money
-	money_label.text = str(money) + " $"
 	money = player.money
+	money_label.text = str(money) + " $"
 	
+	payments_label.text = str(-player.adjacent_money_losses) + " $"
+
 	# current day/daytime
 	time_label.text = "Day: " + str(GlobalVariables.current_day)
 	_sun_circular_motion(false)
@@ -42,5 +45,5 @@ func _sun_circular_motion(reset: bool) -> void:
 		print("reset")
 	else:
 		angle -= speed * get_process_delta_time()
-	sun.position.x = radius * cos(angle) + 89
+	sun.position.x = radius * cos(angle) + radius
 	sun.position.y = radius * sin(angle) + 43

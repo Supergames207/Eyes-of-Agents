@@ -81,5 +81,7 @@ func load_lookup() -> void:
 func reset_perks() -> void:
 	DirAccess.remove_absolute(save_path)
 
+	
+
 func _exit_tree() -> void:
 	save_lookup()

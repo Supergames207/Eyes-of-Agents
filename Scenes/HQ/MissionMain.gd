@@ -59,6 +59,7 @@ func _on_next_agent() -> void:
 	current_agent = (current_agent + 1) % agent_array.agents.size()
 	var next_agent: Agent = agent_array.agents[current_agent]
 	agent_card.fill_data(next_agent)
+
 	if next_agent.mission_status["State"]:
 		alr_assign.visible = true
 	else:
@@ -92,4 +93,10 @@ func _on_acceptance() -> void:
 	agent.mission_status["Risk"] = current_loc.danger / 100
 	
 	current_loc.queue_free()
+
+	if agent.mission_status["State"]:
+		alr_assign.visible = true
+	else:
+		alr_assign.visible = false
+	
 	print(agent.mission_status)

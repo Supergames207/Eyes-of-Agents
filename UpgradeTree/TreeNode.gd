@@ -148,15 +148,13 @@ func unlock() -> void:
 	if not can_unlock() or not locked:
 		return
 	
-	# if GlobalVariables.player.money < cost:
-	# 	return
-	
 	locked = false
 
-	GlobalVariables.player.money -= cost
+	GlobalVariables.player.adjacent_money_losses += cost
 
 	for info in upgrades:
 		GlobalPerkHolder.update_perk(info.perk_name, info.change, info.type)
+		prints(info.perk_name, "NEW", GlobalPerkHolder.get_perk_value(info.perk_name))
 
 	
 func link_unlocked() -> void:

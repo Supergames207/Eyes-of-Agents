@@ -34,6 +34,13 @@ func _process(_delta: float) -> void:
 	left_button.visible = mouse_pos.x < screen_width * 0.075
 	right_button.visible = mouse_pos.x > screen_width * 0.925
 
+func _unhandled_input(e : InputEvent) -> void:
+	if e.is_action_pressed("RotateCamLeft"):
+		_on_button_press(0)
+	elif e.is_action_pressed("RotateCamRight"):
+		_on_button_press(1)
+
+
 func _on_button_press(side: int) -> void:
 	# Get current Number
 	for p in camera_points.get_children():
@@ -49,6 +56,7 @@ func _on_button_press(side: int) -> void:
 		current = (current - 1 + points_array.size()) % points_array.size()
 		new_point = camera_points.get_node(_get_string_from_number(current, camera_points))
 		CameraNewPos._new_pos(new_point, player)
+
 
 func _get_number_from_string(string: String) -> int:
 	var regex := RegEx.new()
