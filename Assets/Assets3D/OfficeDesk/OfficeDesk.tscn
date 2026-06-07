@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bhvc5aw20n3ir"]
+
+[ext_resource type="PackedScene" uid="uid://bvjpfkctgem7w" path="res://Assets/Assets3D/OfficeDesk/office_desk_-_workstation-office_furniture.glb" id="1_h523e"]
+
+[node name="Sketchfab_Scene" unique_id=77849488 instance=ExtResource("1_h523e")]
+
+[node name="Material2" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="0" unique_id=41978918]
+visible = false
+
+[node name="Material22" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="1" unique_id=1198384818]
+visible = false
+
+[node name="Material3" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="2" unique_id=1574234049]
+visible = false
+
+[node name="Material210" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="14" unique_id=1001683855]
+visible = false
+
+[node name="Material211" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="15" unique_id=561636622]
+visible = false
+
+[node name="Material212" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="16" unique_id=2077059449]
+visible = false
+
+[node name="Material213" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="17" unique_id=956334566]
+visible = false
+
+[node name="Material214" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="18" unique_id=489195884]
+visible = false
+
+[node name="Material215" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="19" unique_id=636882034]
+visible = false
+
+[node name="Material216" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="20" unique_id=1151514195]
+visible = false
+
+[node name="Material217" parent="Sketchfab_model/Collada visual scene group" parent_id_path=PackedInt32Array(1957572667) index="21" unique_id=564075154]
+visible = false

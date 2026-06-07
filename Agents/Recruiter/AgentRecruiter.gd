@@ -35,11 +35,11 @@ func populate() -> void:
 		
 		new.pressed.connect(attempt_agent_recruitment.bind(new))
 
-		if k == 0 and get_parent() is SubViewport:
-			var parent : SubViewport = get_parent()
+		# if k == 0 and get_parent() is SubViewport:
+		# 	var parent : SubViewport = get_parent()
 
-			var max_cols := floori(parent.size.x / new.get_combined_minimum_size().x)
-			grid.columns = max_cols
+		# 	# var max_cols := floori(parent.size.x / new.get_combined_minimum_size().x)
+		# 	# grid.columns = max_cols
 
 
 func generate_random_agent() -> Agent:

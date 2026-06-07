@@ -3,23 +3,38 @@
 [ext_resource type="Script" uid="uid://drprqiymm8a6j" path="res://Agents/Picker/AgentPicker.gd" id="1_6qbwb"]
 
 [node name="AgentPicker" type="Control" unique_id=655678137]
+custom_minimum_size = Vector2(436, 488)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 436.0
+offset_bottom = 488.0
 script = ExtResource("1_6qbwb")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=691998296]
-custom_minimum_size = Vector2(172, 147)
+[node name="Team" type="Label" parent="." unique_id=773405078]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_right = 21.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Team"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=383921331]
 layout_mode = 0
-offset_right = 172.0
-offset_bottom = 147.0
+offset_top = 24.0
+offset_right = 436.0
+offset_bottom = 492.0
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1574782854]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1922609231]
 layout_mode = 2
 
-[node name="AgentCardHolder" type="GridContainer" parent="PanelContainer/CenterContainer" unique_id=440852311]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/CenterContainer" unique_id=678647800]
+custom_minimum_size = Vector2(436, 468)
 layout_mode = 2
-columns = 4
+
+[node name="AgentCardHolder" type="GridContainer" parent="PanelContainer/CenterContainer/ScrollContainer" unique_id=1209391525]
+custom_minimum_size = Vector2(426, 936)
+layout_mode = 2
+columns = 3

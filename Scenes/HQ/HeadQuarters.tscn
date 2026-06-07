@@ -4,30 +4,71 @@
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/SpriteGUI3D.gd" id="1_xn7ne"]
 [ext_resource type="PackedScene" uid="uid://dg8xhj5mcc34j" path="res://UpgradeTree/UpgradeTree.tscn" id="2_smswu"]
 [ext_resource type="PackedScene" uid="uid://ih1yjlmnqvmi" path="res://Agents/Picker/AgentPicker.tscn" id="3_v6lxg"]
+[ext_resource type="Texture2D" uid="uid://b4jd6itaq1ub5" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_BaseColor.jpg" id="5_78edl"]
+[ext_resource type="Texture2D" uid="uid://cky74wfaqcn82" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_AmbientOcclusion.jpg" id="6_3ctp1"]
+[ext_resource type="Texture2D" uid="uid://cv4gnxw02l252" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_Metallic.jpg" id="7_r8fgo"]
+[ext_resource type="Texture2D" uid="uid://cspwbgr2212t1" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_Normal.png" id="8_r3vd7"]
+[ext_resource type="Texture2D" uid="uid://cyvlfny4qkhcd" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_Roughness.jpg" id="9_6qosn"]
+[ext_resource type="Texture2D" uid="uid://cxg86utw7tme6" path="res://Scenes/HQ/BeigeWall/beige_wall_001_diff_1k.png" id="10_r3vd7"]
+[ext_resource type="Texture2D" uid="uid://5x1x8nnjthwf" path="res://Scenes/HQ/BeigeWall/beige_wall_001_nor_dx_1k.png" id="11_6qosn"]
+[ext_resource type="Texture2D" uid="uid://bwccdophta04g" path="res://Scenes/HQ/BeigeWall/beige_wall_001_arm_1k.png" id="11_r3vd7"]
+[ext_resource type="PackedScene" uid="uid://huxfg3in0yb2" path="res://Assets/Assets3D/door_with_frame/scene.gltf" id="13_6qosn"]
+[ext_resource type="PackedScene" uid="uid://bhvc5aw20n3ir" path="res://Assets/Assets3D/OfficeDesk/OfficeDesk.tscn" id="14_dc0eh"]
+[ext_resource type="PackedScene" uid="uid://bf0kdtpyq8da8" path="res://Assets/Assets3D/OldTV/old_tvclean.glb" id="15_n22v7"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_c2bgw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_n22v7"]
 viewport_path = NodePath("UpgradeTree/SpriteGUI3D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf04p"]
+[sub_resource type="BoxMesh" id="BoxMesh_c2bgw"]
+size = Vector3(4.75, 6, 0.125)
 
-[sub_resource type="BoxMesh" id="BoxMesh_pgk06"]
-material = SubResource("StandardMaterial3D_wf04p")
-size = Vector3(6, 6, -0.005)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_smswu"]
-viewport_path = NodePath("AgentRecruiterBoard/SpriteGUI3D/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_li1b0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7i78o"]
 viewport_path = NodePath("AgentPickerBoard/SpriteGUI3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dc0eh"]
+albedo_texture = ExtResource("5_78edl")
+metallic = 1.0
+metallic_texture = ExtResource("7_r8fgo")
+roughness_texture = ExtResource("9_6qosn")
+normal_enabled = true
+normal_texture = ExtResource("8_r3vd7")
+ao_enabled = true
+ao_texture = ExtResource("6_3ctp1")
+uv1_scale = Vector3(25, 25, 25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6qosn"]
+material = SubResource("StandardMaterial3D_dc0eh")
+size = Vector2(25, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n22v7"]
+albedo_color = Color(1.353256, 1.2747362, 1.2485627, 1)
+albedo_texture = ExtResource("10_r3vd7")
+metallic = 1.0
+metallic_texture = ExtResource("11_r3vd7")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("11_r3vd7")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("11_6qosn")
+ao_enabled = true
+ao_texture = ExtResource("11_r3vd7")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_78edl"]
+material = SubResource("StandardMaterial3D_n22v7")
+size = Vector3(25, 25, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1pkvc"]
+viewport_path = NodePath("TV/SpriteGUI3D/SubViewport")
 
 [node name="HeadQuarters" type="Node3D" unique_id=375498434]
 
 [node name="UpgradeTree" type="MeshInstance3D" parent="." unique_id=1634238982]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 8)
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="UpgradeTree" unique_id=1253218691 node_paths=PackedStringArray("node_viewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
-texture = SubResource("ViewportTexture_c2bgw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9)
+texture = SubResource("ViewportTexture_n22v7")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
 quad_mesh_size = Vector3(15.36, 10.86, 0)
@@ -43,43 +84,65 @@ offset_top = -543.0
 offset_right = 3306.0
 offset_bottom = 428.99976
 
-[node name="AgentRecruiterBoard" type="MeshInstance3D" parent="." unique_id=107508078]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0829859, -7)
-material_override = SubResource("StandardMaterial3D_wf04p")
-mesh = SubResource("BoxMesh_pgk06")
-
-[node name="SpriteGUI3D" type="Sprite3D" parent="AgentRecruiterBoard" unique_id=1330681839 node_paths=PackedStringArray("node_viewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
-texture = SubResource("ViewportTexture_smswu")
-script = ExtResource("1_xn7ne")
-node_viewport = NodePath("SubViewport")
-quad_mesh_size = Vector3(5.12, 5.12, 0)
-metadata/_custom_type_script = "uid://decu7ohx6w2dm"
-
-[node name="SubViewport" type="SubViewport" parent="AgentRecruiterBoard/SpriteGUI3D" unique_id=1592596604]
-handle_input_locally = false
-size = Vector2i(500, 512)
-
-[node name="AgentRecruiter" parent="AgentRecruiterBoard/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("1_uj5h4")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="AgentPickerBoard" type="MeshInstance3D" parent="." unique_id=1592906521]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, -2.5, -4)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -4.454692, 0, -7.862515)
+mesh = SubResource("BoxMesh_c2bgw")
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="AgentPickerBoard" unique_id=245946221 node_paths=PackedStringArray("node_viewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7696829, -0.5196829)
-texture = SubResource("ViewportTexture_li1b0")
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0.1)
+texture = SubResource("ViewportTexture_7i78o")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
-quad_mesh_size = Vector3(5.12, 5.12, 0)
+quad_mesh_size = Vector3(4.3799996, 4.8799996, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="AgentPickerBoard/SpriteGUI3D" unique_id=51775185]
+size = Vector2i(438, 488)
 
 [node name="AgentPicker" parent="AgentPickerBoard/SpriteGUI3D/SubViewport" unique_id=655678137 instance=ExtResource("3_v6lxg")]
 
-[editable path="AgentRecruiterBoard/SpriteGUI3D/SubViewport/AgentRecruiter"]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1377206918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+mesh = SubResource("PlaneMesh_6qosn")
+
+[node name="Walls" type="MeshInstance3D" parent="." unique_id=136599812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+mesh = SubResource("BoxMesh_78edl")
+
+[node name="Walls4" type="MeshInstance3D" parent="." unique_id=862827760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+mesh = SubResource("BoxMesh_78edl")
+
+[node name="Walls2" type="MeshInstance3D" parent="." unique_id=503978598]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, 0)
+mesh = SubResource("BoxMesh_78edl")
+
+[node name="Walls3" type="MeshInstance3D" parent="." unique_id=433638136]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, 0)
+mesh = SubResource("BoxMesh_78edl")
+
+[node name="Door" parent="." unique_id=1596508848 instance=ExtResource("13_6qosn")]
+transform = Transform3D(-1.7484555e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.7484555e-09, 7.645, -5.2, 2.5)
+
+[node name="OfficeDesk" parent="." unique_id=77849488 instance=ExtResource("14_dc0eh")]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 7.5089016, -3.999999, -0.74291277)
+
+[node name="TV" parent="." unique_id=901428686 instance=ExtResource("15_n22v7")]
+transform = Transform3D(-2.5, 0, -2.1855695e-07, 0, 2.5, 0, 2.1855695e-07, 0, -2.5, 2.26715, -0.70476955, -6.7642674)
+
+[node name="SpriteGUI3D" type="Sprite3D" parent="TV" unique_id=1330681839 node_paths=PackedStringArray("node_viewport")]
+transform = Transform3D(-0.2, 0, -3.019916e-08, 0, 0.19999999, 0, 3.019916e-08, 0, -0.2, 0.13796186, 0.51239, -0.4819436)
+texture = SubResource("ViewportTexture_1pkvc")
+script = ExtResource("1_xn7ne")
+node_viewport = NodePath("SubViewport")
+quad_mesh_size = Vector3(2.31, 1.7999998, 0)
+metadata/_custom_type_script = "uid://decu7ohx6w2dm"
+
+[node name="SubViewport" type="SubViewport" parent="TV/SpriteGUI3D" unique_id=1592596604]
+handle_input_locally = false
+size = Vector2i(462, 360)
+
+[node name="AgentRecruiter" parent="TV/SpriteGUI3D/SubViewport" unique_id=1115288096 instance=ExtResource("1_uj5h4")]
+offset_left = 13.0
+offset_right = 449.0
+scale = Vector2(1.5, 1.5)

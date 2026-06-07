@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c7r7x6r2qesx5"]
+
+[ext_resource type="Script" uid="uid://bn0q23woxmdy7" path="res://Scenes/HQ/DebugButton.gd" id="1_xuwyj"]
+
+[node name="DebugButton" type="Button" unique_id=2005603282]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "DEBUG"
+script = ExtResource("1_xuwyj")

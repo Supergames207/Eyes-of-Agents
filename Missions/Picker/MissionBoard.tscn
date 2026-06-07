@@ -1,23 +1,13 @@
 [gd_scene format=3 uid="uid://dmbbn7npq5nox"]
 
 [ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Scenes/HQ/MissionMain.gd" id="1_f5kmt"]
-[ext_resource type="Shader" uid="uid://b2qu67ai8a43m" path="res://Missions/Picker/TvVHS.gdshader" id="4_j0omh"]
+[ext_resource type="Material" uid="uid://chx6tv72sdwmb" path="res://GUI/TvVHS.tres" id="3_rugcd"]
 [ext_resource type="Texture2D" uid="uid://dnvn3hqwf5wji" path="res://Assets/Assets2D/alreasssing.png" id="4_mgdcg"]
 [ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="5_igv4n"]
 [ext_resource type="Texture2D" uid="uid://ib8jctho4gt1" path="res://Assets/Assets2D/SSIGNCASTD.png" id="5_j0omh"]
 [ext_resource type="Texture2D" uid="uid://0kybx06ayeq" path="res://Assets/Assets2D/page.png" id="6_4mqnj"]
 [ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="7_rugcd"]
 [ext_resource type="Texture2D" uid="uid://doqsde743j6nd" path="res://Assets/Assets2D/corkc«borarsds.jpg" id="8_rugcd"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_end6f"]
-shader = ExtResource("4_j0omh")
-shader_parameter/smearing = 0.5
-shader_parameter/color_offset = 0.005
-shader_parameter/sharpening = 0.4
-shader_parameter/static_noise = 0.08
-shader_parameter/vertical_jitter = 0.002
-shader_parameter/scanline_opacity = 0.1
-shader_parameter/vignette_intensity = 0.3
 
 [sub_resource type="LabelSettings" id="LabelSettings_xdr1m"]
 outline_size = 2
@@ -69,7 +59,7 @@ offset_right = 510.0
 offset_bottom = 580.0
 
 [node name="ColorRect" type="ColorRect" parent="VHS" unique_id=2067666389]
-material = SubResource("ShaderMaterial_end6f")
+material = ExtResource("3_rugcd")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

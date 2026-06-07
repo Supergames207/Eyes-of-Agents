@@ -23,10 +23,10 @@ func update_max_collums(control : Control) -> void:
 	var parent : SubViewport = get_parent()
 
 	var max_cols := floori(parent.size.x / control.get_combined_minimum_size().x)
-	get_node("PanelContainer/CenterContainer/AgentCardHolder").columns = max_cols
+	get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder").columns = max_cols
 
 func populate() -> void:
-	var grid : GridContainer = get_node("PanelContainer/CenterContainer/AgentCardHolder")
+	var grid : GridContainer = get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder")
 
 	for k in range(agents_array.agents.size()):
 		var new : AgentCardUI = agent_card.instantiate()
@@ -42,9 +42,9 @@ func update_agent_visualizer(added : bool, index : int) -> void:
 		var new : AgentCardUI = agent_card.instantiate()
 		new.agent = agents_array.agents[index]
 
-		get_node("PanelContainer/CenterContainer/AgentCardHolder").add_child(new)
+		get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder").add_child(new)
 		
 		update_max_collums(new) 
 	else:
-		get_node("PanelContainer/CenterContainer/AgentCardHolder").get_child(index).queue_free()
+		get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder").get_child(index).queue_free()
 	

@@ -16,7 +16,7 @@ var plane_mouse_pos : Vector2
 
 func _ready() -> void:
 	set_process(not Engine.is_editor_hint())
-	quad_mesh_size = Vector3(node_viewport.size.x, node_viewport.size.y, 0) / 100.0# * Vector3(scale.x, scale.y, 0)
+	quad_mesh_size = Vector3(node_viewport.size.x, node_viewport.size.y, 0) / 100.0 * global_basis.get_scale()
 	
 	texture = node_viewport.get_texture()
 	
@@ -36,8 +36,8 @@ func ray_intersects_quad(origin : Vector3, normal : Vector3, a : Vector3, b : Ve
 
 
 func global_to_plane(pos : Vector3) -> Vector2:
-	pos -= (global_position + (global_basis * (quad_mesh_size / 2.0 * Vector3(-1, -1, 0))))
-
+	pos -= (global_position + (global_basis.orthonormalized() * (quad_mesh_size / 2.0 * Vector3(-1, -1, 0))))
+	
 	var result := Vector2.ZERO
 	result.x = pos.dot(global_basis.x.normalized())
 	result.y = pos.dot(global_basis.y.normalized())
@@ -59,11 +59,17 @@ func _process(_delta : float) -> void:
 	var normal := cam.project_ray_normal(GlobalVariables.main_viewport.get_mouse_position())
 	
 	var size_3d := Vector3(quad_mesh_size.x, quad_mesh_size.y, 0) / 2.0
-	var a := global_position + (global_basis * (size_3d * Vector3(-1, -1, 0)))
-	var b := global_position + global_basis * (size_3d * Vector3(-1, 1, 0))
-	var c := global_position + global_basis * (size_3d * Vector3(1, -1, 0))
-	var d := global_position + global_basis * (size_3d * Vector3(1, 1, 0))
- 
+	var a := global_position + (global_basis.orthonormalized() * (size_3d * Vector3(-1, -1, 0)))
+	var b := global_position + global_basis.orthonormalized() * (size_3d * Vector3(-1, 1, 0))
+	var c := global_position + global_basis.orthonormalized() * (size_3d * Vector3(1, -1, 0))
+	var d := global_position + global_basis.orthonormalized() * (size_3d * Vector3(1, 1, 0))
+	
+	# if has_node("a"):
+	# 	get_node("a").global_position = a
+	# 	get_node("b").global_position = b
+	# 	get_node("c").global_position = c
+	# 	get_node("d").global_position = d
+
 	var quad_intersection := ray_intersects_quad(origin, normal, a, b, c, d)
 	
 	if quad_intersection.is_finite():
@@ -71,7 +77,6 @@ func _process(_delta : float) -> void:
 		mouse_pos3D = quad_intersection
 		plane_mouse_pos = global_to_plane(quad_intersection)
 		
-
 	
 func _unhandled_input(event : InputEvent) -> void:
 	var is_mouse_event := event is InputEventMouse
@@ -91,8 +96,8 @@ func handle_mouse(event : InputEvent) -> void:
 	
 	var mouse_pos2D := plane_mouse_pos
 
-	mouse_pos2D.x = mouse_pos2D.x / (quad_mesh_size.x * scale.y)
-	mouse_pos2D.y = mouse_pos2D.y / (quad_mesh_size.y * scale.y)
+	mouse_pos2D.x = mouse_pos2D.x / (quad_mesh_size.x)# * scale.y)
+	mouse_pos2D.y = mouse_pos2D.y / (quad_mesh_size.y)# * scale.y)
 
 	mouse_pos2D.x = mouse_pos2D.x * node_viewport.size.x
 	mouse_pos2D.y = mouse_pos2D.y * node_viewport.size.y
@@ -101,6 +106,9 @@ func handle_mouse(event : InputEvent) -> void:
 	event.global_position = mouse_pos2D
 
 
+	# if node_viewport.has_node("DebugButton"):
+	# 	node_viewport.get_node("DebugButton").global_position = mouse_pos2D
+	
 	if event is InputEventMouseMotion:
 		if last_mouse_pos2D == null:
 			event.relative = Vector2(0, 0)

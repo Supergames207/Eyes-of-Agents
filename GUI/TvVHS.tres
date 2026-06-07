@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://chx6tv72sdwmb"]
+
+[ext_resource type="Shader" uid="uid://b2qu67ai8a43m" path="res://Missions/Picker/TvVHS.gdshader" id="1_kq4ft"]
+
+[resource]
+shader = ExtResource("1_kq4ft")
+shader_parameter/smearing = 0.5
+shader_parameter/color_offset = 0.005
+shader_parameter/sharpening = 0.4
+shader_parameter/static_noise = 0.2000000095
+shader_parameter/vertical_jitter = 0.002
+shader_parameter/scanline_opacity = 0.1
+shader_parameter/vignette_intensity = 0.3

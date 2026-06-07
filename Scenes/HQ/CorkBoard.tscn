@@ -54,7 +54,6 @@ albedo_color = Color(0.9191142, 0.6442089, 0.39606786, 1)
 [node name="CorkBoard" type="Node3D" unique_id=1448994883]
 
 [node name="MissionBoard" type="MeshInstance3D" parent="." unique_id=1249777637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
 material_override = SubResource("StandardMaterial3D_661ih")
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="MissionBoard" unique_id=1185955116 node_paths=PackedStringArray("node_viewport")]
