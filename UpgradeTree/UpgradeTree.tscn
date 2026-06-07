@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cxpkroffr2ol1" path="res://UpgradeTree/Icons/Satellite.png" id="6_tqh6d"]
 [ext_resource type="Texture2D" uid="uid://dwbbhyed3yqnq" path="res://UpgradeTree/Icons/Promotion.png" id="7_a8u87"]
 [ext_resource type="Texture2D" uid="uid://bgf1rx5h4gpqk" path="res://UpgradeTree/Icons/Filter.png" id="8_1p08f"]
+[ext_resource type="PackedScene" uid="uid://ujfuubw4fdk8" path="res://GUI/VhsEffect.tscn" id="10_kj4jc"]
+[ext_resource type="Shader" uid="uid://b2qu67ai8a43m" path="res://Missions/Picker/TvVHS.gdshader" id="11_8j12q"]
 
 [sub_resource type="Resource" id="Resource_ddxtx"]
 script = ExtResource("3_ddxtx")
@@ -51,6 +53,16 @@ script = ExtResource("3_ddxtx")
 perk_name = &"AssaultSkillDeviation"
 change = 0.1
 metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_368bf"]
+shader = ExtResource("11_8j12q")
+shader_parameter/smearing = 0.5
+shader_parameter/color_offset = -0.02499999955756
+shader_parameter/sharpening = 0.4
+shader_parameter/static_noise = 0.08
+shader_parameter/vertical_jitter = 0.002
+shader_parameter/scanline_opacity = 0.1
+shader_parameter/vignette_intensity = 0.3
 
 [node name="UpgradeTree" type="Control" unique_id=1661596182]
 layout_mode = 3
@@ -100,11 +112,11 @@ node_name = "RankUp I"
 icon = ExtResource("4_0j0bc")
 ID = 0
 
-[node name="@Line2D@95332" type="Line2D" parent="TreeNodes/RankUpI" unique_id=380505610]
+[node name="@Line2D@253271" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1705926527]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, -39.5)
 
-[node name="@Line2D@95333" type="Line2D" parent="TreeNodes/RankUpI" unique_id=691431474]
+[node name="@Line2D@253272" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1102619788]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 39.5)
 
@@ -133,7 +145,7 @@ node_name = "Picky Finger I"
 icon = ExtResource("5_ms67t")
 ID = 2
 
-[node name="@Line2D@95334" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=150507261]
+[node name="@Line2D@253273" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=857338680]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 0)
 
@@ -151,11 +163,11 @@ icon = ExtResource("6_tqh6d")
 max_unlocked_links = 1
 ID = 3
 
-[node name="@Line2D@95335" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=1410993387]
+[node name="@Line2D@253274" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=374820060]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, -39.5)
 
-[node name="@Line2D@95336" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=791516501]
+[node name="@Line2D@253275" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=1337955477]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 39.5)
 
@@ -184,7 +196,7 @@ node_name = "Promotion I"
 icon = ExtResource("7_a8u87")
 ID = 5
 
-[node name="@Line2D@95337" type="Line2D" parent="TreeNodes/PromotionI" unique_id=1698494790]
+[node name="@Line2D@253276" type="Line2D" parent="TreeNodes/PromotionI" unique_id=272966892]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 0)
 
@@ -199,3 +211,8 @@ cost = 100
 node_name = "HumanFilter I"
 icon = ExtResource("8_1p08f")
 ID = 6
+
+[node name="VHSEffect" parent="." unique_id=1183730627 instance=ExtResource("10_kj4jc")]
+z_index = 2
+material = SubResource("ShaderMaterial_368bf")
+layout_mode = 1
