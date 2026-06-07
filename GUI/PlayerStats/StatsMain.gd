@@ -8,7 +8,7 @@ extends Control
 var player: Player
 var money: int
 
-var radius: float = 30
+var radius: float = 35
 var speed: float
 var angle: float
 
@@ -45,5 +45,6 @@ func _sun_circular_motion(reset: bool) -> void:
 		print("reset")
 	else:
 		angle -= speed * get_process_delta_time()
-	sun.position.x = radius * cos(angle) + radius
+	sun.position.x = radius * cos(angle) + 80
 	sun.position.y = radius * sin(angle) + 43
+	

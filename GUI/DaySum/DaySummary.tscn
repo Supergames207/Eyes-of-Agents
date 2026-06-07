@@ -1,0 +1,196 @@
+[gd_scene format=3 uid="uid://cyqbdy3a4prhc"]
+
+[ext_resource type="Script" uid="uid://dij3yq4aea1o7" path="res://GUI/DaySum/DaySumMain.gd" id="1_76kpq"]
+[ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="2_wxi7e"]
+[ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="3_tl73t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lsa7l"]
+font = ExtResource("3_tl73t")
+font_size = 41
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_76kpq"]
+font = ExtResource("3_tl73t")
+font_size = 260
+outline_size = 21
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wxi7e"]
+font = ExtResource("3_tl73t")
+font_size = 80
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tl73t"]
+font = ExtResource("3_tl73t")
+font_size = 92
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ydgfs"]
+font = ExtResource("3_tl73t")
+font_size = 51
+font_color = Color(0.96691424, 0.4663912, 0.4590723, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2wb4w"]
+font = ExtResource("3_tl73t")
+font_size = 51
+font_color = Color(0.50980395, 1, 0.43137255, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DaySummary" type="Control" unique_id=980121168]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_76kpq")
+
+[node name="BackGround" type="ColorRect" parent="." unique_id=1235759276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14040819, 0.1713906, 0.18706885, 1)
+
+[node name="CardsSurvival" type="HBoxContainer" parent="." unique_id=555163289]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -6.0
+offset_right = 25.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CardTemplate" type="Control" parent="CardsSurvival" unique_id=2097555002]
+custom_minimum_size = Vector2(150, 400)
+layout_mode = 2
+
+[node name="AgentCard" parent="CardsSurvival/CardTemplate" unique_id=519339936 instance=ExtResource("2_wxi7e")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -200.0
+offset_right = 70.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Chance" type="Label" parent="CardsSurvival/CardTemplate" unique_id=693946246]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 50.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10%"
+label_settings = SubResource("LabelSettings_lsa7l")
+horizontal_alignment = 1
+
+[node name="CurrentDay" type="Label" parent="." unique_id=625232428]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.5
+offset_top = -139.5
+offset_right = 278.5
+offset_bottom = 139.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(278.5, 139.5)
+text = "DAY 15"
+label_settings = SubResource("LabelSettings_76kpq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentDayStandPoint" type="Label" parent="." unique_id=802034097]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.5
+offset_right = 85.5
+offset_bottom = 87.0
+grow_horizontal = 2
+text = "DAY 15"
+label_settings = SubResource("LabelSettings_wxi7e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Money" type="Label" parent="." unique_id=1147546504]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -195.0
+offset_top = 150.0
+offset_right = 194.0
+offset_bottom = 249.0
+grow_horizontal = 2
+text = "TOTAL : 999 $"
+label_settings = SubResource("LabelSettings_tl73t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Expenses" type="Label" parent="Money" unique_id=1428348466]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -279.0
+offset_top = 1.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "EXPENSES: -40 $"
+label_settings = SubResource("LabelSettings_ydgfs")
+horizontal_alignment = 2
+
+[node name="Gains" type="Label" parent="Money" unique_id=371601448]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = 61.0
+offset_bottom = 116.00015
+grow_horizontal = 0
+grow_vertical = 0
+text = "GAINS: 959 $"
+label_settings = SubResource("LabelSettings_2wb4w")
+horizontal_alignment = 2
