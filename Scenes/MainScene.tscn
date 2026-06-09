@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://isg2k0cqvjm7" path="res://Skills&Perks/PerkHolder.gd" id="9_4b75m"]
 [ext_resource type="Resource" uid="uid://cvkd4j8e5mnyl" path="res://Skills&Perks/DefaultPerks.tres" id="10_4b75m"]
 [ext_resource type="PackedScene" uid="uid://uystgdnn16hb" path="res://GUI/PlayerStats/Stats.tscn" id="11_8ju71"]
+[ext_resource type="PackedScene" uid="uid://cyqbdy3a4prhc" path="res://GUI/DaySum/DaySummary.tscn" id="12_xb4mg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
@@ -109,3 +110,5 @@ metadata/_custom_type_script = "uid://isg2k0cqvjm7"
 
 [node name="Stats" parent="." unique_id=1871767876 instance=ExtResource("11_8ju71")]
 grow_vertical = 1
+
+[node name="DaySummary" parent="." unique_id=980121168 instance=ExtResource("12_xb4mg")]
