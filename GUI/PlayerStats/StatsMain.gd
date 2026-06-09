@@ -1,7 +1,7 @@
 extends Control
 
 @onready var money_label: Label = $HBoxContainer/Cash
-@onready var payments_label: Label = $HBoxContainer/Payments
+@onready var payments_label: Label = $HBoxContainer/Cash/Payments
 @onready var time_label: Label = $HBoxContainer/Time
 @onready var sun: TextureRect = $HBoxContainer/Time/Sun
 

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bnvdmnd7stkja"]
+
+[ext_resource type="Script" uid="uid://bjr87ay5npd4g" path="res://Scenes/MainMenu/LoadingScreen/LoadingScreen.gd" id="1_fel74"]
+[ext_resource type="Shader" uid="uid://defx7s54ojkfb" path="res://Scenes/MainMenu/BackGround.gdshader" id="2_tgj5j"]
+[ext_resource type="Theme" uid="uid://cy5u0steb65il" path="res://Scenes/MainMenu/MainMenuTheme.tres" id="3_th1ok"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_th1ok"]
+shader = ExtResource("2_tgj5j")
+shader_parameter/frequency = 6.0
+shader_parameter/dist = 7.5
+shader_parameter/offset = 1.0
+shader_parameter/amplitude = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v75ks"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.3, 0.25227857, 0.083788835, 1)
+border_blend = true
+
+[node name="LoadingScreen" type="Control" unique_id=1014834181]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fel74")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=2012260715]
+material = SubResource("ShaderMaterial_th1ok")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.56424457, 0.9401104, 1, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1568453762]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -348.5
+offset_top = -177.0
+offset_right = 348.5
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ProgressBar" unique_id=1890066928]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.5
+offset_top = -33.0
+offset_right = 50.5
+offset_bottom = 1.0
+grow_horizontal = 2
+theme = ExtResource("3_th1ok")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_v75ks")
+text = "Loading"
+fit_content = true
+horizontal_alignment = 1

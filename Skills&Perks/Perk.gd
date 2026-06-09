@@ -6,8 +6,6 @@ class_name Perk extends Resource
 @export var multiplier : float = 1.0
 
 
-func _init() -> void:
-	prints("LOADING??!?")
 	
 func get_value() -> float:
 	return value_range.make_within_range(apparent_value * multiplier)

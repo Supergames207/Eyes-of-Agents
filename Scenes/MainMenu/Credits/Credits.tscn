@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cmnlhdiv6txjg"]
+
+[ext_resource type="Script" uid="uid://1wfnt0us76qo" path="res://Scenes/MainMenu/Credits/Credits.gd" id="1_dhq56"]
+[ext_resource type="Texture2D" uid="uid://j061opyamla7" path="res://icon.svg" id="1_seog1"]
+
+[node name="ColorRect" type="ColorRect" unique_id=47268523]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -95.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13214107, 0.21875, 0.20165615, 1)
+script = ExtResource("1_dhq56")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1692713069]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -124.0
+offset_right = 235.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "A game made with Godot by Supergames207 and Pogo!!
+
+Some 3D Models -> SketchFab
+2D Icons -> GameIcons
+
+Thanks for playing
+"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1003496617]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -158.0
+offset_right = 64.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_seog1")
+
+[node name="CloseButton" type="Button" parent="." unique_id=265952410]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"

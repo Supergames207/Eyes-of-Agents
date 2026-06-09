@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://jiu6w52d8kly"]
+
+[ext_resource type="Shader" uid="uid://defx7s54ojkfb" path="res://Scenes/MainMenu/BackGround.gdshader" id="1_c7oo3"]
+[ext_resource type="Theme" uid="uid://cy5u0steb65il" path="res://Scenes/MainMenu/MainMenuTheme.tres" id="1_cdkru"]
+[ext_resource type="Script" uid="uid://dkp0t0coecvk6" path="res://Scenes/MainMenu/MainMenu.gd" id="1_sg7ab"]
+[ext_resource type="PackedScene" uid="uid://bnvdmnd7stkja" path="res://Scenes/MainMenu/LoadingScreen/LoadingScreen.tscn" id="4_kpx3y"]
+[ext_resource type="PackedScene" uid="uid://cmnlhdiv6txjg" path="res://Scenes/MainMenu/Credits/Credits.tscn" id="5_ua038"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sg7ab"]
+shader = ExtResource("1_c7oo3")
+shader_parameter/frequency = 6.0
+shader_parameter/dist = 7.5
+shader_parameter/offset = 1.0
+shader_parameter/amplitude = 0.2
+
+[node name="MainMenu" type="Control" unique_id=1984673792]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sg7ab")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=738737037]
+material = SubResource("ShaderMaterial_sg7ab")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.56424457, 0.9401104, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=577409886]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -337.0
+offset_top = 84.0
+offset_right = 341.0
+offset_bottom = 245.0
+grow_horizontal = 2
+theme = ExtResource("1_cdkru")
+bbcode_enabled = true
+text = "Eyes Of Agents"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Clickables" type="VBoxContainer" parent="." unique_id=1154533082]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = 1.0
+offset_right = 169.0
+offset_bottom = 149.00009
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cdkru")
+
+[node name="Play" type="RichTextLabel" parent="Clickables" unique_id=1506592661]
+layout_mode = 2
+theme = ExtResource("1_cdkru")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "Play"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="RichTextLabel" parent="Clickables" unique_id=264821570]
+layout_mode = 2
+theme = ExtResource("1_cdkru")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "Credits"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadingScreen" parent="." unique_id=1014834181 instance=ExtResource("4_kpx3y")]
+visible = false
+layout_mode = 1
+
+[node name="Credits" parent="." unique_id=47268523 instance=ExtResource("5_ua038")]
+visible = false
+layout_mode = 1
+offset_top = -72.5
+offset_bottom = 272.5

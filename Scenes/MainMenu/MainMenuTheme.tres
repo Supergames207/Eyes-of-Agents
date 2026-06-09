@@ -1,0 +1,65 @@
+[gd_resource type="Theme" format=3 uid="uid://cy5u0steb65il"]
+
+[ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_rndpw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rndpw"]
+bg_color = Color(0.043137256, 0.12156863, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1juq6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gqvt"]
+bg_color = Color(0.884375, 0.7167664, 0.37835887, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.3, 0.25227857, 0.083788835, 1)
+border_blend = true
+
+[resource]
+default_font = ExtResource("1_rndpw")
+default_font_size = 120
+RichTextLabel/colors/default_color = Color(1, 0.4745098, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/selection_color = Color(0.1, 0.1, 1, 0.8)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/paragraph_separation = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/shadow_outline_size = 1
+RichTextLabel/constants/strikethrough_alpha = 50
+RichTextLabel/constants/table_h_separation = 3
+RichTextLabel/constants/table_v_separation = 3
+RichTextLabel/constants/text_highlight_h_padding = 3
+RichTextLabel/constants/text_highlight_v_padding = 3
+RichTextLabel/constants/underline_alpha = 50
+RichTextLabel/icons/horizontal_rule = null
+RichTextLabel/styles/background = SubResource("StyleBoxFlat_rndpw")
+RichTextLabel/styles/focus = SubResource("StyleBoxFlat_1juq6")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_3gqvt")
+VBoxContainer/constants/separation = 30
