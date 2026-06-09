@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://dkp0t0coecvk6" path="res://Scenes/MainMenu/MainMenu.gd" id="1_sg7ab"]
 [ext_resource type="PackedScene" uid="uid://bnvdmnd7stkja" path="res://Scenes/MainMenu/LoadingScreen/LoadingScreen.tscn" id="4_kpx3y"]
 [ext_resource type="PackedScene" uid="uid://cmnlhdiv6txjg" path="res://Scenes/MainMenu/Credits/Credits.tscn" id="5_ua038"]
+[ext_resource type="AudioStream" uid="uid://dt84jg2v6ikk" path="res://Sounds/Menu Selection Click.wav" id="6_vapy7"]
+[ext_resource type="AudioStream" uid="uid://b33rwscoag4h7" path="res://Sounds/Pack1/GUI Sound Effects_031.wav" id="7_8qovt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sg7ab"]
 shader = ExtResource("1_c7oo3")
@@ -96,3 +98,12 @@ visible = false
 layout_mode = 1
 offset_top = -72.5
 offset_bottom = 272.5
+
+[node name="Sounds" type="Node" parent="." unique_id=526470180]
+
+[node name="MenuSelect" type="AudioStreamPlayer" parent="Sounds" unique_id=675454078]
+stream = ExtResource("6_vapy7")
+
+[node name="MenuMouseEntered" type="AudioStreamPlayer" parent="Sounds" unique_id=947750708]
+stream = ExtResource("7_8qovt")
+volume_db = -20.0

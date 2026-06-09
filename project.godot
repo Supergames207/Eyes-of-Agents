@@ -21,6 +21,7 @@ GlobalVariables="*uid://cw3gs0nmiuju4"
 NewMissions="*uid://875ogorwg2j"
 CameraNewPos="*uid://dcwj6r11bc8wp"
 GlobalPerkHolder="*uid://isg2k0cqvjm7"
+AudioManager="*uid://bwcmtstbic0up"
 
 [debug]
 

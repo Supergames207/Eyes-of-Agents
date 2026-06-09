@@ -34,6 +34,8 @@ func _ready() -> void:
 	for l in loc_container.get_children():
 		if not l is LocationButton:
 			continue
+		
+		l.mouse_entered.connect(button_mouse_entered)
 		l.pressed.connect(func() -> void: _on_pin_press(l.danger, l.location, l.objective, l))
 	
 	next_agent_button.pressed.connect(func() -> void: _on_next_agent())
@@ -42,11 +44,16 @@ func _ready() -> void:
 	
 	_on_next_agent()
 
+func button_mouse_entered() -> void:
+	AudioManager.play("res://Sounds/Pack1/GUI Sound Effects_031.wav", 1.0, 1.05, -20.0)
+
 func _on_pin_press(_danger: float, _loc: String, _obj: String, pin: Button) -> void:
 	current_loc = pin
 	loc_label.text = "Location: " + _loc
 	obj_label.text = "Objective: " + _obj
 	danger_label.text = "Danger: " + str(_danger)
+
+	AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_062.wav", 1.0, 1.05, -10.0)
 
 func _on_next_agent() -> void:
 	if agent_array.agents.size() == 0:
@@ -67,19 +74,24 @@ func _on_next_agent() -> void:
 
 func _on_acceptance() -> void:
 	if agent_array.agents.is_empty():
+		AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_063.wav", 1.0, 1.05, -10.)
 		print("Player doesn't have any agents")
 		return
+	
 	var agent: Agent = agent_array.agents[current_agent]
 
 	if agent.mission_status["State"]:
+		AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_063.wav", 1.0, 1.05, -10.)
 		print("Agent " + agent.name + " already has an active mission")
 		return
 	
 	if not current_loc:
+		AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_063.wav", 1.0, 1.05, -10.)
 		print("No mission/pin selected")
 		return
 	
 	if not current_loc.objective or not current_loc.location:
+		AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_063.wav", 1.0, 1.05, -10.)
 		print("No objective or location selected")
 		return
 	
@@ -100,3 +112,4 @@ func _on_acceptance() -> void:
 		alr_assign.visible = false
 	
 	print(agent.mission_status)
+	AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_061.wav", 1.0, 1.05, -10.)

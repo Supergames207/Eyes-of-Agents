@@ -146,9 +146,13 @@ func _gui_input(e : InputEvent) -> void:
 
 func unlock() -> void:
 	if not can_unlock() or not locked:
+		AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_063.wav", 1.0, 1.05, -10.)
+		
 		return
 	
 	locked = false
+
+	AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_061.wav", 1.0, 1.05, -10.)
 
 	GlobalVariables.player.adjacent_money_losses += cost
 

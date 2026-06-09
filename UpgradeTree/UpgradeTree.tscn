@@ -112,11 +112,11 @@ node_name = "RankUp I"
 icon = ExtResource("4_0j0bc")
 ID = 0
 
-[node name="@Line2D@253271" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1705926527]
+[node name="@Line2D@57009" type="Line2D" parent="TreeNodes/RankUpI" unique_id=774962988]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, -39.5)
 
-[node name="@Line2D@253272" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1102619788]
+[node name="@Line2D@57010" type="Line2D" parent="TreeNodes/RankUpI" unique_id=870956056]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 39.5)
 
@@ -145,7 +145,7 @@ node_name = "Picky Finger I"
 icon = ExtResource("5_ms67t")
 ID = 2
 
-[node name="@Line2D@253273" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=857338680]
+[node name="@Line2D@57011" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=1641870740]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 0)
 
@@ -163,11 +163,11 @@ icon = ExtResource("6_tqh6d")
 max_unlocked_links = 1
 ID = 3
 
-[node name="@Line2D@253274" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=374820060]
+[node name="@Line2D@57012" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=264848753]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, -39.5)
 
-[node name="@Line2D@253275" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=1337955477]
+[node name="@Line2D@57013" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=996358975]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 39.5)
 
@@ -196,7 +196,7 @@ node_name = "Promotion I"
 icon = ExtResource("7_a8u87")
 ID = 5
 
-[node name="@Line2D@253276" type="Line2D" parent="TreeNodes/PromotionI" unique_id=272966892]
+[node name="@Line2D@57014" type="Line2D" parent="TreeNodes/PromotionI" unique_id=332836366]
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 15, 0)
 
