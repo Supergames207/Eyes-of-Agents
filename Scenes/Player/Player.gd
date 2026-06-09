@@ -24,7 +24,6 @@ func _ready() -> void:
 		agents = AgentArray.new()
 
 	GlobalVariables.game_loaded.emit()
-	GlobalVariables.day_ended.connect(day_ended)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("UnlockMouse"):
@@ -34,15 +33,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func day_ended() -> void:
-	waiting_money = roundi(waiting_money * GlobalPerkHolder.get_perk_value("MoneyMultiplier"))
-	
-	var paycheck := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
-
-	money += waiting_money + paycheck - agents.overall_cost - adjacent_money_losses
-	waiting_money = 0
-	adjacent_money_losses = 0
-
+func _end_game() -> void:
 	if money < 0:
 		push_error("Player is just too bad!")
 		get_tree().quit()
