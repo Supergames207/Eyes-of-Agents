@@ -15,14 +15,19 @@
 [ext_resource type="PackedScene" uid="uid://huxfg3in0yb2" path="res://Assets/Assets3D/door_with_frame/scene.gltf" id="13_6qosn"]
 [ext_resource type="PackedScene" uid="uid://bhvc5aw20n3ir" path="res://Assets/Assets3D/OfficeDesk/OfficeDesk.tscn" id="14_dc0eh"]
 [ext_resource type="PackedScene" uid="uid://bf0kdtpyq8da8" path="res://Assets/Assets3D/OldTV/old_tvclean.glb" id="15_n22v7"]
+[ext_resource type="AudioStream" uid="uid://b1iio8g061bbu" path="res://Sounds/Music/music_smt_Neon_007.mp3" id="16_7i78o"]
+[ext_resource type="Script" uid="uid://b87h3xmnj3v22" path="res://Scenes/HQ/SoundPlaylist.gd" id="17_1pkvc"]
+[ext_resource type="AudioStream" uid="uid://cjflbrqfk4svy" path="res://Sounds/Music/music_zapsplat_tropical_dawn.mp3" id="18_ejgo5"]
+[ext_resource type="AudioStream" uid="uid://cbtkkpl5874nh" path="res://Sounds/Music/music_zapsplat_sunrise_105.mp3" id="19_wjxma"]
+[ext_resource type="AudioStream" uid="uid://cnrpetfnnim2" path="res://Sounds/Music/Office-ambience-sound-effect.mp3" id="20_y0jt2"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n22v7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_43ktv"]
 viewport_path = NodePath("UpgradeTree/SpriteGUI3D/SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_c2bgw"]
 size = Vector3(4.75, 6, 0.125)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7i78o"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rcr6f"]
 viewport_path = NodePath("AgentPickerBoard/SpriteGUI3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dc0eh"]
@@ -58,7 +63,7 @@ uv1_scale = Vector3(3, 3, 3)
 material = SubResource("StandardMaterial3D_n22v7")
 size = Vector3(25, 25, 0)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1pkvc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_e0k17"]
 viewport_path = NodePath("TV/SpriteGUI3D/SubViewport")
 
 [node name="HeadQuarters" type="Node3D" unique_id=375498434]
@@ -68,7 +73,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="UpgradeTree" unique_id=1253218691 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4619288, 0)
-texture = SubResource("ViewportTexture_n22v7")
+texture = SubResource("ViewportTexture_43ktv")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
 quad_mesh_size = Vector3(15.36, 10.86, 0)
@@ -90,7 +95,7 @@ mesh = SubResource("BoxMesh_c2bgw")
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="AgentPickerBoard" unique_id=245946221 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0.1)
-texture = SubResource("ViewportTexture_7i78o")
+texture = SubResource("ViewportTexture_rcr6f")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
 quad_mesh_size = Vector3(4.3799996, 4.8799996, 0)
@@ -136,7 +141,7 @@ transform = Transform3D(-2.5, 0, -2.1855695e-07, 0, 2.5, 0, 2.1855695e-07, 0, -2
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="TV" unique_id=1330681839 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(-0.2, 0, -3.019916e-08, 0, 0.19999999, 0, 3.019916e-08, 0, -0.2, 0.13796186, 0.51239, -0.4819436)
-texture = SubResource("ViewportTexture_1pkvc")
+texture = SubResource("ViewportTexture_e0k17")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
 quad_mesh_size = Vector3(2.31, 1.7999998, 0)
@@ -155,3 +160,15 @@ scale = Vector2(1.5, 1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.9046674, 0)
 shadow_enabled = true
 omni_range = 20.0
+
+[node name="AmbientMusic" type="AudioStreamPlayer3D" parent="." unique_id=1556879444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.001716, 0, 1.9273846)
+volume_db = -25.0
+script = ExtResource("17_1pkvc")
+array = Array[AudioStream]([ExtResource("16_7i78o"), ExtResource("18_ejgo5"), ExtResource("19_wjxma")])
+
+[node name="OfficeNoise" type="AudioStreamPlayer3D" parent="." unique_id=1183295116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.001716, 0, 1.9273846)
+volume_db = -25.0
+script = ExtResource("17_1pkvc")
+array = Array[AudioStream]([ExtResource("20_y0jt2")])

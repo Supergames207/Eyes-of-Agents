@@ -11,6 +11,7 @@ const day_duration := day_duration_sec * 1000
 
 var is_game_loaded := false
 
+var main_scene : MainScene
 var player : Player
 var main_viewport : SubViewport
 
@@ -20,11 +21,16 @@ var current_day : int = 0
 var day_time_ms : int = 0
 var day_time : float = 0.0
 
+var day_start := 0
+
+var day_on_hold := false
+
 func _init() -> void:
 	game_loaded.connect(update_game_loaded_state)
 
 func update_game_loaded_state() -> void:
 	is_game_loaded = true
+	day_start = Time.get_ticks_msec()
 
 ##THIS IS A COROUTINE USE ``await`` .Should be used instead of just ``await game_loaded``
 func wait_till_game_loaded() -> void: 
@@ -34,16 +40,31 @@ func wait_till_game_loaded() -> void:
 	await game_loaded
 
 func _process(_delta: float) -> void:
-	day_time_ms = Time.get_ticks_msec() - current_day * day_duration
+	if day_on_hold or not is_game_loaded:
+		return
+	
+	day_time_ms = Time.get_ticks_msec() - day_start
+
 	day_time = day_time_ms / 1000.0
 
 	if day_time_ms > day_duration:
 		@warning_ignore("integer_division")
 		current_day = floori(Time.get_ticks_msec() / day_duration)
-
+		
 		day_ended.emit()
+		day_start = Time.get_ticks_msec()
 		prints("NEXT DAY", current_day)
 
+	prints("DAY TIME", day_time)
+
+func change_day_on_hold_state(state : bool) -> void:
+	if day_on_hold == state:
+		return
+	
+	if day_on_hold:
+		day_start = Time.get_ticks_msec()
+
+	day_on_hold = state
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

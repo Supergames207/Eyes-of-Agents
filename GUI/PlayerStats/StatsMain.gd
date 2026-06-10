@@ -20,8 +20,8 @@ func _ready() -> void:
 	player = GlobalVariables.player
 	money = player.money
 	
-	reset_angle = atan(sun.size.y/sun.size.x) # to angle 0
-	angle = PI + reset_angle
+	reset_angle = -PI#atan(sun.size.y/sun.size.x) # to angle 0
+	angle = reset_angle
 	GlobalVariables.day_ended.connect(_sun_circular_motion.bind(true))
 
 
@@ -39,12 +39,14 @@ func _process(_delta: float) -> void:
 	
 
 func _sun_circular_motion(reset: bool) -> void:
-	speed = (TAU + 2 * reset_angle) / GlobalVariables.day_duration_sec / 2 # half circle in day_duration
-	if reset:
-		angle = PI + reset_angle
-		print("reset")
-	else:
-		angle -= speed * get_process_delta_time()
+	# speed = (TAU) / GlobalVariables.day_duration_sec / 2 # half circle in day_duration
+	# if reset:
+	# 	angle = reset_angle
+	# 	print("reset")
+	# else:
+	# 	angle -= speed * get_process_delta_time()
+	
+	angle = reset_angle - PI * (GlobalVariables.day_time / GlobalVariables.day_duration_sec)
 	sun.position.x = radius * cos(angle) + 80
 	sun.position.y = radius * sin(angle) + 43
 	

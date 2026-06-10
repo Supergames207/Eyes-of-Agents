@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cwix35e1y2ifi"]
+
+[ext_resource type="Shader" uid="uid://dn7u5hb514lv1" path="res://Scenes/EndGame.gdshader" id="1_divts"]
+[ext_resource type="Script" uid="uid://dvrlh8qe5yl35" path="res://Scenes/EngGame.gd" id="1_wigt5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wigt5"]
+shader = ExtResource("1_divts")
+shader_parameter/open_factor = 1.0
+
+[node name="EndGame" type="Control" unique_id=1739275381]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_wigt5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1052842294]
+material = SubResource("ShaderMaterial_wigt5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

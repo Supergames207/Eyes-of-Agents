@@ -22,7 +22,7 @@ func _on_stream_finished(stream : AudioStreamPlayer) -> void:
 	available.append(stream)
 
 
-func play(sound_path : String, min_pitch := 1.0, max_pitch := 1.1, volume := 0.0) -> void:
+func play(sound_path : String, min_pitch := 1.0, max_pitch := 1.1, volume := 0.0) -> AudioStreamPlayer:
 	queue.append(sound_path)
 
 	var pitch: float = min_pitch + (max_pitch - min_pitch) * randf()
@@ -31,9 +31,13 @@ func play(sound_path : String, min_pitch := 1.0, max_pitch := 1.1, volume := 0.0
 		push_error("Couldn't play audio. bruh")
 		return
 	
-	available[0].pitch_scale = pitch
-	available[0].volume_db = volume
+	var streamer : AudioStreamPlayer = available.pop_back()
 
-	available[0].stream = load(queue.pop_front())
-	available[0].play()
-	available.pop_front()
+	streamer.pitch_scale = pitch
+	streamer.volume_db = volume
+
+	streamer.stream = load(queue.pop_front())
+	streamer.play()
+	
+
+	return streamer

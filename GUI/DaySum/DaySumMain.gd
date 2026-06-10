@@ -27,6 +27,8 @@ func _ready() -> void:
 	GlobalVariables.day_ended.connect(_start_summary)
 
 func _start_summary() -> void:
+	GlobalVariables.change_day_on_hold_state(true)
+
 	visible = true
 	var current_day: int = GlobalVariables.current_day - 1
 	var current_cash: int = player.money
@@ -86,10 +88,10 @@ func _start_summary() -> void:
 		money_sum_label.text = "TOTAL CASH: " + str(i) + " $"
 	
 	money_sum_label.text = "TOTAL CASH: " + str(current_cash) + " $"
-	
+
 	await _fade_in(expenses_label, .25)
 	
-	for i: int in expenses:
+	for i: int in range(0, expenses, expenses / 5.0):
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		expenses_label.text = "Expenses: " + str(i) + " $"
@@ -97,7 +99,7 @@ func _start_summary() -> void:
 	
 	await _fade_in(gains_label, .25)
 	
-	for i: int in gains:
+	for i: int in range(0, gains, gains / 5.0):
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		gains_label.text = "Gains: " + str(i) + " $"
@@ -110,7 +112,7 @@ func _start_summary() -> void:
 	player.adjacent_money_losses = 0
 	
 	if player.money < 0:
-		player._end_game()
+		player.end_game()
 	
 	for i in range(current_cash, player.money):
 		await RenderingServer.frame_post_draw
@@ -135,7 +137,10 @@ func _start_summary() -> void:
 		await tween_bg_2.finished
 		
 		visible = false
+		GlobalVariables.change_day_on_hold_state(false),
+		CONNECT_ONE_SHOT
 	)
+	
 	
 
 func _fade_in(node: CanvasItem, duration: float = 0.4) -> void:
