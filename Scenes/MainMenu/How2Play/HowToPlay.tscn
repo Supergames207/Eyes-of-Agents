@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://d16du6srjavya"]
+
+[ext_resource type="Script" uid="uid://1wfnt0us76qo" path="res://Scenes/MainMenu/Credits/Credits.gd" id="1_713a6"]
+[ext_resource type="Theme" uid="uid://dvvp2q66mitu8" path="res://Scenes/MainMenu/How2Play/EmploymentTheme2.tres" id="2_anejw"]
+[ext_resource type="Theme" uid="uid://bncch7lgjta0v" path="res://Scenes/MainMenu/How2Play/EmploymentTheme.tres" id="3_anejw"]
+[ext_resource type="Texture2D" uid="uid://bpl1265rxxkvt" path="res://Scenes/MainMenu/How2Play/classified_stamp.png" id="4_quon8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quon8"]
+
+[node name="ColorRect" type="ColorRect" unique_id=47268523]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -297.0
+offset_right = 210.0
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_713a6")
+
+[node name="CloseButton" type="Button" parent="." unique_id=265952410]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=16560540]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=1692713069]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+theme = ExtResource("2_anejw")
+bbcode_enabled = true
+text = "
+EMPLOYMENT CONTRACT
+
+"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1511587431]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1336388762]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme = ExtResource("3_anejw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_quon8")
+bbcode_enabled = true
+text = "EMPLOYER
+
+Government
+"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1818330514]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme = ExtResource("3_anejw")
+bbcode_enabled = true
+text = "EMPLOYEE
+
+Chicory Periwinkle"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer" unique_id=603896501]
+custom_minimum_size = Vector2(420, 320)
+layout_mode = 2
+theme = ExtResource("2_anejw")
+bbcode_enabled = true
+text = "
+ JOB TITLE AND DESCRIPTION
+
+[ol type=1]
+The inital job title of the Employee will be the following : Agent Manager
+2 The Employee agrees to be employed on the terms and conditions set out in this Agreement.
+3 The Employee job will be to pick secret managers and send them on missions
+[/ol]
+
+ EMPLOYEE REMUNERATION
+
+[ol type=1]
+Remuneration paid to the Employee for they services will include a base salary of 100.0$ per day, which can increase.
+The Employee may earn bonuses if their agents succed on missions.
+The payment of the agents must be secured by the Employee. The payment will occur at the end of each day.
+[/ol]
+
+ BENEFITS
+[ol]
+The Employee will be granted an executive office of their own
+[/ol]
+
+ DUTIES
+[ol]
+The Employee must not be in debt with the Government. If such state happens, preventive measures can be taken."
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1096590317]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 462.0
+offset_right = 420.0
+offset_bottom = 594.0
+texture = ExtResource("4_quon8")
+expand_mode = 3
+stretch_mode = 6
