@@ -50,7 +50,9 @@ func generate_random_agent() -> Agent:
 	new_agent.assault_skill = new_agent.assault_skill_range.make_within_range(assault_skill_gaussian.get_random())
 	new_agent.furtiveness_skill = new_agent.furtiveness_skill_range.make_within_range(furtive_skill_guassian.get_random())
 	
+	new_agent.cost = roundi((new_agent.assault_skill + new_agent.furtiveness_skill) * (15.0 + randf_range(-5, 5) ))
 	return new_agent
+
 
 func attempt_agent_recruitment(pressed_card : AgentCardUI) -> void:
 	AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_062.wav", 1.0, 1.05, -10.0)

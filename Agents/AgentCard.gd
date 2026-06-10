@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func fill_data(_agent: Agent) -> void:
 	get_node("VBoxContainer/Name").text = _agent.name
-	get_node("VBoxContainer/Data").text = "Cost :" + str(_agent.cost) + " $ \n" \
+	get_node("VBoxContainer/Data").text = "Cost per day:" + str(_agent.cost) + " $ \n" \
 										+ "Stealth : " + str(_agent.furtiveness_skill) + "\n" \
 										+ "Assault : " + str(_agent.assault_skill)
 	

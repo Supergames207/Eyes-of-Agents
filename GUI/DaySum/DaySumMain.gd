@@ -33,10 +33,10 @@ func _start_summary() -> void:
 	GlobalVariables.change_day_on_hold_state(true)
 
 	visible = true
-	var current_day: int = GlobalVariables.current_day - 1
-	var current_cash: int = player.money
-	var expenses: int = player.adjacent_money_losses
-	var gains: int = int(GlobalPerkHolder.get_perk_value("DaySalary"))
+	var current_day := GlobalVariables.current_day - 1
+	var current_cash := player.money
+	var expenses := player.adjacent_money_losses + agent_array.overall_cost
+	var gains := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
 	var waiting_money: int = player.waiting_money
 	var paycheck := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
 	
@@ -135,20 +135,20 @@ func _start_summary() -> void:
 	
 	await _fade_in(gains_label, .25)
 	
+	waiting_money = roundi(waiting_money * GlobalPerkHolder.get_perk_value("MoneyMultiplier"))
+	gains += waiting_money
+
 	for i: int in range(0, gains, gains / 5.0):
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		gains_label.text = "Gains: " + str(i) + " $"
 	gains_label.text = "Gains: " + str(gains) + " $"
 	
-	waiting_money = roundi(waiting_money * GlobalPerkHolder.get_perk_value("MoneyMultiplier"))
 	
-	player.money += waiting_money + paycheck - agent_array.overall_cost - expenses
+
+	player.money += gains - expenses
 	player.waiting_money = 0
 	player.adjacent_money_losses = 0
-	
-	if player.money < 0:
-		player.end_game()
 	
 	for i in range(current_cash, player.money):
 		await RenderingServer.frame_post_draw
@@ -173,7 +173,12 @@ func _start_summary() -> void:
 		await tween_bg_2.finished
 		
 		visible = false
-		GlobalVariables.change_day_on_hold_state(false),
+
+		if player.money < 0:
+			player.end_game()
+		else:
+			GlobalVariables.change_day_on_hold_state(false)
+		,
 		CONNECT_ONE_SHOT
 	)
 	

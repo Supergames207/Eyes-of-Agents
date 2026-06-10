@@ -4,6 +4,9 @@ extends Control
 func close_eyes() -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_method(process_close_eyes, 1.0, 0.0, 2.0)
+
+	tween.finished.connect(func() -> void:
+		get_tree().quit(), CONNECT_ONE_SHOT)
 	
 func process_close_eyes(value : float) -> void:
 	var rect : ColorRect = get_node("ColorRect")
