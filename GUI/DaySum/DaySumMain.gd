@@ -1,9 +1,12 @@
 extends Control
 
 @onready var bg: ColorRect = $BackGround
-@onready var control_template: Control = $CardsSurvival/CardTemplate
+
 @onready var day_label: Label = $CurrentDay
 @onready var day_label_stand: Label = $CurrentDayStandPoint
+
+@onready var control_template: Control = $CardsSurvival/CardTemplate
+
 @onready var money_sum_label: Label = $Money
 @onready var expenses_label: Label = $Money/Expenses
 @onready var gains_label: Label = $Money/Gains
@@ -71,11 +74,44 @@ func _start_summary() -> void:
 	# Team survival decision \\(WIP)//
 	for a in agent_array.agents:
 		if a.mission_status["State"]:
+			var control: Control = control_template.duplicate()
+			control.visible = true
+			var card: AgentCardUI = control.get_node("AgentCard")
+			var x_texture: TextureRect = control.get_node("DeadTexture")
+			var chance_label: Label = control.get_node("Chance")
+			var survival_label: Label = control.get_node("SurvivalState")
+			
+			var chance: float = a.mission_status["Risk"]
+			
 			a.mission_status["Duration"] -= 1
-			if a.mission_status["Duration"] <= 0:
-				waiting_money += a.mission_status["Reward"]
-				# TWEens to be made
-			  
+			
+			card.fill_data(a)
+			chance_label.text = str(round(chance * 100)) + " %"
+			
+			if randf() < chance:
+				agent_array.remove_agent(a)
+				
+				x_texture.size = Vector2(2.1, 2.1)
+				var tween_x: Tween = create_tween()
+				tween_x.tween_property(x_texture, "scale", Vector2(1, 1), .4)
+				await _fade_in(x_texture, .4)
+				
+				survival_label.text = "Compromised"
+				set("theme_override_colors/font_color", Color(.9, .0, .2, 1.0))
+				await _fade_in(survival_label, .2)
+				await get_tree().create_timer(1.5).timeout
+				control.queue_free()
+				
+				continue
+			else:
+				survival_label.text = "Safe"
+				set("theme_override_colors/font_color", Color(.4, .9, .3, 1.0))
+				await _fade_in(survival_label, .3)
+				if a.mission_status["Duration"] <= 0:
+					waiting_money += a.mission_status["Reward"]
+				await get_tree().create_timer(.3).timeout
+				await get_tree().create_timer(1.8).timeout
+				control.queue_free()
 	
 	# money summary
 	await _fade_in(money_sum_label, .25)
@@ -134,7 +170,8 @@ func _start_summary() -> void:
 		
 		await tween_bg_2.finished
 		
-		visible = false
+		visible = false,
+		CONNECT_ONE_SHOT
 	)
 	
 

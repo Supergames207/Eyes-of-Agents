@@ -3,10 +3,18 @@
 [ext_resource type="Script" uid="uid://dij3yq4aea1o7" path="res://GUI/DaySum/DaySumMain.gd" id="1_76kpq"]
 [ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="2_wxi7e"]
 [ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="3_tl73t"]
+[ext_resource type="Texture2D" uid="uid://c7rwkytrpo8k4" path="res://Assets/Assets2D/BigFatX.png" id="4_wxi7e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lsa7l"]
 font = ExtResource("3_tl73t")
 font_size = 41
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wciup"]
+font = ExtResource("3_tl73t")
+font_size = 41
+font_color = Color(0.5176471, 0.92156863, 0.26666668, 1)
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
@@ -67,7 +75,6 @@ grow_vertical = 2
 color = Color(0.14040819, 0.1713906, 0.18706885, 1)
 
 [node name="CardsSurvival" type="HBoxContainer" parent="." unique_id=555163289]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,6 +90,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="CardTemplate" type="Control" parent="CardsSurvival" unique_id=2097555002]
+visible = false
 custom_minimum_size = Vector2(150, 400)
 layout_mode = 2
 
@@ -111,9 +119,36 @@ offset_top = 50.0
 offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "10%"
+text = "10 %"
 label_settings = SubResource("LabelSettings_lsa7l")
 horizontal_alignment = 1
+
+[node name="SurvivalState" type="Label" parent="CardsSurvival/CardTemplate" unique_id=896124742]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 90.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Safe"
+label_settings = SubResource("LabelSettings_wciup")
+horizontal_alignment = 1
+
+[node name="DeadTexture" type="TextureRect" parent="CardsSurvival/CardTemplate" unique_id=1433230513]
+visible = false
+z_index = 20
+layout_mode = 0
+offset_left = -1.0
+offset_top = 5.0
+offset_right = 151.0
+offset_bottom = 239.0
+pivot_offset = Vector2(76, 117)
+texture = ExtResource("4_wxi7e")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CurrentDay" type="Label" parent="." unique_id=625232428]
 visible = false
