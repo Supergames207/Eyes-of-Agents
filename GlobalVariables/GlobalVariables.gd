@@ -55,7 +55,6 @@ func _process(_delta: float) -> void:
 		day_start = Time.get_ticks_msec()
 		prints("NEXT DAY", current_day)
 
-	prints("DAY TIME", day_time)
 
 func change_day_on_hold_state(state : bool) -> void:
 	if day_on_hold == state:

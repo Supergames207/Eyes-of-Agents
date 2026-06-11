@@ -43,6 +43,8 @@ func _gui_input(e : InputEvent) -> void:
 
 		if Input.is_action_pressed("Click"):
 			global_position += event.screen_relative * panning_sensivity
+
+			keep_camera_within_bounds()
 			accept_event()
 
 	elif Input.is_action_pressed("Zoom Out") or Input.is_action_pressed("Zoom In"): #ZOOM
@@ -51,6 +53,39 @@ func _gui_input(e : InputEvent) -> void:
 		scale = scale.clampf(scale_bound.x, scale_bound.y)
 		
 		global_position = -old_pos * scale + get_global_mouse_position()
+
+		keep_camera_within_bounds()
+
+
+func keep_camera_within_bounds() -> void:
+	var rect := Rect2()
+	rect.position = global_position
+	rect.end = global_position + size * scale
+
+	
+	var line_normal := +Vector2.RIGHT
+	var line_distance := line_normal.dot(Vector2.ZERO - Vector2(rect.position.x, 0))
+
+	if line_distance < 0:
+		global_position += line_normal * line_distance
+	
+	line_normal = -Vector2.RIGHT
+	line_distance = line_normal.dot(Vector2(get_viewport().size) - Vector2(rect.end.x, 0))
+	
+	if line_distance < 0:
+		global_position += line_normal * line_distance
+
+	line_normal = -Vector2.UP
+	line_distance = line_normal.dot(- Vector2(0, rect.position.y))
+	
+	if line_distance < 0:
+		global_position += line_normal * line_distance
+
+	line_normal = +Vector2.UP
+	line_distance = line_normal.dot(Vector2(get_viewport().size) - Vector2(0, rect.end.y))
+	
+	if line_distance < 0:
+		global_position += line_normal * line_distance
 
 #TODO MAYBE THIS IS A BAD IDEA. JUST MAYBE
 ##ONLY TO BE USED WHILE ON THE EDITOR.
