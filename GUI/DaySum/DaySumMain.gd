@@ -30,7 +30,7 @@ func _ready() -> void:
 	GlobalVariables.day_ended.connect(_start_summary)
 
 func _start_summary() -> void:
-	GlobalVariables.change_day_on_hold_state(true)
+	GlobalVariables.change_day_on_hold_state(true, true)
 
 	visible = true
 	var current_day := GlobalVariables.current_day - 1
@@ -38,7 +38,7 @@ func _start_summary() -> void:
 	var expenses := player.adjacent_money_losses + agent_array.overall_cost
 	var gains := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
 	var waiting_money: int = player.waiting_money
-	var paycheck := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
+	# var paycheck := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
 	
 	# Set the background
 	
@@ -177,7 +177,7 @@ func _start_summary() -> void:
 		if player.money < 0:
 			player.end_game()
 		else:
-			GlobalVariables.change_day_on_hold_state(false)
+			GlobalVariables.change_day_on_hold_state(false, true)
 		,
 		CONNECT_ONE_SHOT
 	)

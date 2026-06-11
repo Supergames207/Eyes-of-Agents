@@ -9,6 +9,7 @@ var money : int
 var waiting_money : int
 var adjacent_money_losses : int
 
+var current_menu : BaseMenu
 
 func _ready() -> void:
 	camera = get_node("Camera3D")
@@ -34,6 +35,18 @@ func _unhandled_input(_event: InputEvent) -> void:
 		
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	elif Input.is_action_just_pressed("OpenPauseMenu"):
+		if not current_menu:
+			current_menu = GlobalVariables.main_scene.get_node("Menus/PauseMenu")
+
+		var next_menu := current_menu.menu_before
+
+		current_menu.change_menu_state(not current_menu.open_state)
+		
+		if next_menu:
+			current_menu = next_menu
+
 
 func end_game() -> void:
 	if money > 0:

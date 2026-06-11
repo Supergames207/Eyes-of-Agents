@@ -85,7 +85,7 @@ material_override = SubResource("ShaderMaterial_rcr6f")
 texture = SubResource("ViewportTexture_rcr6f")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
-quad_mesh_size = Vector3(11.52, 10.86, 0)
+quad_mesh_size = Vector3(11.52, 8.13, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="UpgradeTree/SpriteGUI3D" unique_id=9434727]
@@ -99,7 +99,7 @@ offset_right = 3306.0
 offset_bottom = 428.99976
 
 [node name="AgentPickerBoard" type="Sprite3D" parent="." unique_id=245946221 node_paths=PackedStringArray("node_viewport")]
-transform = Transform3D(0.7071067, 0, 0.70710665, 0, 0.9999999, 0, -0.7071067, 0, 0.70710665, -3.3117878, 0, -6.4338293)
+transform = Transform3D(0.7071067, 0, 0.70710665, 0, 0.9999999, 0, -0.7071067, 0, 0.70710665, -3.8016038, 0, -6.2288256)
 texture = SubResource("ViewportTexture_e0k17")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
@@ -112,6 +112,7 @@ size = Vector2i(438, 488)
 [node name="AgentPicker" parent="AgentPickerBoard/SubViewport" unique_id=655678137 instance=ExtResource("3_v6lxg")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="AgentPickerBoard" unique_id=1342913963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016810356, 0, 0)
 material_override = ExtResource("5_rcr6f")
 size = Vector3(4.58, 5.08, 0.25)
 

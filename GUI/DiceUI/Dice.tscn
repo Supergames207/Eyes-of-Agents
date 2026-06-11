@@ -3,51 +3,86 @@
 [ext_resource type="Script" uid="uid://3ffwrpl1ebny" path="res://GUI/DiceUI/DiceMain.gd" id="1_e2ko7"]
 [ext_resource type="Texture2D" uid="uid://dtqestheytiyw" path="res://Assets/Assets2D/2dice.png" id="2_km2h6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvhtv"]
-size = Vector2(81, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2ko7"]
+atlas = ExtResource("2_km2h6")
+region = Rect2(1.2391663, 0.2885437, 158.76083, 159.71146)
 
-[node name="Dice" type="StaticBody2D" unique_id=358721238]
+[sub_resource type="AtlasTexture" id="AtlasTexture_km2h6"]
+atlas = ExtResource("2_km2h6")
+region = Rect2(160, 0.2885437, 160, 159.71146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvhtv"]
+atlas = ExtResource("2_km2h6")
+region = Rect2(320, 0.2885437, 160, 159.71146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhvla"]
+atlas = ExtResource("2_km2h6")
+region = Rect2(480, 0.2885437, 160, 159.71146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0pwr"]
+atlas = ExtResource("2_km2h6")
+region = Rect2(640, 0.2885437, 160, 159.71146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_523um"]
+atlas = ExtResource("2_km2h6")
+region = Rect2(800, 0.2885437, 159, 159.71146)
+
+[node name="Dice" type="Control" unique_id=1778128271]
 visible = false
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_e2ko7")
 
-[node name="faces" type="Node2D" parent="." unique_id=2014597196]
+[node name="1" type="TextureRect" parent="." unique_id=436293330]
+visible = false
+layout_mode = 0
+offset_left = -79.0
+offset_top = -79.0
+offset_right = 79.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_e2ko7")
 
-[node name="1" type="Sprite2D" parent="faces" unique_id=1823639404]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_km2h6")
-region_enabled = true
-region_rect = Rect2(1.2391663, 0.2885437, 158.76083, 159.71146)
+[node name="2" type="TextureRect" parent="." unique_id=1499765889]
+visible = false
+layout_mode = 0
+offset_left = -79.0
+offset_top = -79.0
+offset_right = 81.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_km2h6")
 
-[node name="2" type="Sprite2D" parent="faces" unique_id=818919904]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_km2h6")
-region_enabled = true
-region_rect = Rect2(160, 0.2885437, 160, 159.71146)
+[node name="3" type="TextureRect" parent="." unique_id=22027745]
+visible = false
+layout_mode = 0
+offset_left = -79.0
+offset_top = -79.0
+offset_right = 81.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_uvhtv")
 
-[node name="3" type="Sprite2D" parent="faces" unique_id=303129975]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_km2h6")
-region_enabled = true
-region_rect = Rect2(320, 0.2885437, 160, 159.71146)
+[node name="4" type="TextureRect" parent="." unique_id=1824065611]
+visible = false
+layout_mode = 0
+offset_left = -79.0
+offset_top = -79.0
+offset_right = 81.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_qhvla")
 
-[node name="4" type="Sprite2D" parent="faces" unique_id=22208878]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_km2h6")
-region_enabled = true
-region_rect = Rect2(480, 0.2885437, 160, 159.71146)
+[node name="5" type="TextureRect" parent="." unique_id=747486613]
+visible = false
+layout_mode = 0
+offset_left = -79.0
+offset_top = -79.0
+offset_right = 81.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_p0pwr")
 
-[node name="5" type="Sprite2D" parent="faces" unique_id=817964168]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_km2h6")
-region_enabled = true
-region_rect = Rect2(640, 0.2885437, 160, 159.71146)
-
-[node name="6" type="Sprite2D" parent="faces" unique_id=262235282]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_km2h6")
-region_enabled = true
-region_rect = Rect2(800, 0.2885437, 159, 159.71146)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2002320206]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_uvhtv")
+[node name="6" type="TextureRect" parent="." unique_id=1526496378]
+visible = false
+layout_mode = 0
+offset_left = -79.0
+offset_top = -79.0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_523um")

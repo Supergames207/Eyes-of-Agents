@@ -80,10 +80,11 @@ func _ready() -> void:
 		if k is Line2D:
 			k.queue_free()
 	
-	get_node("Icon").texture = icon
+	get_node("Sphere/Icon").texture = icon
 	
 	create_connection_lines()
 	update_visuals()
+	create_information_text()
 
 	for k in links:
 		k.parents_count += 1
@@ -115,11 +116,11 @@ func update_visuals() -> void:
 		return
 	
 	if locked == false:
-		get_node("Background").texture = unlocked_texture
+		get_node("Sphere/Background").texture = unlocked_texture
 	elif can_unlock():
-		get_node("Background").texture = may_unlock_texture
+		get_node("Sphere/Background").texture = may_unlock_texture
 	else:
-		get_node("Background").texture = locked_texture
+		get_node("Sphere/Background").texture = locked_texture
 
 
 func create_connection_lines() -> void:
@@ -191,12 +192,17 @@ func organize_links() -> void:
 		links[k].global_position = global_position + Vector2(1, k - links.size() / 2.0 + 0.5) * (custom_minimum_size + padding)
 
 func mouse_state_changed(entered : bool) -> void:
-	get_node("InformationHolder").visible = entered
+	get_node("Sphere/InformationHolder").visible = entered
+
+	var tween := get_tree().create_tween()
 
 	if entered:
-		create_information_text()
+		tween.tween_property(get_node("Sphere"), "scale", Vector2(1.1, 1.1), 0.25)
+		# create_information_text()
+	else:
+		tween.tween_property(get_node("Sphere"), "scale", Vector2(1,1), 0.25)
 	# else: #This was making the text look weird after the mouse enters the UI a second time
-		# get_node("InformationHolder/Information").text = ""
+		# get_node("Sphere/InformationHolder/Information").text = ""
 
 
 func generate_upgrade_text(upgrade : UpgradeInfo) -> String:
@@ -220,4 +226,4 @@ func create_information_text() -> void:
 	for up in upgrades:
 		text += generate_upgrade_text(up) + "\n"
 
-	get_node("InformationHolder/Information").text = text
+	get_node("Sphere/InformationHolder/Information").text = text

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dj587c3vqeagm"]
+
+[ext_resource type="Script" uid="uid://cv537y6s80ice" path="res://Scenes/PauseMenu/PauseMenu.gd" id="1_f1kpg"]
+[ext_resource type="Theme" uid="uid://cy5u0steb65il" path="res://Scenes/MainMenu/MainMenuTheme.tres" id="2_4bayv"]
+
+[node name="PauseMenu" type="Control" unique_id=1259175170]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f1kpg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1559651165]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.5
+offset_top = -110.0
+offset_right = 128.5
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="VBoxContainer" unique_id=1775360604]
+layout_mode = 2
+theme = ExtResource("2_4bayv")
+text = "Resume"
+
+[node name="Options" type="Button" parent="VBoxContainer" unique_id=107951272]
+layout_mode = 2
+theme = ExtResource("2_4bayv")
+text = "Options"
+
+[node name="NewRun" type="Button" parent="VBoxContainer" unique_id=1961064112]
+layout_mode = 2
+theme = ExtResource("2_4bayv")
+text = "Quit To main Menu"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1744374576]
+layout_mode = 2
+theme = ExtResource("2_4bayv")
+text = "Quit to Desktop"

@@ -32,6 +32,20 @@ value_range = SubResource("Resource_i8vmo")
 apparent_value = 5.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 
+[sub_resource type="Resource" id="Resource_57d8t"]
+script = ExtResource("2_8xkuc")
+start = 0.1
+end = 1.5
+step = 0.1
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_fy60b"]
+script = ExtResource("1_1xeoh")
+base_value = 1.0
+value_range = SubResource("Resource_57d8t")
+apparent_value = 1.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
 [sub_resource type="Resource" id="Resource_pfs7t"]
 script = ExtResource("2_8xkuc")
 end = 1000.0
@@ -56,6 +70,20 @@ script = ExtResource("1_1xeoh")
 base_value = 5.0
 value_range = SubResource("Resource_l7647")
 apparent_value = 5.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
+[sub_resource type="Resource" id="Resource_dw0ry"]
+script = ExtResource("2_8xkuc")
+start = 0.5
+end = 1.5
+step = 0.1
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_sec5x"]
+script = ExtResource("1_1xeoh")
+base_value = 1.0
+value_range = SubResource("Resource_dw0ry")
+apparent_value = 1.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 
 [sub_resource type="Resource" id="Resource_5qxwa"]
@@ -83,34 +111,6 @@ metadata/_custom_type_script = "uid://b0h6emee6va5u"
 script = ExtResource("1_1xeoh")
 base_value = 1.0
 value_range = SubResource("Resource_1xeoh")
-apparent_value = 1.0
-metadata/_custom_type_script = "uid://dx1fsl888f1sa"
-
-[sub_resource type="Resource" id="Resource_57d8t"]
-script = ExtResource("2_8xkuc")
-start = 0.1
-end = 1.5
-step = 0.1
-metadata/_custom_type_script = "uid://b0h6emee6va5u"
-
-[sub_resource type="Resource" id="Resource_fy60b"]
-script = ExtResource("1_1xeoh")
-base_value = 1.0
-value_range = SubResource("Resource_57d8t")
-apparent_value = 1.0
-metadata/_custom_type_script = "uid://dx1fsl888f1sa"
-
-[sub_resource type="Resource" id="Resource_dw0ry"]
-script = ExtResource("2_8xkuc")
-start = 0.5
-end = 1.5
-step = 0.1
-metadata/_custom_type_script = "uid://b0h6emee6va5u"
-
-[sub_resource type="Resource" id="Resource_sec5x"]
-script = ExtResource("1_1xeoh")
-base_value = 1.0
-value_range = SubResource("Resource_dw0ry")
 apparent_value = 1.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 

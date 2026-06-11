@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://uystgdnn16hb" path="res://GUI/PlayerStats/Stats.tscn" id="11_8ju71"]
 [ext_resource type="PackedScene" uid="uid://cyqbdy3a4prhc" path="res://GUI/DaySum/DaySummary.tscn" id="12_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://cwix35e1y2ifi" path="res://Scenes/EndGame.tscn" id="13_6t1o7"]
+[ext_resource type="PackedScene" uid="uid://dj587c3vqeagm" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="14_5qxwa"]
+[ext_resource type="PackedScene" uid="uid://bvgiau343pc2n" path="res://Scenes/OptionsMenu/OptionsMenu.tscn" id="15_xc4hf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 shader = ExtResource("1_hpc76")
@@ -116,3 +118,19 @@ grow_vertical = 1
 [node name="DaySummary" parent="." unique_id=980121168 instance=ExtResource("12_xb4mg")]
 
 [node name="EndGame" parent="." unique_id=1739275381 instance=ExtResource("13_6t1o7")]
+
+[node name="Menus" type="Control" parent="." unique_id=1604378862]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" parent="Menus" unique_id=1259175170 instance=ExtResource("14_5qxwa")]
+visible = false
+layout_mode = 1
+
+[node name="OptionsMenu" parent="Menus" unique_id=503858097 instance=ExtResource("15_xc4hf")]
+visible = false
+layout_mode = 1

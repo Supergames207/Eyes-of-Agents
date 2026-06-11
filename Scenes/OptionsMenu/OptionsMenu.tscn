@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bvgiau343pc2n"]
+
+[ext_resource type="Script" uid="uid://bsrel4c7tevh5" path="res://Scenes/OptionsMenu/OptionsMenu.gd" id="1_bv6ob"]
+
+[node name="OptionsMenu" type="Control" unique_id=503858097]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bv6ob")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=275816765]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -52.0
+offset_right = 20.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=333868075]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=2132788413]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer" unique_id=151069590]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1288162498]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer" unique_id=652064411]
+layout_mode = 2
+text = "TEST"

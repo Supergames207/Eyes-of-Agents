@@ -23,7 +23,7 @@ var day_time : float = 0.0
 
 var day_start := 0
 
-var day_on_hold := false
+var day_on_hold := 0
 
 func _init() -> void:
 	game_loaded.connect(update_game_loaded_state)
@@ -40,7 +40,7 @@ func wait_till_game_loaded() -> void:
 	await game_loaded
 
 func _process(_delta: float) -> void:
-	if day_on_hold or not is_game_loaded:
+	if day_on_hold > 0 or not is_game_loaded:
 		return
 	
 	day_time_ms = Time.get_ticks_msec() - day_start
@@ -55,15 +55,18 @@ func _process(_delta: float) -> void:
 		day_start = Time.get_ticks_msec()
 		prints("NEXT DAY", current_day)
 
+	prints("DAY TIME", day_time)
 
-func change_day_on_hold_state(state : bool) -> void:
-	if day_on_hold == state:
-		return
-	
-	if day_on_hold:
+func change_day_on_hold_state(state : bool, reset_time : bool = false) -> void:
+	assert(day_on_hold >= 0)
+
+	day_on_hold += 1 if state else -1
+
+	if day_on_hold == 0 and reset_time:
 		day_start = Time.get_ticks_msec()
+	else:
+		day_start = Time.get_ticks_msec() - day_time_ms
 
-	day_on_hold = state
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

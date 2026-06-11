@@ -125,13 +125,13 @@ node_name = "RankUp I"
 icon = ExtResource("4_0j0bc")
 ID = 0
 
-[node name="@Line2D@114372" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1700412647]
+[node name="@Line2D@18543" type="Line2D" parent="TreeNodes/RankUpI" unique_id=143631132]
 z_index = -1
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 47, 0, 47, -39.5)
 default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
-[node name="@Line2D@114373" type="Line2D" parent="TreeNodes/RankUpI" unique_id=855338955]
+[node name="@Line2D@18544" type="Line2D" parent="TreeNodes/RankUpI" unique_id=191907081]
 z_index = -1
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 47, 0, 47, 39.5)
@@ -150,7 +150,7 @@ node_name = "RankUp II"
 icon = ExtResource("4_0j0bc")
 ID = 1
 
-[node name="@Line2D@114374" type="Line2D" parent="TreeNodes/RankUpII" unique_id=1018224257]
+[node name="@Line2D@18545" type="Line2D" parent="TreeNodes/RankUpII" unique_id=273570860]
 z_index = -1
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 47, 0, 47, 0)
@@ -169,7 +169,7 @@ node_name = "Picky Finger I"
 icon = ExtResource("5_ms67t")
 ID = 2
 
-[node name="@Line2D@114375" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=533984238]
+[node name="@Line2D@18546" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=833382911]
 z_index = -1
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 47, 0, 47, 0)
@@ -200,13 +200,13 @@ node_name = "NewGen Satellites I"
 icon = ExtResource("6_tqh6d")
 ID = 3
 
-[node name="@Line2D@114376" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=1299240988]
+[node name="@Line2D@18547" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=215072151]
 z_index = -1
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 47, 0, 47, -39.5)
 default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
-[node name="@Line2D@114377" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=934478016]
+[node name="@Line2D@18548" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=1146243233]
 z_index = -1
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 47, 0, 47, 39.5)
@@ -249,13 +249,13 @@ node_name = "Promotion I"
 icon = ExtResource("7_a8u87")
 ID = 5
 
-[node name="@Line2D@114378" type="Line2D" parent="TreeNodes/PromotionI" unique_id=867534848]
+[node name="@Line2D@18549" type="Line2D" parent="TreeNodes/PromotionI" unique_id=1509761335]
 z_index = -1
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 126, 0, 126, 39.5)
 default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
-[node name="@Line2D@114379" type="Line2D" parent="TreeNodes/PromotionI" unique_id=297780438]
+[node name="@Line2D@18550" type="Line2D" parent="TreeNodes/PromotionI" unique_id=253251965]
 z_index = -1
 position = Vector2(64, 32)
 points = PackedVector2Array(0, 0, 47, 0, 47, 39.5)

@@ -38,6 +38,7 @@ border_blend = true
 [resource]
 default_font = ExtResource("1_rndpw")
 default_font_size = 120
+Button/font_sizes/font_size = 40
 RichTextLabel/colors/default_color = Color(1, 0.4745098, 0, 1)
 RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
 RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
