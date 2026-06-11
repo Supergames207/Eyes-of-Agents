@@ -9,3 +9,5 @@ func _ready() -> void:
 	GlobalVariables.player.camera.make_current()
 
 	GlobalVariables.game_loaded.emit()
+
+	

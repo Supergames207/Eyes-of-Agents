@@ -78,17 +78,6 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="How2Play" type="RichTextLabel" parent="Clickables" unique_id=347831737]
-layout_mode = 2
-theme = ExtResource("1_cdkru")
-theme_override_font_sizes/normal_font_size = 35
-bbcode_enabled = true
-text = "How to play"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Credits" type="RichTextLabel" parent="Clickables" unique_id=264821570]
 layout_mode = 2
 theme = ExtResource("1_cdkru")

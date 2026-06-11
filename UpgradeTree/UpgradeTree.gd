@@ -156,6 +156,9 @@ func keep_camera_within_bounds() -> void:
 # 		index += mem_size
 	
 func save_current_tree_state() -> void:
+	#TODO maybe we should save the game so the player can continue. but since that would be extra work we may not be able to
+	#SINCE WE ARE NOT REALLY CONTINUING THE SAVED GAME :(
+	return
 	var file := FileAccess.open(tree_state_path, FileAccess.WRITE)
 	
 	if not file:
@@ -174,6 +177,7 @@ func save_current_tree_state() -> void:
 	
 
 func load_current_tree_state() -> void:
+	return
 	if not FileAccess.file_exists(tree_state_path):
 		return
 	
