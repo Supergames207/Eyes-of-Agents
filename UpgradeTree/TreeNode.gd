@@ -20,6 +20,7 @@ class_name TreeNode extends Control
 @export var min_parents_unlocked := -1
 
 const padding := Vector2(15, 15)
+const lines_colour := Color(106 / 255., 106 / 255., 106 / 255., 1)
 
 static var locked_texture : Texture2D = load("res://UpgradeTree/LockedTexture.tres")
 static var may_unlock_texture : Texture2D = load("res://UpgradeTree/MayUnlockTexture.tres")
@@ -121,20 +122,31 @@ func update_visuals() -> void:
 		get_node("Background").texture = locked_texture
 
 
-func create_connection_lines() -> void:	#TODO Draw some lines 
+func create_connection_lines() -> void:
 	if not is_node_ready():
 		return
 	
 	for tree_node in links:
-		var new := Line2D.new()
-		new.position = Vector2(size.x, size.y / 2.0)
-		add_child(new)
-		new.owner = owner
+		var new_x := Line2D.new()
+		new_x.position = Vector2(size.x, size.y / 2.0)
 
-		var target_position := (tree_node.global_position + Vector2(0, size.y / 2.0))
+		new_x.default_color = lines_colour
+		new_x.z_index = -1
+
+		add_child(new_x)
+		new_x.owner = owner
+
+		var target_position := Vector2(tree_node.global_position.x + size.x / 2.0, new_x.global_position.y) #+ Vector2(0, size.y / 2.0))
 		
-		new.add_point(Vector2.ZERO)
-		new.add_point(target_position - new.global_position)
+		new_x.add_point(Vector2.ZERO)
+		new_x.add_point(target_position - new_x.global_position)
+
+		
+		target_position = (tree_node.global_position + Vector2(size.x / 2.0, size.y / 2.0))
+		
+		new_x.add_point(target_position - new_x.global_position)
+
+		
 	
 
 func _gui_input(e : InputEvent) -> void:

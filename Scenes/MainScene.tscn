@@ -74,7 +74,7 @@ light_bake_mode = 1
 sky_mode = 2
 
 [node name="CorkBoard" parent="." unique_id=1448994883 instance=ExtResource("6_y4jh7")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.5, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1645939086]
 transform = Transform3D(1.6624196, 0, 0, 0, 0.09979504, 0, 0, 0, 3.9037538, 4.392346, -0.80047023, 0)

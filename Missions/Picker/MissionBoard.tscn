@@ -7,11 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ib8jctho4gt1" path="res://Assets/Assets2D/SSIGNCASTD.png" id="5_j0omh"]
 [ext_resource type="Texture2D" uid="uid://0kybx06ayeq" path="res://Assets/Assets2D/page.png" id="6_4mqnj"]
 [ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="7_rugcd"]
+[ext_resource type="Theme" uid="uid://d14vim3a33g2u" path="res://Scenes/HQ/CorkBoardTheme.tres" id="7_xdr1m"]
 [ext_resource type="Texture2D" uid="uid://doqsde743j6nd" path="res://Assets/Assets2D/corkc«borarsds.jpg" id="8_rugcd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_xdr1m"]
-outline_size = 2
-outline_color = Color(0.0012304905, 0.010897007, 0.03978876, 1)
 
 [node name="MissionsMain" type="Control" unique_id=1115288096]
 layout_mode = 3
@@ -124,27 +121,30 @@ stretch_mode = 5
 layout_mode = 0
 offset_left = 23.0
 offset_top = 24.0
-offset_right = 207.0
-offset_bottom = 99.0
+offset_right = 198.0
+offset_bottom = 113.0
 
 [node name="DangerLabel" type="Label" parent="PaperInfo/VBoxContainer" unique_id=679036215]
+custom_minimum_size = Vector2(175, 27)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_rugcd")
+theme = ExtResource("7_xdr1m")
 text = "Danger:"
-label_settings = SubResource("LabelSettings_xdr1m")
+autowrap_mode = 3
 
 [node name="LocationLabel" type="Label" parent="PaperInfo/VBoxContainer" unique_id=916304377]
+custom_minimum_size = Vector2(175, 27)
 layout_mode = 2
+theme = ExtResource("7_xdr1m")
 theme_override_fonts/font = ExtResource("7_rugcd")
 text = "Location:"
-label_settings = SubResource("LabelSettings_xdr1m")
+autowrap_mode = 3
 
 [node name="ObjectiveLabel" type="Label" parent="PaperInfo/VBoxContainer" unique_id=2102616692]
-custom_minimum_size = Vector2(1, 1)
+custom_minimum_size = Vector2(175, 27)
 layout_mode = 2
+theme = ExtResource("7_xdr1m")
 theme_override_fonts/font = ExtResource("7_rugcd")
 text = "Objective"
-label_settings = SubResource("LabelSettings_xdr1m")
 autowrap_mode = 3
 
 [node name="CorkBackground" type="TextureRect" parent="." unique_id=787008015]

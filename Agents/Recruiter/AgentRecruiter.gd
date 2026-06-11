@@ -14,10 +14,10 @@ func _ready() -> void:
 
 func populate() -> void:
 	assault_skill_gaussian = GaussianData.new(GlobalPerkHolder.get_perk_value("AssaultSkillMean"), 
-											GlobalPerkHolder.get_perk_value("AssaultSkillDeviation"))
+											GlobalPerkHolder.get_perk_value("AssaultSkillSpread"))
 	
 	furtive_skill_guassian = GaussianData.new(GlobalPerkHolder.get_perk_value("FurtiveSkillMean"), 
-											GlobalPerkHolder.get_perk_value("FurtiveSkillDeviation"))
+											GlobalPerkHolder.get_perk_value("FurtiveSkillSpread"))
 
 	var grid : GridContainer = get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder")
 	

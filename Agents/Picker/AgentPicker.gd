@@ -19,11 +19,11 @@ func _ready() -> void:
 	agents_array.array_changed.connect(update_agent_visualizer)
 
 
-func update_max_collums(control : Control) -> void:
-	var parent : SubViewport = get_parent()
+# func update_max_collums(control : Control) -> void:
+# 	var parent : SubViewport = get_parent()
 
-	var max_cols := floori(parent.size.x / control.get_combined_minimum_size().x)
-	get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder").columns = max_cols
+# 	var max_cols := floori(parent.size.x / control.get_combined_minimum_size().x)
+# 	get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder").columns = max_cols
 
 func populate() -> void:
 	var grid : GridContainer = get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder")
@@ -34,8 +34,8 @@ func populate() -> void:
 
 		grid.add_child(new)
 
-		if k == 0 and get_parent() is SubViewport:
-			update_max_collums(new)
+		# if k == 0 and get_parent() is SubViewport:
+		# 	update_max_collums(new)
 
 func update_agent_visualizer(added : bool, index : int) -> void:
 	if added:
@@ -44,7 +44,7 @@ func update_agent_visualizer(added : bool, index : int) -> void:
 
 		get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder").add_child(new)
 		
-		update_max_collums(new) 
+		# update_max_collums(new) 
 	else:
 		get_node("PanelContainer/CenterContainer/ScrollContainer/AgentCardHolder").get_child(index).queue_free()
 	

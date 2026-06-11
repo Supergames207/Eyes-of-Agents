@@ -48,9 +48,21 @@ perk_name = &"DaySalary"
 change = 100.0
 metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
 
+[sub_resource type="Resource" id="Resource_368bf"]
+script = ExtResource("3_ddxtx")
+perk_name = &"DaySalary"
+change = 100.0
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
+[sub_resource type="Resource" id="Resource_8j12q"]
+script = ExtResource("3_ddxtx")
+perk_name = &"MoneyMultiplier"
+change = 0.1
+metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
+
 [sub_resource type="Resource" id="Resource_tqh6d"]
 script = ExtResource("3_ddxtx")
-perk_name = &"AssaultSkillDeviation"
+perk_name = &"AssaultSkillSpread"
 change = 0.1
 metadata/_custom_type_script = "uid://c4n7neb5bu0xi"
 
@@ -77,6 +89,7 @@ grow_vertical = 2
 script = ExtResource("1_ydur8")
 
 [node name="Panel" type="Panel" parent="." unique_id=1967289646]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,25 +125,36 @@ node_name = "RankUp I"
 icon = ExtResource("4_0j0bc")
 ID = 0
 
-[node name="@Line2D@221027" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1114459775]
+[node name="@Line2D@114372" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1700412647]
+z_index = -1
 position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 15, -39.5)
+points = PackedVector2Array(0, 0, 47, 0, 47, -39.5)
+default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
-[node name="@Line2D@221028" type="Line2D" parent="TreeNodes/RankUpI" unique_id=1332459508]
+[node name="@Line2D@114373" type="Line2D" parent="TreeNodes/RankUpI" unique_id=855338955]
+z_index = -1
 position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 15, 39.5)
+points = PackedVector2Array(0, 0, 47, 0, 47, 39.5)
+default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
-[node name="RankUpII" parent="TreeNodes" unique_id=893888064 instance=ExtResource("2_7uquy")]
+[node name="RankUpII" parent="TreeNodes" unique_id=893888064 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
 layout_mode = 0
 offset_left = 237.0
 offset_top = -12.0
 offset_right = 301.0
 offset_bottom = 52.0
+links = [NodePath("../PaycheckII")]
 upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_0j0bc")])
 cost = 200
 node_name = "RankUp II"
 icon = ExtResource("4_0j0bc")
 ID = 1
+
+[node name="@Line2D@114374" type="Line2D" parent="TreeNodes/RankUpII" unique_id=1018224257]
+z_index = -1
+position = Vector2(64, 32)
+points = PackedVector2Array(0, 0, 47, 0, 47, 0)
+default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
 [node name="PickyFingerI" parent="TreeNodes" unique_id=942374375 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
 layout_mode = 0
@@ -145,9 +169,23 @@ node_name = "Picky Finger I"
 icon = ExtResource("5_ms67t")
 ID = 2
 
-[node name="@Line2D@221029" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=368706638]
+[node name="@Line2D@114375" type="Line2D" parent="TreeNodes/PickyFingerI" unique_id=533984238]
+z_index = -1
 position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 15, 0)
+points = PackedVector2Array(0, 0, 47, 0, 47, 0)
+default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
+
+[node name="PickyFingerII" parent="TreeNodes" unique_id=302845718 instance=ExtResource("2_7uquy")]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 106.5
+offset_right = 380.0
+offset_bottom = 170.5
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_ms67t"), SubResource("Resource_2oppt")])
+cost = 100
+node_name = "Picky Finger II"
+icon = ExtResource("5_ms67t")
+ID = 2
 
 [node name="NewGenSattelitesI" parent="TreeNodes" unique_id=1101492309 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
 layout_mode = 0
@@ -162,13 +200,17 @@ node_name = "NewGen Satellites I"
 icon = ExtResource("6_tqh6d")
 ID = 3
 
-[node name="@Line2D@221030" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=220013974]
+[node name="@Line2D@114376" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=1299240988]
+z_index = -1
 position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 15, -39.5)
+points = PackedVector2Array(0, 0, 47, 0, 47, -39.5)
+default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
-[node name="@Line2D@221031" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=649940826]
+[node name="@Line2D@114377" type="Line2D" parent="TreeNodes/NewGenSattelitesI" unique_id=934478016]
+z_index = -1
 position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 15, 39.5)
+points = PackedVector2Array(0, 0, 47, 0, 47, 39.5)
+default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
 [node name="PaycheckI" parent="TreeNodes" unique_id=929052065 instance=ExtResource("2_7uquy")]
 layout_mode = 0
@@ -182,29 +224,49 @@ node_name = "Paycheck I"
 icon = ExtResource("6_2oppt")
 ID = 4
 
+[node name="PaycheckII" parent="TreeNodes" unique_id=544334881 instance=ExtResource("2_7uquy")]
+layout_mode = 0
+offset_left = 316.0
+offset_top = -12.0
+offset_right = 380.0
+offset_bottom = 52.0
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_368bf")])
+cost = 100
+node_name = "Paycheck II"
+icon = ExtResource("6_2oppt")
+ID = 4
+
 [node name="PromotionI" parent="TreeNodes" unique_id=231226547 node_paths=PackedStringArray("links") instance=ExtResource("2_7uquy")]
 layout_mode = 0
 offset_left = 237.0
 offset_top = 67.0
 offset_right = 301.0
 offset_bottom = 131.0
-links = [NodePath("../HumanFilterI")]
-upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_tqh6d")])
+links = [NodePath("../HumanFilterI"), NodePath("../PickyFingerII")]
+upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_8j12q")])
 cost = 100
 node_name = "Promotion I"
 icon = ExtResource("7_a8u87")
 ID = 5
 
-[node name="@Line2D@221032" type="Line2D" parent="TreeNodes/PromotionI" unique_id=1663947519]
+[node name="@Line2D@114378" type="Line2D" parent="TreeNodes/PromotionI" unique_id=867534848]
+z_index = -1
 position = Vector2(64, 32)
-points = PackedVector2Array(0, 0, 15, 0)
+points = PackedVector2Array(0, 0, 126, 0, 126, 39.5)
+default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
+
+[node name="@Line2D@114379" type="Line2D" parent="TreeNodes/PromotionI" unique_id=297780438]
+z_index = -1
+position = Vector2(64, 32)
+points = PackedVector2Array(0, 0, 47, 0, 47, 39.5)
+default_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
 
 [node name="HumanFilterI" parent="TreeNodes" unique_id=1813065782 instance=ExtResource("2_7uquy")]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 67.0
-offset_right = 380.0
-offset_bottom = 131.0
+offset_left = 395.0
+offset_top = 106.5
+offset_right = 459.0
+offset_bottom = 170.5
 upgrades = Array[ExtResource("3_ddxtx")]([SubResource("Resource_tqh6d")])
 cost = 100
 node_name = "HumanFilter I"
@@ -215,5 +277,3 @@ ID = 6
 z_index = 2
 material = SubResource("ShaderMaterial_368bf")
 layout_mode = 1
-offset_left = 10.0
-offset_right = 10.0

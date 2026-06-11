@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dg8xhj5mcc34j" path="res://UpgradeTree/UpgradeTree.tscn" id="2_smswu"]
 [ext_resource type="PackedScene" uid="uid://ih1yjlmnqvmi" path="res://Agents/Picker/AgentPicker.tscn" id="3_v6lxg"]
 [ext_resource type="Texture2D" uid="uid://b4jd6itaq1ub5" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_BaseColor.jpg" id="5_78edl"]
+[ext_resource type="Material" uid="uid://cu5vtr2bdkygo" path="res://Scenes/HQ/OrangeFrameMaterial.tres" id="5_rcr6f"]
 [ext_resource type="Texture2D" uid="uid://cky74wfaqcn82" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_AmbientOcclusion.jpg" id="6_3ctp1"]
 [ext_resource type="Texture2D" uid="uid://cv4gnxw02l252" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_Metallic.jpg" id="7_r8fgo"]
 [ext_resource type="Texture2D" uid="uid://cspwbgr2212t1" path="res://Scenes/HQ/WoodFloorAsh/Poliigon_WoodFloorAsh_4186_Normal.png" id="8_r3vd7"]
@@ -31,14 +32,11 @@ render_priority = 0
 shader = ExtResource("1_43ktv")
 shader_parameter/shape_texture = SubResource("ViewportTexture_y0jt2")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_43ktv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rcr6f"]
 viewport_path = NodePath("UpgradeTree/SpriteGUI3D/SubViewport")
 
-[sub_resource type="BoxMesh" id="BoxMesh_c2bgw"]
-size = Vector3(4.75, 6, 0.125)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_rcr6f"]
-viewport_path = NodePath("AgentPickerBoard/SpriteGUI3D/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_e0k17"]
+viewport_path = NodePath("AgentPickerBoard/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dc0eh"]
 albedo_texture = ExtResource("5_78edl")
@@ -73,26 +71,26 @@ uv1_scale = Vector3(3, 3, 3)
 material = SubResource("StandardMaterial3D_n22v7")
 size = Vector3(25, 25, 0)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e0k17"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ubotl"]
 viewport_path = NodePath("TV/SpriteGUI3D/SubViewport")
 
 [node name="HeadQuarters" type="Node3D" unique_id=375498434]
 
 [node name="UpgradeTree" type="MeshInstance3D" parent="." unique_id=1634238982]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 7.9)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 6.4)
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="UpgradeTree" unique_id=1253218691 node_paths=PackedStringArray("node_viewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.462, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.462, 0)
 material_override = SubResource("ShaderMaterial_rcr6f")
-texture = SubResource("ViewportTexture_43ktv")
+texture = SubResource("ViewportTexture_rcr6f")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
-quad_mesh_size = Vector3(15.36, 10.86, 0)
+quad_mesh_size = Vector3(11.52, 10.86, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="UpgradeTree/SpriteGUI3D" unique_id=9434727]
 handle_input_locally = false
-size = Vector2i(1536, 1086)
+size = Vector2i(1152, 813)
 
 [node name="UpgradeTree" parent="UpgradeTree/SpriteGUI3D/SubViewport" unique_id=1661596182 instance=ExtResource("2_smswu")]
 offset_left = -150.0
@@ -100,22 +98,27 @@ offset_top = -543.0
 offset_right = 3306.0
 offset_bottom = 428.99976
 
-[node name="AgentPickerBoard" type="MeshInstance3D" parent="." unique_id=1592906521]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -4.454692, 0, -7.862515)
-mesh = SubResource("BoxMesh_c2bgw")
-
-[node name="SpriteGUI3D" type="Sprite3D" parent="AgentPickerBoard" unique_id=245946221 node_paths=PackedStringArray("node_viewport")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0.1)
-texture = SubResource("ViewportTexture_rcr6f")
+[node name="AgentPickerBoard" type="Sprite3D" parent="." unique_id=245946221 node_paths=PackedStringArray("node_viewport")]
+transform = Transform3D(0.7071067, 0, 0.70710665, 0, 0.9999999, 0, -0.7071067, 0, 0.70710665, -3.3117878, 0, -6.4338293)
+texture = SubResource("ViewportTexture_e0k17")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
 quad_mesh_size = Vector3(4.3799996, 4.8799996, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
-[node name="SubViewport" type="SubViewport" parent="AgentPickerBoard/SpriteGUI3D" unique_id=51775185]
+[node name="SubViewport" type="SubViewport" parent="AgentPickerBoard" unique_id=51775185]
 size = Vector2i(438, 488)
 
-[node name="AgentPicker" parent="AgentPickerBoard/SpriteGUI3D/SubViewport" unique_id=655678137 instance=ExtResource("3_v6lxg")]
+[node name="AgentPicker" parent="AgentPickerBoard/SubViewport" unique_id=655678137 instance=ExtResource("3_v6lxg")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="AgentPickerBoard" unique_id=1342913963]
+material_override = ExtResource("5_rcr6f")
+size = Vector3(4.58, 5.08, 0.25)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="AgentPickerBoard/CSGBox3D" unique_id=26275421]
+transform = Transform3D(0.9999977, 0, 0, 0, 0.9999977, 0, 0, 0, 1, 0, 0, 0)
+operation = 2
+size = Vector3(4.38, 4.88, 0.25)
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1377206918]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9825325, 0)
@@ -130,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 mesh = SubResource("BoxMesh_78edl")
 
 [node name="Walls4" type="MeshInstance3D" parent="." unique_id=862827760]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
 mesh = SubResource("BoxMesh_78edl")
 
 [node name="Walls2" type="MeshInstance3D" parent="." unique_id=503978598]
@@ -138,7 +141,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0
 mesh = SubResource("BoxMesh_78edl")
 
 [node name="Walls3" type="MeshInstance3D" parent="." unique_id=433638136]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.5, 0, 0)
 mesh = SubResource("BoxMesh_78edl")
 
 [node name="Door" parent="." unique_id=1596508848 instance=ExtResource("13_6qosn")]
@@ -148,14 +151,14 @@ transform = Transform3D(-1.7484555e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.748455
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 7.5089016, -3.999999, -0.74291277)
 
 [node name="TV" parent="." unique_id=901428686 instance=ExtResource("15_n22v7")]
-transform = Transform3D(-2.5, 0, -2.1855695e-07, 0, 2.5, 0, 2.1855695e-07, 0, -2.5, 2.26715, -0.70476955, -6.7642674)
+transform = Transform3D(-2.75, 0, -4.1523845e-07, 0, 2.75, 0, 4.1523845e-07, 0, -2.75, 2.26715, -0.70476955, -6.438266)
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="TV" unique_id=1330681839 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(-0.2, 0, -3.019916e-08, 0, 0.19999999, 0, 3.019916e-08, 0, -0.2, 0.13796186, 0.51239, -0.4819436)
-texture = SubResource("ViewportTexture_e0k17")
+texture = SubResource("ViewportTexture_ubotl")
 script = ExtResource("1_xn7ne")
 node_viewport = NodePath("SubViewport")
-quad_mesh_size = Vector3(2.31, 1.7999998, 0)
+quad_mesh_size = Vector3(2.541, 1.9799998, 0)
 metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 
 [node name="SubViewport" type="SubViewport" parent="TV/SpriteGUI3D" unique_id=1592596604]
