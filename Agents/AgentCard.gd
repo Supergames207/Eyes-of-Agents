@@ -14,7 +14,8 @@ func fill_data(_agent: Agent) -> void:
 	get_node("VBoxContainer/Data").text = "Cost / day : " + str(_agent.cost) + " $ \n" \
 										+ "Stealth : " + str(_agent.furtiveness_skill) + "\n" \
 										+ "Assault : " + str(_agent.assault_skill)
-	
+	get_node("VBoxContainer/CenterContainer/TextureRect").texture = _agent.face
+
 func _gui_input(e : InputEvent) -> void:
 	if e is InputEventMouseButton:
 		var event : InputEventMouseButton = e

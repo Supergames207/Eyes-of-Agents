@@ -20,11 +20,11 @@ layout_mode = 2
 theme_override_constants/separation = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=1918436944]
-custom_minimum_size = Vector2(140, 117)
+custom_minimum_size = Vector2(140, 120)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer" unique_id=1887535444]
-custom_minimum_size = Vector2(105, 90)
+custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
 texture = ExtResource("3_2wmey")
 expand_mode = 1

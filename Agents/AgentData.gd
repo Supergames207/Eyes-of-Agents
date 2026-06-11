@@ -1,6 +1,6 @@
 class_name Agent extends Resource
 
-
+@export var face : CompressedTexture2D
 @export var name : StringName
 @export var cost : int
 @export var reputation : float

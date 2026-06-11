@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://yfjddpu3oj5u"]
+
+[ext_resource type="Texture2D" uid="uid://bqvbe4mfov6ju" path="res://Agents/Faces/agent1.png" id="1_g3bwx"]
+[ext_resource type="Texture2D" uid="uid://d06vopcsfba4e" path="res://Agents/Faces/agent2.png" id="2_qyot3"]
+
+[node name="Faces" type="Node2D" unique_id=372779106]
+
+[node name="Agent1" type="Sprite2D" parent="." unique_id=2048630938]
+texture = ExtResource("1_g3bwx")
+
+[node name="Agent2" type="Sprite2D" parent="." unique_id=1414619910]
+texture = ExtResource("2_qyot3")
