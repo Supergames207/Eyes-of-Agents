@@ -26,20 +26,10 @@ func _ready() -> void:
 	await GlobalVariables.wait_till_game_loaded()
 	player = GlobalVariables.player
 	
-	for n in range(0, GlobalPerkHolder.get_perk_value(&"MissionSlots")):
-		var new_button: LocationButton = button_template.instantiate()
-		loc_container.add_child(new_button)
-	
-	NewMissions._new_missions(loc_container)
-	
 	agent_array = GlobalVariables.player.agents
 	
-	for l in loc_container.get_children():
-		if not l is LocationButton:
-			continue
-		
-		l.mouse_entered.connect(button_mouse_entered)
-		l.pressed.connect(func() -> void: _on_pin_press(l.risk, l.location, l.objective, l))
+	fill_missions()
+	GlobalVariables.day_started.connect(fill_missions)
 	
 	next_agent_button.pressed.connect(func() -> void: _on_next_agent())
 	
@@ -47,6 +37,27 @@ func _ready() -> void:
 	
 	_on_next_agent()
 
+
+func fill_missions() -> void:
+	for child in loc_container.get_children():
+		if not child is LocationButton:
+			return
+
+		child.queue_free()
+	
+	for n in range(0, GlobalPerkHolder.get_perk_value(&"MissionSlots")):
+		var new_button: LocationButton = button_template.instantiate()
+		loc_container.add_child(new_button)
+	
+	NewMissions._new_missions(loc_container)
+
+	for l in loc_container.get_children():
+		if not l is LocationButton:
+			continue
+		
+		l.mouse_entered.connect(button_mouse_entered)
+		l.pressed.connect(func() -> void: _on_pin_press(l.risk, l.location, l.objective, l))
+	
 func button_mouse_entered() -> void:
 	AudioManager.play("res://Sounds/Pack1/GUI Sound Effects_031.wav", 1.0, 1.05, -20.0)
 

@@ -6,7 +6,7 @@ class_name CameraHandler extends Camera3D
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var screen_size := get_viewport().get_visible_rect().size
 	var dist_center: Vector2 = Vector2(

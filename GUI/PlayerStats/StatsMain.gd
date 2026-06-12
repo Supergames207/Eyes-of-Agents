@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	_sun_circular_motion(false)
 	
 
-func _sun_circular_motion(reset: bool) -> void:
+func _sun_circular_motion(_reset: bool) -> void:
 	# speed = (TAU) / GlobalVariables.day_duration_sec / 2 # half circle in day_duration
 	# if reset:
 	# 	angle = reset_angle

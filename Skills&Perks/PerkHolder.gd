@@ -83,7 +83,7 @@ func save_lookup() -> void:
 		ResourceSaver.save(perks_lookup, editor_save_path)
 	else:
 		return
-		ResourceSaver.save(perks_lookup, save_path)
+		# ResourceSaver.save(perks_lookup, save_path)
 
 func load_lookup() -> void:
 	if Engine.is_editor_hint() or not ResourceLoader.exists(save_path):
@@ -93,7 +93,7 @@ func load_lookup() -> void:
 	perks_lookup = ResourceLoader.load(editor_save_path)
 	return
 	
-	perks_lookup = ResourceLoader.load(save_path)
+	# perks_lookup = ResourceLoader.load(save_path)
 
 func reset_perks() -> void:
 	DirAccess.remove_absolute(save_path)

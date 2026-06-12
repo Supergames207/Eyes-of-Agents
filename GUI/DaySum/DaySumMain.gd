@@ -117,7 +117,7 @@ func _start_summary() -> void:
 
 	await _fade_in(expenses_label, .25)
 	
-	for i: int in expenses:
+	for i: int in range(0, expenses, expenses / 10.0):
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		expenses_label.text = "Expenses: " + str(i) + " $"
@@ -128,7 +128,7 @@ func _start_summary() -> void:
 	waiting_money = roundi(waiting_money * GlobalPerkHolder.get_perk_value("MoneyMultiplier"))
 	gains += waiting_money
 	
-	for i: int in gains:
+	for i: int in range(0, gains, gains / 10.0):
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		gains_label.text = "Gains: " + str(i) + " $"
@@ -136,7 +136,7 @@ func _start_summary() -> void:
 	
 	await _fade_in(quota_label, .25)
 	
-	for i: int in daily_quota:
+	for i: int in range(0, daily_quota, daily_quota / 10.0):
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		quota_label.text = "Daily Quota: " + str(i) + " $"
@@ -149,11 +149,12 @@ func _start_summary() -> void:
 	player.waiting_money = 0
 	player.adjacent_money_losses = 0
 	
-	var step: int = 1 if player.money > current_cash else -1
+	# var step: int = 1 if player.money > current_cash else -1
 	
-	for i in range(current_cash, player.money + step, step):
+	for i in range(current_cash, player.money, (player.money - current_cash) / 10.0):
 		await RenderingServer.frame_post_draw
 		money_sum_label.text = "TOTAL CASH: %d $" % i
+	
 	current_cash += gains - expenses - daily_quota
 	money_sum_label.text = "TOTAL CASH: " + str(current_cash) + " $"
 	
@@ -236,6 +237,7 @@ func _show_agent_state(a: Agent) -> void:
 
 		if a.mission_status["Duration"] <= 0:
 			waiting_money += a.mission_status["Reward"]
+			a.mission_status["State"] = false
 			a.mission_ended.emit(true)
 			
 		await get_tree().create_timer(.3).timeout
