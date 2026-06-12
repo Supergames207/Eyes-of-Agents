@@ -63,7 +63,7 @@ func _process(_delta: float) -> void:
 			day_started.emit()
 		prints("NEXT DAY", current_day)
 
-	prints("DAY TIME", day_time)
+	#prints("DAY TIME", day_time)
 
 func change_day_on_hold_state(state : bool, reset_time : bool = false) -> void:
 	assert(day_on_hold >= 0)

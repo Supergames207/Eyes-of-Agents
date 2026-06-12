@@ -56,6 +56,7 @@ font_size = 34
 font_color = Color(0.68307734, 0.6830774, 0.68307734, 1)
 
 [node name="DaySummary" type="Control" unique_id=980121168]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

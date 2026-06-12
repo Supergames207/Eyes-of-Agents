@@ -14,6 +14,6 @@ func _new_missions(loc_container: VBoxContainer) -> void:
 		
 		var random_obj: String = RandomStrings.random_objectives.pick_random()
 		
-		l.danger = result
+		l.risk = result
 		l.location = random_loc
 		l.objective = random_obj
