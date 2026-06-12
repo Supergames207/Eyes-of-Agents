@@ -51,14 +51,14 @@ func _do_rng(agent: Agent) -> void:
 	var no_stakes: Label = agent_card_control.get_node("ScenarioMission/Option/NoContainer/Stakes")
 	
 
-	# GlobalVariables.day_started.connect(func() -> void:
-	# 	prints("HEY????", agent.name, agent.index)
-	# 	if agent.index == -1 and is_instance_valid(agent_card_control):
-	# 		active_cards.erase(agent_card_control)
-	# 		agent_card_control.queue_free()
-	# 		scenario_container.visible = false
+	agent.mission_ended.connect(func(_survived : bool) -> void:
+		prints("HEY????", agent.name, agent.index)
+		if is_instance_valid(agent_card_control):
+			active_cards.erase(agent_card_control)
+			agent_card_control.queue_free()
+			scenario_container.visible = false
 		
-	# 	,CONNECT_ONE_SHOT)
+		,CONNECT_ONE_SHOT)
 	
 	var tween: Tween = create_tween()
 	tween.tween_property(agent_card_control, "position:x", original_x, 0.5)\

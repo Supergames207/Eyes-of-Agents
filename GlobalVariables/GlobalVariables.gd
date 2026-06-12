@@ -3,6 +3,8 @@ extends Node
 @warning_ignore("unused_signal") #TODO Add a loading screen and make so game_load is ONLY called when the whole game loads ;)
 signal game_loaded
 signal day_ended
+signal start_day_summary
+
 signal day_started
 
 signal closing_game
@@ -53,6 +55,7 @@ func _process(_delta: float) -> void:
 		current_day = floori(Time.get_ticks_msec() / day_duration)
 		
 		day_ended.emit()
+		start_day_summary.emit()
 		day_start = Time.get_ticks_msec()
 
 		if day_on_hold == 0:

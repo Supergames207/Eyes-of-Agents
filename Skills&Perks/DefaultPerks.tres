@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dx1fsl888f1sa" path="res://Skills&Perks/Perk.gd" id="1_1xeoh"]
 [ext_resource type="Script" uid="uid://b0h6emee6va5u" path="res://Agents/Recruiter/NumberRange.gd" id="2_8xkuc"]
+[ext_resource type="Script" uid="uid://bhl60yrol5y6e" path="res://Skills&Perks/AutonomousPerk.gd" id="3_8xkuc"]
 [ext_resource type="Script" uid="uid://cfbox6gktpjrl" path="res://Skills&Perks/PerksLookup.gd" id="3_pfs7t"]
 
 [sub_resource type="Resource" id="Resource_2t2ei"]
@@ -115,12 +116,26 @@ value_range = SubResource("Resource_1xeoh")
 apparent_value = 1.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 
+[sub_resource type="Resource" id="Resource_jbw30"]
+script = ExtResource("2_8xkuc")
+end = 1000.0
+step = 50.0
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_dga6d"]
+script = ExtResource("3_8xkuc")
+update_period_range = Vector2i(3, 5)
+change_range = Vector2(50, 150)
+value_range = SubResource("Resource_jbw30")
+metadata/_custom_type_script = "uid://bhl60yrol5y6e"
+
 [resource]
 script = ExtResource("3_pfs7t")
 perks = Dictionary[StringName, ExtResource("1_1xeoh")]({
 &"AgentRecruiterSlots": SubResource("Resource_tdbu3"),
 &"AssaultSkillMean": SubResource("Resource_wek8u"),
 &"AssaultSkillSpread": SubResource("Resource_fy60b"),
+&"DailyQuota": SubResource("Resource_dga6d"),
 &"DaySalary": SubResource("Resource_612d4"),
 &"FurtiveSkillMean": SubResource("Resource_6w2sc"),
 &"FurtiveSkillSpread": SubResource("Resource_sec5x"),

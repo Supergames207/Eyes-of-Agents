@@ -39,6 +39,19 @@ func update_perk(perk_name : StringName, change : float, type : UpdateType) -> E
 	
 	return OK
 
+static func self_update_perk(perk : Perk, change : float, type : UpdateType) -> Error:
+	match type:
+		UpdateType.Add:
+			perk.change_apparent_value(perk.apparent_value + change)
+		
+		UpdateType.BaseMultiply:
+			perk.change_apparent_value(perk.apparent_value + perk.base_value * change)
+		
+		UpdateType.Multiply:
+			perk.multiplier += change
+	
+	return OK
+	
 func add_perk(perk_name : StringName, base_value : float, value_range : NumberRange, multiplier : float = 1.0) -> void:
 	var new_perk := Perk.new()
 	new_perk.base_value = base_value

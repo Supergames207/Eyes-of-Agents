@@ -56,7 +56,6 @@ font_size = 34
 font_color = Color(0.68307734, 0.6830774, 0.68307734, 1)
 
 [node name="DaySummary" type="Control" unique_id=980121168]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,7 +185,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Money" type="Label" parent="." unique_id=1147546504]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -202,7 +200,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Expenses" type="Label" parent="Money" unique_id=1428348466]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -219,7 +216,6 @@ label_settings = SubResource("LabelSettings_ydgfs")
 horizontal_alignment = 2
 
 [node name="Gains" type="Label" parent="Money" unique_id=371601448]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -233,6 +229,23 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "GAINS: 0 $"
 label_settings = SubResource("LabelSettings_2wb4w")
+horizontal_alignment = 2
+
+[node name="CurrentQuota" type="Label" parent="." unique_id=528876259]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = 52.5
+offset_right = 169.5
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Current Quota : 0 $"
+label_settings = SubResource("LabelSettings_ydgfs")
 horizontal_alignment = 2
 
 [node name="ContinueNotice" type="Label" parent="." unique_id=852550988]

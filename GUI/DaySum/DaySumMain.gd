@@ -11,6 +11,7 @@ extends Control
 @onready var money_sum_label: Label = $Money
 @onready var expenses_label: Label = $Money/Expenses
 @onready var gains_label: Label = $Money/Gains
+@onready var quota_label : Label = $CurrentQuota
 @onready var continue_label: Label = $ContinueNotice
 
 signal clicked
@@ -25,6 +26,7 @@ var current_cash: int
 var expenses: int
 var gains: int
 var waiting_money: int
+var daily_quota : int
 
 var dead_agents := []
 
@@ -35,7 +37,7 @@ func _ready() -> void:
 	player = GlobalVariables.player
 	agent_array = player.agents
 	
-	GlobalVariables.day_ended.connect(_start_summary)
+	GlobalVariables.start_day_summary.connect(_start_summary)
 
 func _start_summary() -> void:
 	GlobalVariables.change_day_on_hold_state(true, true)
@@ -46,7 +48,7 @@ func _start_summary() -> void:
 	expenses = player.adjacent_money_losses + agent_array.overall_cost
 	gains = roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
 	waiting_money = player.waiting_money
-	
+	daily_quota = roundi(GlobalPerkHolder.get_perk_value("DailyQuota"))
 	# Set the background
 	
 	bg.position.y -= bg.size.y
@@ -98,7 +100,7 @@ func _start_summary() -> void:
 			var control: Control = control_template.duplicate()
 			control.visible = true
 
-			get_node("CardsSurvival").add_child(control)
+			cards_h_box.add_child(control)
 			var card: AgentCardUI = control.get_node("AgentCard")
 			var x_texture: TextureRect = control.get_node("DeadTexture")
 			var chance_label: Label = control.get_node("Chance")
@@ -122,6 +124,9 @@ func _start_summary() -> void:
 				
 				survival_label.text = "Compromised"
 				set("theme_override_colors/font_color", Color(.9, .0, .2, 1.0))
+				
+				a.mission_ended.emit(false)
+
 				await _fade_in(survival_label, .2)
 				await get_tree().create_timer(1.5).timeout
 				control.queue_free()
@@ -131,8 +136,10 @@ func _start_summary() -> void:
 				survival_label.text = "Safe"
 				set("theme_override_colors/font_color", Color(.4, .9, .3, 1.0))
 				await _fade_in(survival_label, .3)
+
 				if a.mission_status["Duration"] <= 0:
 					waiting_money += a.mission_status["Reward"]
+					a.mission_ended.emit(true)
 					
 				await get_tree().create_timer(.3).timeout
 				await get_tree().create_timer(1.8).timeout
@@ -158,6 +165,15 @@ func _start_summary() -> void:
 	
 	await _fade_in(gains_label, .25)
 	
+	
+	for i: int in range(0, daily_quota, daily_quota / 5.0):
+		await RenderingServer.frame_post_draw
+		await RenderingServer.frame_post_draw
+		quota_label.text = "Expenses: " + str(i) + " $"
+	quota_label.text = "Expenses: " + str(daily_quota) + " $"
+	
+	await _fade_in(gains_label, .25)
+	
 	waiting_money = roundi(waiting_money * GlobalPerkHolder.get_perk_value("MoneyMultiplier"))
 	gains += waiting_money
 
@@ -171,6 +187,8 @@ func _start_summary() -> void:
 	
 
 	player.money += gains - expenses
+	player.money -= daily_quota
+	
 	player.waiting_money = 0
 	player.adjacent_money_losses = 0
 	
@@ -216,48 +234,49 @@ func _fade_in(node: CanvasItem, duration: float = 0.4) -> void:
 	tween.tween_property(node, "modulate:a", 1.0, duration)
 	await tween.finished
 
-func _show_agent_state(a: Agent) -> void:
-	var control: Control = control_template.duplicate()
-	control.visible = true
-	var card: AgentCardUI = control.get_node("AgentCard")
-	var x_texture: TextureRect = control.get_node("DeadTexture")
-	var chance_label: Label = control.get_node("Chance")
-	var survival_label: Label = control.get_node("SurvivalState")
-	var chance: float = a.mission_status["Risk"]
-	a.mission_status["Duration"] -= 1
+#Provavelmente era uma boa função.
+# func _show_agent_state(a: Agent) -> void:
+# 	var control: Control = control_template.duplicate()
+# 	control.visible = true
+# 	var card: AgentCardUI = control.get_node("AgentCard")
+# 	var x_texture: TextureRect = control.get_node("DeadTexture")
+# 	var chance_label: Label = control.get_node("Chance")
+# 	var survival_label: Label = control.get_node("SurvivalState")
+# 	var chance: float = a.mission_status["Risk"]
+# 	a.mission_status["Duration"] -= 1
 	
-	card.fill_data(a)
-	chance_label.text = str(round(chance * 100)) + " %"
+# 	card.fill_data(a)
+# 	chance_label.text = str(round(chance * 100)) + " %"
 	
-	cards_h_box.add_child(control)
-	if randf() < chance:
-		dead_agents.append(a)
+# 	cards_h_box.add_child(control)
+# 	if randf() < chance:
+# 		dead_agents.append(a)
 		
-		x_texture.scale = Vector2(2.1, 2.1)
-		x_texture.visible = true
+# 		x_texture.scale = Vector2(2.1, 2.1)
+# 		x_texture.visible = true
 		
-		var tween_x: Tween = create_tween()
-		tween_x.tween_property(x_texture, "scale", Vector2(1, 1), .4)
-		await _fade_in(x_texture, .4)
+# 		var tween_x: Tween = create_tween()
+# 		tween_x.tween_property(x_texture, "scale", Vector2(1, 1), .4)
+# 		await _fade_in(x_texture, .4)
 		
-		survival_label.text = "Compromised"
-		survival_label.add_theme_color_override("font_color", Color(0.9, 0.0, 0.2, 1.0))
+# 		survival_label.text = "Compromised"
+# 		survival_label.add_theme_color_override("font_color", Color(0.9, 0.0, 0.2, 1.0))
 		
-		await _fade_in(survival_label, .3)
-		await get_tree().create_timer(3.5).timeout
-		control.queue_free()
+# 		await _fade_in(survival_label, .3)
+# 		await get_tree().create_timer(3.5).timeout
+# 		control.queue_free()
 		
-	else:
-		survival_label.text = "Safe"
-		survival_label.add_theme_color_override("font_color", Color(0.4, 0.9, 0.3, 1.0))
-		await _fade_in(survival_label, .3)
-		if a.mission_status["Duration"] <= 0:
-			waiting_money += a.mission_status["Reward"]
-		await get_tree().create_timer(3.9).timeout
-		control.queue_free()
+# 	else:
+# 		survival_label.text = "Safe"
+# 		survival_label.add_theme_color_override("font_color", Color(0.4, 0.9, 0.3, 1.0))
+# 		await _fade_in(survival_label, .3)
+# 		if a.mission_status["Duration"] <= 0:
+# 			waiting_money += a.mission_status["Reward"]
+# 		await get_tree().create_timer(3.9).timeout
+# 		control.queue_free()
 	
-	for d in dead_agents:
-		agent_array.remove_agent(d)
+# 	for d in dead_agents:
+# 		agent_array.remove_agent(d)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

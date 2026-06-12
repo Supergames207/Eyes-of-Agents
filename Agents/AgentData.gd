@@ -20,4 +20,7 @@ static var furtiveness_skill_range := NumberRange.new(1, 20, 1)
 static var assault_skill_range := NumberRange.new(1, 20, 1)
 @export var assault_skill : float #For assault missions
 
+@warning_ignore("unused_signal")
+signal mission_ended
+
 var index : int #Touching this variable is not advised since you may get your finger burned by the screen
