@@ -256,25 +256,6 @@ text = "GAINS: 0 $"
 label_settings = SubResource("LabelSettings_2wb4w")
 horizontal_alignment = 2
 
-<<<<<<< Updated upstream
-=======
-[node name="CurrentQuota" type="Label" parent="Money" unique_id=528876259]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -7.5402527
-offset_top = -65.0
-offset_right = 130.99954
-offset_bottom = -9.9999695
-grow_horizontal = 0
-grow_vertical = 0
-text = " / 0 $"
-label_settings = SubResource("LabelSettings_ttrit")
-
->>>>>>> Stashed changes
 [node name="ContinueNotice" type="Label" parent="." unique_id=852550988]
 visible = false
 layout_mode = 1

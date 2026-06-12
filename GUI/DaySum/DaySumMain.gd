@@ -125,16 +125,12 @@ func _start_summary() -> void:
 	
 	await _fade_in(quota_label, .25)
 	
-<<<<<<< Updated upstream
 	
 	for i: int in range(0, daily_quota, daily_quota / 5.0):
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		quota_label.text = "Daily Quota: " + str(i) + " $"
 	quota_label.text = "Daily Quota: " + str(daily_quota) + " $"
-=======
-	quota_label.text = " / " + str(daily_quota) + " $"
->>>>>>> Stashed changes
 	
 	await _fade_in(gains_label, .25)
 	
