@@ -5,6 +5,7 @@ extends Control
 @onready var day_label: Label = $CurrentDay
 @onready var day_label_stand: Label = $CurrentDayStandPoint
 
+@onready var cards_h_box: HBoxContainer = $CardsSurvival
 @onready var control_template: Control = $CardsSurvival/CardTemplate
 
 @onready var money_sum_label: Label = $Money
@@ -19,6 +20,13 @@ var agent_array: AgentArray
 var player: Player
 
 var total_reward: int
+var current_day: int
+var current_cash: int
+var expenses: int
+var gains: int
+var waiting_money: int
+
+var dead_agents := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,12 +41,11 @@ func _start_summary() -> void:
 	GlobalVariables.change_day_on_hold_state(true, true)
 
 	visible = true
-	var current_day := GlobalVariables.current_day - 1
-	var current_cash := player.money
-	var expenses := player.adjacent_money_losses + agent_array.overall_cost
-	var gains := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
-	var waiting_money: int = player.waiting_money
-	# var paycheck := roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
+	current_day = GlobalVariables.current_day - 1
+	current_cash = player.money
+	expenses = player.adjacent_money_losses + agent_array.overall_cost
+	gains = roundi(GlobalPerkHolder.get_perk_value("DaySalary"))
+	waiting_money = player.waiting_money
 	
 	# Set the background
 	
@@ -76,44 +83,9 @@ func _start_summary() -> void:
 	# Team survival decision \\(WIP)//
 	for a in agent_array.agents:
 		if a.mission_status["State"]:
-			var control: Control = control_template.duplicate()
-			control.visible = true
-			var card: AgentCardUI = control.get_node("AgentCard")
-			var x_texture: TextureRect = control.get_node("DeadTexture")
-			var chance_label: Label = control.get_node("Chance")
-			var survival_label: Label = control.get_node("SurvivalState")
-			
-			var chance: float = a.mission_status["Risk"]
-			
-			a.mission_status["Duration"] -= 1
-			
-			card.fill_data(a)
-			chance_label.text = str(round(chance * 100)) + " %"
-			
-			if randf() < chance:
-				agent_array.remove_agent(a)
-				
-				x_texture.size = Vector2(2.1, 2.1)
-				var tween_x: Tween = create_tween()
-				tween_x.tween_property(x_texture, "scale", Vector2(1, 1), .4)
-				await _fade_in(x_texture, .4)
-				
-				survival_label.text = "Compromised"
-				set("theme_override_colors/font_color", Color(.9, .0, .2, 1.0))
-				await _fade_in(survival_label, .2)
-				await get_tree().create_timer(1.5).timeout
-				control.queue_free()
-				
-				continue
-			else:
-				survival_label.text = "Safe"
-				set("theme_override_colors/font_color", Color(.4, .9, .3, 1.0))
-				await _fade_in(survival_label, .3)
-				if a.mission_status["Duration"] <= 0:
-					waiting_money += a.mission_status["Reward"]
-				await get_tree().create_timer(.3).timeout
-				await get_tree().create_timer(1.8).timeout
-				control.queue_free()
+			@warning_ignore("missing_await")
+			_show_agent_state(a)
+	await get_tree().create_timer(4.2).timeout
 	
 	# money summary
 	await _fade_in(money_sum_label, .25)
@@ -191,6 +163,49 @@ func _fade_in(node: CanvasItem, duration: float = 0.4) -> void:
 	var tween := create_tween()
 	tween.tween_property(node, "modulate:a", 1.0, duration)
 	await tween.finished
+
+func _show_agent_state(a: Agent) -> void:
+	var control: Control = control_template.duplicate()
+	control.visible = true
+	var card: AgentCardUI = control.get_node("AgentCard")
+	var x_texture: TextureRect = control.get_node("DeadTexture")
+	var chance_label: Label = control.get_node("Chance")
+	var survival_label: Label = control.get_node("SurvivalState")
+	var chance: float = a.mission_status["Risk"]
+	a.mission_status["Duration"] -= 1
+	
+	card.fill_data(a)
+	chance_label.text = str(round(chance * 100)) + " %"
+	
+	cards_h_box.add_child(control)
+	if randf() < chance:
+		dead_agents.append(a)
+		
+		x_texture.scale = Vector2(2.1, 2.1)
+		x_texture.visible = true
+		
+		var tween_x: Tween = create_tween()
+		tween_x.tween_property(x_texture, "scale", Vector2(1, 1), .4)
+		await _fade_in(x_texture, .4)
+		
+		survival_label.text = "Compromised"
+		survival_label.add_theme_color_override("font_color", Color(0.9, 0.0, 0.2, 1.0))
+		
+		await _fade_in(survival_label, .3)
+		await get_tree().create_timer(3.5).timeout
+		control.queue_free()
+		
+	else:
+		survival_label.text = "Safe"
+		survival_label.add_theme_color_override("font_color", Color(0.4, 0.9, 0.3, 1.0))
+		await _fade_in(survival_label, .3)
+		if a.mission_status["Duration"] <= 0:
+			waiting_money += a.mission_status["Reward"]
+		await get_tree().create_timer(3.9).timeout
+		control.queue_free()
+	
+	for d in dead_agents:
+		agent_array.remove_agent(d)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
