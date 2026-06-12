@@ -101,6 +101,19 @@ value_range = SubResource("Resource_dw0ry")
 apparent_value = 1.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 
+[sub_resource type="Resource" id="Resource_w147o"]
+script = ExtResource("2_8xkuc")
+end = 20.0
+step = 1.0
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_qvkql"]
+script = ExtResource("1_1xeoh")
+base_value = 5.0
+value_range = SubResource("Resource_w147o")
+apparent_value = 5.0
+metadata/_custom_type_script = "uid://dx1fsl888f1sa"
+
 [sub_resource type="Resource" id="Resource_5qxwa"]
 script = ExtResource("2_8xkuc")
 start = 1.0
@@ -127,19 +140,6 @@ script = ExtResource("1_1xeoh")
 base_value = 1.0
 value_range = SubResource("Resource_1xeoh")
 apparent_value = 1.0
-metadata/_custom_type_script = "uid://dx1fsl888f1sa"
-
-[sub_resource type="Resource" id="Resource_w147o"]
-script = ExtResource("2_8xkuc")
-end = 20.0
-step = 1.0
-metadata/_custom_type_script = "uid://b0h6emee6va5u"
-
-[sub_resource type="Resource" id="Resource_qvkql"]
-script = ExtResource("1_1xeoh")
-base_value = 5.0
-value_range = SubResource("Resource_w147o")
-apparent_value = 5.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 
 [resource]

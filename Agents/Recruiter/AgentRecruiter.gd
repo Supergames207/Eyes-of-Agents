@@ -67,7 +67,7 @@ func generate_random_agent() -> Agent:
 func attempt_agent_recruitment(pressed_card : AgentCardUI) -> void:
 	var agent_array := GlobalVariables.player.agents
 
-	if GlobalPerkHolder.get_perk_value(&"MaxRecruitees") < agent_array.agents.size():
+	if GlobalPerkHolder.get_perk_value(&"MaxRecruitees") > agent_array.agents.size():
 		AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_062.wav", 1.0, 1.05, -10.0)
 
 		agent_array.add_agent(pressed_card.agent)

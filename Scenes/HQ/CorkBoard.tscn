@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://decu7ohx6w2dm" path="res://Scenes/HQ/SpriteGUI3D.gd" id="1_661ih"]
 [ext_resource type="PackedScene" uid="uid://dmbbn7npq5nox" path="res://Missions/Picker/MissionBoard.tscn" id="2_01br0"]
 [ext_resource type="Material" uid="uid://cu5vtr2bdkygo" path="res://Scenes/HQ/OrangeFrameMaterial.tres" id="3_661ih"]
+[ext_resource type="PackedScene" uid="uid://bf0kdtpyq8da8" path="res://Assets/Assets3D/OldTV/old_tvclean.glb" id="4_17tlo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_661ih"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_17tlo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_liovh"]
 viewport_path = NodePath("MissionBoard/SpriteGUI3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qy08"]
@@ -56,7 +57,7 @@ material_override = SubResource("StandardMaterial3D_661ih")
 
 [node name="SpriteGUI3D" type="Sprite3D" parent="MissionBoard" unique_id=1185955116 node_paths=PackedStringArray("node_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45019293, 0.21999979)
-texture = SubResource("ViewportTexture_17tlo")
+texture = SubResource("ViewportTexture_liovh")
 script = ExtResource("1_661ih")
 node_viewport = NodePath("SubViewport")
 quad_mesh_size = Vector3(5.12, 5.12, 0)
@@ -70,3 +71,6 @@ metadata/_custom_type_script = "uid://decu7ohx6w2dm"
 transform = Transform3D(265, 0, 0, 0, 152.885, 0, 0, 0, 8.154, -0.019433767, 0.6568091, 0.15020943)
 mesh = SubResource("ArrayMesh_01br0")
 surface_material_override/0 = ExtResource("3_661ih")
+
+[node name="Sketchfab_Scene" parent="." unique_id=901428686 instance=ExtResource("4_17tlo")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, -2.668223, -0.7592249)
