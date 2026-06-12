@@ -47,6 +47,19 @@ value_range = SubResource("Resource_57d8t")
 apparent_value = 1.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 
+[sub_resource type="Resource" id="Resource_jbw30"]
+script = ExtResource("2_8xkuc")
+end = 1000.0
+step = 50.0
+metadata/_custom_type_script = "uid://b0h6emee6va5u"
+
+[sub_resource type="Resource" id="Resource_dga6d"]
+script = ExtResource("3_8xkuc")
+update_period_range = Vector2i(3, 5)
+change_range = Vector2(50, 150)
+value_range = SubResource("Resource_jbw30")
+metadata/_custom_type_script = "uid://bhl60yrol5y6e"
+
 [sub_resource type="Resource" id="Resource_pfs7t"]
 script = ExtResource("2_8xkuc")
 end = 1000.0
@@ -115,19 +128,6 @@ base_value = 1.0
 value_range = SubResource("Resource_1xeoh")
 apparent_value = 1.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
-
-[sub_resource type="Resource" id="Resource_jbw30"]
-script = ExtResource("2_8xkuc")
-end = 1000.0
-step = 50.0
-metadata/_custom_type_script = "uid://b0h6emee6va5u"
-
-[sub_resource type="Resource" id="Resource_dga6d"]
-script = ExtResource("3_8xkuc")
-update_period_range = Vector2i(3, 5)
-change_range = Vector2(50, 150)
-value_range = SubResource("Resource_jbw30")
-metadata/_custom_type_script = "uid://bhl60yrol5y6e"
 
 [resource]
 script = ExtResource("3_pfs7t")

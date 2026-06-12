@@ -116,6 +116,7 @@ metadata/_custom_type_script = "uid://isg2k0cqvjm7"
 grow_vertical = 1
 
 [node name="DaySummary" parent="." unique_id=980121168 instance=ExtResource("12_xb4mg")]
+visible = false
 
 [node name="EndGame" parent="." unique_id=1739275381 instance=ExtResource("13_6t1o7")]
 

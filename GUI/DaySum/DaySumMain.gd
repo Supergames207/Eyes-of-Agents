@@ -163,14 +163,14 @@ func _start_summary() -> void:
 		expenses_label.text = "Expenses: " + str(i) + " $"
 	expenses_label.text = "Expenses: " + str(expenses) + " $"
 	
-	await _fade_in(gains_label, .25)
+	await _fade_in(quota_label, .25)
 	
 	
 	for i: int in range(0, daily_quota, daily_quota / 5.0):
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
-		quota_label.text = "Expenses: " + str(i) + " $"
-	quota_label.text = "Expenses: " + str(daily_quota) + " $"
+		quota_label.text = "Daily Quota: " + str(i) + " $"
+	quota_label.text = "Daily Quota: " + str(daily_quota) + " $"
 	
 	await _fade_in(gains_label, .25)
 	

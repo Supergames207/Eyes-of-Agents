@@ -9,7 +9,7 @@ signal day_started
 
 signal closing_game
 
-const day_duration_sec :=  1 * 60
+const day_duration_sec :=  1 * 10
 const day_duration := day_duration_sec * 1000
 
 var is_game_loaded := false
@@ -54,8 +54,9 @@ func _process(_delta: float) -> void:
 		@warning_ignore("integer_division")
 		current_day = floori(Time.get_ticks_msec() / day_duration)
 		
-		day_ended.emit()
 		start_day_summary.emit()
+		day_ended.emit()
+		
 		day_start = Time.get_ticks_msec()
 
 		if day_on_hold == 0:
