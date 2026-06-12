@@ -4,7 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="2_gn4rt"]
 [ext_resource type="Texture2D" uid="uid://dlw1ooyxfdha5" path="res://Assets/Assets2D/BAR.png" id="3_u8tjb"]
 [ext_resource type="FontFile" uid="uid://ce7areiw2xfj1" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="4_gn4rt"]
+[ext_resource type="Texture2D" uid="uid://bgaivaq2u11s5" path="res://Assets/Assets2D/Btiipo.jpg" id="5_0ylwi"]
 [ext_resource type="PackedScene" uid="uid://chplluommbrf6" path="res://GUI/DiceUI/Dice.tscn" id="5_gn4rt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ciq5a"]
+texture = ExtResource("5_0ylwi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7uv1l"]
+texture = ExtResource("5_0ylwi")
 
 [sub_resource type="LabelSettings" id="LabelSettings_u8tjb"]
 font = ExtResource("4_gn4rt")
@@ -50,6 +57,7 @@ layout_mode = 2
 [node name="PromptLabel" type="Label" parent="CardTemplate/ScenarioMission/PrompContainer" unique_id=1699401288]
 custom_minimum_size = Vector2(250, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_gn4rt")
 text = "Prompt"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -70,11 +78,15 @@ layout_mode = 2
 [node name="Button" type="Button" parent="CardTemplate/ScenarioMission/Option/YesContainer" unique_id=805550559]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_gn4rt")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_ciq5a")
 text = "ROLL"
 
 [node name="Stakes" type="Label" parent="CardTemplate/ScenarioMission/Option/YesContainer" unique_id=159292117]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_gn4rt")
 text = "Chance: >1
 +N/A% Survavibility
 100$"
@@ -86,11 +98,17 @@ layout_mode = 2
 [node name="Button" type="Button" parent="CardTemplate/ScenarioMission/Option/NoContainer" unique_id=615781697]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-text = "NO!"
+theme_override_fonts/font = ExtResource("4_gn4rt")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_7uv1l")
+text = "NO
+"
 
 [node name="Stakes" type="Label" parent="CardTemplate/ScenarioMission/Option/NoContainer" unique_id=1290673733]
+visible = false
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_gn4rt")
 text = "-N/A% Survavibility"
 autowrap_mode = 2
 

@@ -86,7 +86,7 @@ func _do_rng(agent: Agent) -> void:
 		no_stakes.text = "Survivability: " + str(random_mission["N_Survivability"]) + "%"
 		
 		if not yes_button.pressed.is_connected(on_yes_button):
-			yes_button.pressed.connect(on_yes_button.bind(agent, agent_card_control, chance, scenario_container))
+			yes_button.pressed.connect(on_yes_button.bind(agent, agent_card_control, random_mission["Y_Survivability"], scenario_container))
 		if not no_button.pressed.is_connected(on_no_button):
 			no_button.pressed.connect(on_no_button.bind(agent, agent_card_control, scenario_container))
 	)
@@ -100,9 +100,9 @@ func on_yes_button(agent: Agent, agent_card_control: Control, chance: int, scena
 	rolling = true
 	var dice_int: int = await dice._roll_dice() + 1
 	if dice_int >= chance:
-		agent.mission_status["Risk"] *= 1 - 1/float(chance) 
+		agent.mission_status["Risk"] -= float(chance) / 100.0
 	else:
-		agent.mission_status["Risk"] *= 1 + 1/float(chance)
+		agent.mission_status["Risk"] += float(chance) / 100.0
 	
 	agent.mission_status["Risk"] = clampf(agent.mission_status["Risk"], 0, 1) #CHECK THIS, ok? It's just a workaround.
 	#The calculations on themselves should guarantee that Risk is never bigger than 1
