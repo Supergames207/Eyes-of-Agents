@@ -46,7 +46,7 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_ttrit"]
 font = ExtResource("3_tl73t")
 font_size = 51
-font_color = Color(0.96691424, 0.4663912, 0.4590723, 1)
+font_color = Color(0.73563325, 0.17205954, 0.210363, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -192,7 +192,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Money" type="Label" parent="." unique_id=1147546504]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -208,7 +207,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Expenses" type="Label" parent="Money" unique_id=1428348466]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -225,7 +223,6 @@ label_settings = SubResource("LabelSettings_ydgfs")
 horizontal_alignment = 2
 
 [node name="CurrentQuota" type="Label" parent="Money" unique_id=528876259]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -234,12 +231,11 @@ offset_left = -339.0
 offset_top = 220.0
 offset_bottom = 275.0
 grow_horizontal = 0
-text = "Current Quota : 0 $"
+text = "Daily Quota : 0 $"
 label_settings = SubResource("LabelSettings_ttrit")
 horizontal_alignment = 2
 
 [node name="Gains" type="Label" parent="Money" unique_id=371601448]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
