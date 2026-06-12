@@ -1,8 +1,11 @@
 extends Control
 
+var base_reward: int = 100
+
 @onready var loc_container := $VHS/VBoxContainer
 # @onready var button_template := $VBoxContainer/ButtonTemplate
-@onready var danger_label := $PaperInfo/VBoxContainer/DangerLabel
+@onready var risk_label := $PaperInfo/VBoxContainer/RiskLabel
+@onready var reward_label := $PaperInfo/VBoxContainer/RewardLabel
 @onready var loc_label := $PaperInfo/VBoxContainer/LocationLabel
 @onready var obj_label := $PaperInfo/VBoxContainer/ObjectiveLabel
 @onready var agent_card := $CardContainer/AgentCard
@@ -36,7 +39,7 @@ func _ready() -> void:
 			continue
 		
 		l.mouse_entered.connect(button_mouse_entered)
-		l.pressed.connect(func() -> void: _on_pin_press(l.danger, l.location, l.objective, l))
+		l.pressed.connect(func() -> void: _on_pin_press(l.risk, l.location, l.objective, l))
 	
 	next_agent_button.pressed.connect(func() -> void: _on_next_agent())
 	
@@ -47,12 +50,17 @@ func _ready() -> void:
 func button_mouse_entered() -> void:
 	AudioManager.play("res://Sounds/Pack1/GUI Sound Effects_031.wav", 1.0, 1.05, -20.0)
 
-func _on_pin_press(_danger: float, _loc: String, _obj: String, pin: Button) -> void:
+func _on_pin_press(_risk: float, _loc: String, _obj: String, pin: Button) -> void:
 	current_loc = pin
+	var agent := agent_array.agents[current_agent]
+	
+	var values := _get_biased_values(_risk, agent)
+	
+	risk_label.text = "Danger: " + str(snapped(values["risk"], 0.1)) + "%"
+	reward_label.text = "Reward: " + str(values["reward"])
 	loc_label.text = "Location: " + _loc
 	obj_label.text = "Objective: " + _obj
-	danger_label.text = "Danger: " + str(_danger)
-
+	
 	AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_062.wav", 1.0, 1.05, -10.0)
 
 func _on_next_agent() -> void:
@@ -97,12 +105,14 @@ func _on_acceptance() -> void:
 	
 	var objective: int = RandomStrings.random_objectives.find(current_loc.objective)
 	var location: int = RandomStrings.random_locations.find(current_loc.location)
+	var values: Dictionary = _get_biased_values(current_loc.risk, agent)
 	
 	agent.mission_status["State"] = true
 	agent.mission_status["Objective"] = RandomStrings.random_objectives.find(current_loc.objective)
 	agent.mission_status["Duration"] = 1
 	agent.mission_status["Location"] = RandomStrings.random_locations.find(current_loc.location)
-	agent.mission_status["Risk"] = current_loc.danger / 100
+	agent.mission_status["Risk"] = values["risk"] / 100.0
+	agent.mission_status["Reward"] = values["reward"]
 	
 	current_loc.queue_free()
 
@@ -113,3 +123,15 @@ func _on_acceptance() -> void:
 	
 	print(agent.mission_status)
 	AudioManager.play("res://Sounds/Pack2/GUI Sound Effects_061.wav", 1.0, 1.05, -10.)
+
+func _get_biased_values(loc_risk: float, agent: Agent) -> Dictionary:
+	var risk: float = clamp(current_loc.risk * \
+	(1 - (((agent.assault_skill + agent.furtiveness_skill)/2 - 10) / 10) * .5),
+	0.0,
+	100.0)
+	var reward: int = int(100 + loc_risk * 10)
+	
+	return {
+		"risk": risk,
+		"reward": reward
+	}

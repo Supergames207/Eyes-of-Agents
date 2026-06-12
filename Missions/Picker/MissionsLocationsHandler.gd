@@ -1,9 +1,9 @@
 class_name LocationButton extends Button
 
-@export var danger: float:
+@export var risk: float:
 	set(value):
-		danger = value
-		_on_property_changed("danger", value)
+		risk = value
+		_on_property_changed("risk", value)
 
 @export var location: String:
 	set(value):
@@ -15,8 +15,13 @@ class_name LocationButton extends Button
 		objective = value
 		_on_property_changed("objective", value)
 
+@export var reward: int:
+	set(value):
+		reward = value
+		_on_property_changed("reward", value)
+
 func _on_property_changed(_property: String, _value: Variant) -> void:
-	text = str(location) + " | RISK: " + str(danger)
+	text = str(location) + " | RISK: " + str(risk)
 
 
 func _ready() -> void:

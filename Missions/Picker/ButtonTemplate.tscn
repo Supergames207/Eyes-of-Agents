@@ -5,6 +5,6 @@
 [node name="ButtonTemplate" type="Button" unique_id=1408520572]
 custom_minimum_size = Vector2(0, 30)
 pivot_offset = Vector2(0, 15.5)
-text = "LOCATION | RISK: 4 "
+text = "LOCATION | RISK: 4 % "
 alignment = 0
 script = ExtResource("1_flt48")

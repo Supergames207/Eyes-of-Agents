@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmbbn7npq5nox"]
 
-[ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Scenes/HQ/MissionMain.gd" id="1_f5kmt"]
+[ext_resource type="Script" uid="uid://ben0famld4tud" path="res://Missions/MissionMain.gd" id="1_f5kmt"]
 [ext_resource type="Material" uid="uid://chx6tv72sdwmb" path="res://GUI/TvVHS.tres" id="3_rugcd"]
 [ext_resource type="Texture2D" uid="uid://dnvn3hqwf5wji" path="res://Assets/Assets2D/alreasssing.png" id="4_mgdcg"]
 [ext_resource type="PackedScene" uid="uid://dqoay0d78tyoq" path="res://Agents/AgentCard.tscn" id="5_igv4n"]
@@ -122,11 +122,18 @@ offset_top = 24.0
 offset_right = 198.0
 offset_bottom = 113.0
 
-[node name="DangerLabel" type="Label" parent="PaperInfo/VBoxContainer" unique_id=679036215]
+[node name="RiskLabel" type="Label" parent="PaperInfo/VBoxContainer" unique_id=679036215]
 custom_minimum_size = Vector2(175, 27)
 layout_mode = 2
 theme = ExtResource("7_xdr1m")
-text = "Danger:"
+text = "Risk:"
+autowrap_mode = 3
+
+[node name="RewardLabel" type="Label" parent="PaperInfo/VBoxContainer" unique_id=176792341]
+custom_minimum_size = Vector2(175, 27)
+layout_mode = 2
+theme = ExtResource("7_xdr1m")
+text = "Reward: "
 autowrap_mode = 3
 
 [node name="LocationLabel" type="Label" parent="PaperInfo/VBoxContainer" unique_id=916304377]
