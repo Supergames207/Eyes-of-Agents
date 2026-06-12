@@ -133,7 +133,6 @@ offset_top = 90.0
 offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Safe"
 label_settings = SubResource("LabelSettings_wciup")
 horizontal_alignment = 1
 

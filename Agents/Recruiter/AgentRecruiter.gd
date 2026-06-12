@@ -3,6 +3,10 @@ class_name AgentRecruiter extends Control
 const faces_path := "res://Agents/Faces/Faces.tscn"
 const agent_card_path := "res://Agents/AgentCard.tscn"
 
+
+const cost_base_multiplier := 15
+const cost_random_multiplier := Vector2(-5, 5)
+
 var agent_card : PackedScene = preload(agent_card_path)
 var faces_node: Node2D = preload(faces_path).instantiate()
 
@@ -52,7 +56,8 @@ func generate_random_agent() -> Agent:
 	new_agent.assault_skill = new_agent.assault_skill_range.make_within_range(assault_skill_gaussian.get_random())
 	new_agent.furtiveness_skill = new_agent.furtiveness_skill_range.make_within_range(furtive_skill_guassian.get_random())
 	
-	new_agent.cost = roundi((new_agent.assault_skill + new_agent.furtiveness_skill) * (15.0 + randf_range(-5, 5) ))
+	new_agent.cost = roundi((new_agent.assault_skill + new_agent.furtiveness_skill) * \
+							(cost_base_multiplier + randf_range(cost_random_multiplier.x, cost_random_multiplier.y) ))
 	
 	new_agent.face = (faces_node.get_children().pick_random() as Sprite2D).texture as CompressedTexture2D
 	

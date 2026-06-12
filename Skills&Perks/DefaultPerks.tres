@@ -56,6 +56,7 @@ metadata/_custom_type_script = "uid://b0h6emee6va5u"
 script = ExtResource("1_1xeoh")
 base_value = 100.0
 value_range = SubResource("Resource_pfs7t")
+apparent_value = 100.0
 metadata/_custom_type_script = "uid://dx1fsl888f1sa"
 
 [sub_resource type="Resource" id="Resource_l7647"]

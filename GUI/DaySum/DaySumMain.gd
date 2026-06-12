@@ -73,11 +73,25 @@ func _start_summary() -> void:
 	day_label.visible = false
 	day_label.modulate.a = 1
 	
+	var offset := 0
+	
+	var test := 0
+	for k in agent_array.agents:
+		prints("TEST0", k.name, k.index,test)
+		test += 1
+	
 	# Team survival decision \\(WIP)//
-	for a in agent_array.agents:
+	for i in range(0, agent_array.agents.size()):
+		if i - offset >= agent_array.agents.size():
+			break
+		
+		var a := agent_array.agents[i - offset]
+		prints("TEST1 , ", a.name, i, i - offset)
 		if a.mission_status["State"]:
 			var control: Control = control_template.duplicate()
 			control.visible = true
+
+			get_node("CardsSurvival").add_child(control)
 			var card: AgentCardUI = control.get_node("AgentCard")
 			var x_texture: TextureRect = control.get_node("DeadTexture")
 			var chance_label: Label = control.get_node("Chance")
@@ -92,6 +106,7 @@ func _start_summary() -> void:
 			
 			if randf() < chance:
 				agent_array.remove_agent(a)
+				offset += 1
 				
 				x_texture.size = Vector2(2.1, 2.1)
 				var tween_x: Tween = create_tween()
@@ -111,6 +126,7 @@ func _start_summary() -> void:
 				await _fade_in(survival_label, .3)
 				if a.mission_status["Duration"] <= 0:
 					waiting_money += a.mission_status["Reward"]
+					
 				await get_tree().create_timer(.3).timeout
 				await get_tree().create_timer(1.8).timeout
 				control.queue_free()
@@ -142,6 +158,7 @@ func _start_summary() -> void:
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		gains_label.text = "Gains: " + str(i) + " $"
+	
 	gains_label.text = "Gains: " + str(gains) + " $"
 	
 	

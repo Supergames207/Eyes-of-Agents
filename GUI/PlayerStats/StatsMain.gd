@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 	money = player.money
 	money_label.text = str(money) + " $"
 	
-	payments_label.text = str(-player.adjacent_money_losses) + " $"
+	payments_label.text = str(-player.adjacent_money_losses - player.agents.overall_cost) + " $"
 
 	# current day/daytime
 	time_label.text = "Day: " + str(GlobalVariables.current_day)

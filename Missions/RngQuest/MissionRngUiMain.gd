@@ -19,6 +19,7 @@ var rolling: bool = false
 func _ready() -> void:
 	agent_array = GlobalVariables.player.agents
 
+
 func _process(delta: float) -> void:
 	rng_event_timer += delta
 	for a in agent_array.agents:
@@ -49,6 +50,16 @@ func _do_rng(agent: Agent) -> void:
 	var no_button: Button = agent_card_control.get_node("ScenarioMission/Option/NoContainer/Button")
 	var no_stakes: Label = agent_card_control.get_node("ScenarioMission/Option/NoContainer/Stakes")
 	
+
+	# GlobalVariables.day_started.connect(func() -> void:
+	# 	prints("HEY????", agent.name, agent.index)
+	# 	if agent.index == -1 and is_instance_valid(agent_card_control):
+	# 		active_cards.erase(agent_card_control)
+	# 		agent_card_control.queue_free()
+	# 		scenario_container.visible = false
+		
+	# 	,CONNECT_ONE_SHOT)
+	
 	var tween: Tween = create_tween()
 	tween.tween_property(agent_card_control, "position:x", original_x, 0.5)\
 		.set_ease(Tween.EASE_OUT)\
@@ -74,7 +85,10 @@ func _do_rng(agent: Agent) -> void:
 		yes_stakes.text = "Chance: >" + str(chance) + "\nSurvivability: " + str(random_mission["Y_Survivability"]) + "%"
 		no_stakes.text = "Survivability: " + str(random_mission["N_Survivability"]) + "%"
 		
-		yes_button.pressed.connect(on_yes_button.bind(agent, agent_card_control, chance, scenario_container))
+		if not yes_button.pressed.is_connected(on_yes_button):
+			yes_button.pressed.connect(on_yes_button.bind(agent, agent_card_control, chance, scenario_container))
+		if not no_button.pressed.is_connected(on_no_button):
+			no_button.pressed.connect(on_no_button.bind(agent, agent_card_control, scenario_container))
 	)
 
 func on_yes_button(agent: Agent, agent_card_control: Control, chance: int, scenario_container: VBoxContainer) -> void:
@@ -86,12 +100,24 @@ func on_yes_button(agent: Agent, agent_card_control: Control, chance: int, scena
 	rolling = true
 	var dice_int: int = await dice._roll_dice() + 1
 	if dice_int >= chance:
-		agent.mission_status["Risk"] *= 1 + 1/float(chance) 
+		agent.mission_status["Risk"] *= 1 - 1/float(chance) 
 	else:
-		agent.mission_status["Risk"] *= 1 - 1/float(chance)
+		agent.mission_status["Risk"] *= 1 + 1/float(chance)
 	
+	agent.mission_status["Risk"] = clampf(agent.mission_status["Risk"], 0, 1) #CHECK THIS, ok? It's just a workaround.
+	#The calculations on themselves should guarantee that Risk is never bigger than 1
+
 	active_cards.erase(agent_card_control)
 	agent_card_control.queue_free()
 	rolling = false
 	scenario_container.visible = false
-	popup_ui._new_notification(agent.name + " survivability: " + str(agent.mission_status["Risk"] * 100) + "%", Color(randf(), randf(), randf()))
+	popup_ui._new_notification(agent.name + " Risk: " + str(agent.mission_status["Risk"] * 100) + "%", Color(randf(), randf(), randf()))
+
+
+func on_no_button(agent: Agent, agent_card_control: Control, scenario_container: VBoxContainer) -> void:
+	print(agent.name)
+	#The calculations on themselves should guarantee that Risk is never bigger than 1
+
+	active_cards.erase(agent_card_control)
+	agent_card_control.queue_free()
+	scenario_container.visible = false

@@ -21,6 +21,9 @@ func remove_agent(agent : Agent) -> void:
 
 	for k in range(agent.index, agents.size()):
 		agents[k].index -= 1
-	
+		
 	overall_cost -= agent.cost
 	array_changed.emit(false, agent.index)
+
+	agent.index = -1
+	
