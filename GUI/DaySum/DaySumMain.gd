@@ -11,7 +11,7 @@ extends Control
 @onready var money_sum_label: Label = $Money
 @onready var expenses_label: Label = $Money/Expenses
 @onready var gains_label: Label = $Money/Gains
-@onready var quota_label : Label = $CurrentQuota
+@onready var quota_label : Label = $Money/CurrentQuota
 @onready var continue_label: Label = $ContinueNotice
 
 signal clicked
