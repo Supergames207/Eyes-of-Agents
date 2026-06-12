@@ -123,25 +123,25 @@ func _start_summary() -> void:
 		expenses_label.text = "Expenses: " + str(i) + " $"
 	expenses_label.text = "Expenses: " + str(expenses) + " $"
 	
-	await _fade_in(quota_label, .25)
-	
-	
-	for i: int in range(0, daily_quota, daily_quota / 5.0):
-		await RenderingServer.frame_post_draw
-		await RenderingServer.frame_post_draw
-		quota_label.text = "Daily Quota: " + str(i) + " $"
-	quota_label.text = "Daily Quota: " + str(daily_quota) + " $"
-	
 	await _fade_in(gains_label, .25)
 	
 	waiting_money = roundi(waiting_money * GlobalPerkHolder.get_perk_value("MoneyMultiplier"))
 	gains += waiting_money
-
+	
 	for i: int in gains:
 		await RenderingServer.frame_post_draw
 		await RenderingServer.frame_post_draw
 		gains_label.text = "Gains: " + str(i) + " $"
 	gains_label.text = "Gains: " + str(gains) + " $"
+	
+	await _fade_in(quota_label, .25)
+	
+	for i: int in daily_quota:
+		await RenderingServer.frame_post_draw
+		await RenderingServer.frame_post_draw
+		quota_label.text = "Daily Quota: " + str(i) + " $"
+	quota_label.text = "Daily Quota: " + str(daily_quota) + " $"
+	
 	
 	player.money += gains - expenses
 	player.money -= daily_quota
